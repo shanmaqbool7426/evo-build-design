@@ -1,15 +1,15 @@
-import heroImg from "@/assets/hero.jpg";
-import aboutImg from "@/assets/about.jpg";
-import extensionImg from "@/assets/project-extension.jpg";
-import renovationImg from "@/assets/project-renovation.jpg";
-import precisionImg from "@/assets/precision.jpg";
-import kitchenImg from "@/assets/gallery-kitchen.jpg";
-import bathroomImg from "@/assets/gallery-bathroom.jpg";
-import loftImg from "@/assets/gallery-loft.jpg";
-import siteImg from "@/assets/gallery-site.jpg";
-import interiorImg from "@/assets/gallery-interior.jpg";
-import beforeImg from "@/assets/before.jpg";
-import afterImg from "@/assets/after.jpg";
+import heroImg from "@/assets/hero.png";
+import aboutImg from "@/assets/about.png";
+import extensionImg from "@/assets/project-extension.png";
+import renovationImg from "@/assets/project-renovation.png";
+import precisionImg from "@/assets/precision.png";
+import kitchenImg from "@/assets/gallery-kitchen.png";
+import bathroomImg from "@/assets/gallery-bathroom.png";
+import loftImg from "@/assets/gallery-loft.png";
+import siteImg from "@/assets/gallery-site.png";
+import interiorImg from "@/assets/gallery-interior.png";
+import beforeImg from "@/assets/before.png";
+import afterImg from "@/assets/after.png";
 
 export const images = {
   hero: heroImg,
@@ -30,12 +30,20 @@ export const company = {
   name: "LOPO Construction Ltd",
   shortName: "LOPO",
   tagline: "Building Better Spaces. Built to Last.",
+  companyNumber: "13947856",
   phone: "020 3778 4120",
+  phoneDisplay: "+44 20 3778 4120",
   phoneHref: "tel:+442037784120",
-  whatsapp: "https://wa.me/442037784120",
+  whatsapp: "442037784120",
+  whatsappHref: "https://wa.me/442037784120",
   email: "hello@lopoconstruction.co.uk",
   hours: "Mon – Fri: 8:00 – 18:00 · Sat: 9:00 – 14:00",
   areasSummary: "London & surrounding counties",
+  addressLines: [
+    "Suite 14, 2nd Floor",
+    "Kingsgate House",
+    "26–42 Victoria Road, London W3 7TS",
+  ],
 };
 
 export type Service = {
@@ -356,8 +364,15 @@ export const navLinks = [
   { label: "About Us", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Projects", to: "/projects" },
-  { label: "Areas We Cover", to: "/areas-we-cover" },
   { label: "Reviews", to: "/reviews" },
+  { label: "Areas We Cover", to: "/areas-we-cover" },
   { label: "FAQs", to: "/faqs" },
   { label: "Contact", to: "/contact" },
 ] as const;
+
+export const navServices = services.map((s) => ({
+  title: s.title,
+  description: s.short,
+  href: `/services/${s.slug}`,
+  slug: s.slug,
+}));

@@ -11,7 +11,7 @@ const legal = [
 
 export function Footer() {
   return (
-    <footer className="bg-navy-deep text-blue-soft">
+    <footer className="bg-navy-deep pb-20 text-blue-soft xl:pb-0">
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo light />
@@ -19,6 +19,14 @@ export function Footer() {
             Professional construction, renovation and property improvement services across London
             and the surrounding areas.
           </p>
+          <div className="mt-4 text-xs text-blue-soft/70">
+            {company.addressLines.map((line) => (
+              <span key={line} className="block">{line}</span>
+            ))}
+            <span className="mt-2 block">
+              Registered in England &amp; Wales · Company No. {company.companyNumber}
+            </span>
+          </div>
         </div>
 
         <div>
@@ -66,7 +74,7 @@ export function Footer() {
             </li>
             <li>
               <a
-                href={company.whatsapp}
+                href={company.whatsappHref}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="flex items-center gap-2 hover:text-yellow"

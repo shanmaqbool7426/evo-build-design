@@ -24,7 +24,7 @@ export function CTASection({
             <Phone className="size-4" /> Call Us
           </ButtonAnchor>
           <ButtonAnchor
-            href={company.whatsapp}
+            href={company.whatsappHref}
             target="_blank"
             rel="noreferrer noopener"
             variant="ghostLight"

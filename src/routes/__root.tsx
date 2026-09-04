@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { MobileCta } from "@/components/MobileCta";
 
 function NotFoundComponent() {
   return (
@@ -145,6 +146,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <MobileCta />
     </QueryClientProvider>
   );
 }

@@ -11,7 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AreasWeCoverRouteImport } from './routes/areas-we-cover'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +32,154 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AreasWeCoverRoute = AreasWeCoverRouteImport.update({
+  id: '/areas-we-cover',
+  path: '/areas-we-cover',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/services': typeof ServicesRoute
+  '/areas-we-cover': typeof AreasWeCoverRoute
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
+  '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
+  '/reviews': typeof ReviewsRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/terms': typeof TermsRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/services': typeof ServicesRoute
+  '/areas-we-cover': typeof AreasWeCoverRoute
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
+  '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
+  '/reviews': typeof ReviewsRoute
+  '/terms': typeof TermsRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/services': typeof ServicesRoute
+  '/areas-we-cover': typeof AreasWeCoverRoute
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
+  '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
+  '/reviews': typeof ReviewsRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/terms': typeof TermsRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/areas-we-cover'
+    | '/contact'
+    | '/faqs'
+    | '/privacy'
+    | '/projects'
+    | '/reviews'
+    | '/services'
+    | '/terms'
+    | '/services/$slug'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/services'
-  id: '__root__' | '/' | '/about' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/areas-we-cover'
+    | '/contact'
+    | '/faqs'
+    | '/privacy'
+    | '/projects'
+    | '/reviews'
+    | '/terms'
+    | '/services/$slug'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/areas-we-cover'
+    | '/contact'
+    | '/faqs'
+    | '/privacy'
+    | '/projects'
+    | '/reviews'
+    | '/services'
+    | '/terms'
+    | '/services/$slug'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ServicesRoute: typeof ServicesRoute
+  AreasWeCoverRoute: typeof AreasWeCoverRoute
+  ContactRoute: typeof ContactRoute
+  FaqsRoute: typeof FaqsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProjectsRoute: typeof ProjectsRoute
+  ReviewsRoute: typeof ReviewsRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +198,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/areas-we-cover': {
+      id: '/areas-we-cover'
+      path: '/areas-we-cover'
+      fullPath: '/areas-we-cover'
+      preLoaderRoute: typeof AreasWeCoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -82,13 +247,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesSlugRoute: ServicesSlugRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ServicesRoute: ServicesRoute,
+  AreasWeCoverRoute: AreasWeCoverRoute,
+  ContactRoute: ContactRoute,
+  FaqsRoute: FaqsRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProjectsRoute: ProjectsRoute,
+  ReviewsRoute: ReviewsRoute,
+  ServicesRoute: ServicesRouteWithChildren,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

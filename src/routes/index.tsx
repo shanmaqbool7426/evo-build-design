@@ -495,7 +495,7 @@ function Home() {
                 <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">Phone</dt>
                 <dd className="mt-1 font-semibold text-navy">
                   <a href={company.phoneHref} className="hover:text-bright">
-                    {company.phone}
+                    {company.phoneDisplay}
                   </a>
                 </dd>
               </div>
@@ -511,7 +511,7 @@ function Home() {
                 <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">WhatsApp</dt>
                 <dd className="mt-1 font-semibold text-navy">
                   <a
-                    href={company.whatsapp}
+                    href={company.whatsappHref}
                     target="_blank"
                     rel="noreferrer noopener"
                     className="hover:text-bright"
