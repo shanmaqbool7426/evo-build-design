@@ -145,9 +145,6 @@ export function Header() {
               <MessageCircle className="size-4" />
               WhatsApp Us
             </a>
-            <ButtonLink to="/contact" variant="accent" className="hidden sm:inline-flex">
-              Get a Free Quote
-            </ButtonLink>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
