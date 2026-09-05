@@ -6,12 +6,12 @@ import { company } from "@/data/site";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — LOPO Construction Ltd" },
+      { title: "Privacy Policy — ARZ Construction Ltd" },
       {
         name: "description",
         content: `${company.name} privacy and cookie policy. How we collect, use and protect your personal data.`,
       },
-      { property: "og:title", content: "Privacy Policy — LOPO Construction Ltd" },
+      { property: "og:title", content: "Privacy Policy — ARZ Construction Ltd" },
       { property: "og:url", content: "/privacy" },
     ],
     links: [{ rel: "canonical", href: "/privacy" }],

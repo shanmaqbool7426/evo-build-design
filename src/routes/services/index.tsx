@@ -9,13 +9,13 @@ import { services } from "@/data/site";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Our Services — LOPO Construction Ltd" },
+      { title: "Our Services — ARZ Construction Ltd" },
       {
         name: "description",
         content:
           "Renovations, extensions, loft conversions, kitchens, bathrooms, plumbing, electrical and more. Full construction services across London.",
       },
-      { property: "og:title", content: "Our Services — LOPO Construction Ltd" },
+      { property: "og:title", content: "Our Services — ARZ Construction Ltd" },
       {
         property: "og:description",
         content:

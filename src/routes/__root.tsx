@@ -78,20 +78,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LOPO Construction Ltd — Renovations & Extensions in London" },
+      { title: "ARZ Construction Ltd — Renovations & Extensions in London" },
       {
         name: "description",
         content:
-          "LOPO Construction Ltd delivers professional renovations, extensions, loft conversions and property improvements across London.",
+          "ARZ Construction Ltd delivers professional renovations, extensions, loft conversions and property improvements across London.",
       },
-      { property: "og:site_name", content: "LOPO Construction Ltd" },
+      { property: "og:site_name", content: "ARZ Construction Ltd" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#123B7A" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -105,11 +107,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "GeneralContractor",
-          name: "LOPO Construction Ltd",
+          name: "ARZ Construction Ltd",
           description:
             "Professional construction, renovation and property improvement services across London and the surrounding areas.",
-          telephone: "+44 20 3778 4120",
-          email: "hello@lopoconstruction.co.uk",
+          telephone: "+44 7860 135189",
+          email: "Arzconstruction23@gmail.com",
           areaServed: "London, United Kingdom",
         }),
       },

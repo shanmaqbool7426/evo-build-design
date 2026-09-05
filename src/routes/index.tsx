@@ -17,23 +17,22 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Stats } from "@/components/Stats";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ProjectCard } from "@/components/ProjectCard";
-import { ReviewCard } from "@/components/ReviewCard";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
-import { areas, company, images, process, projects, reviews, services } from "@/data/site";
+import { areas, company, images, process, projects, services } from "@/data/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LOPO Construction Ltd — Renovations & Extensions in London" },
+      { title: "ARZ Construction Ltd — Renovations & Extensions in London" },
       {
         name: "description",
         content:
           "Professional construction, renovations, extensions and property improvements in London. 10+ years' experience, free quotations and quality workmanship.",
       },
-      { property: "og:title", content: "LOPO Construction Ltd — Building Better Spaces" },
+      { property: "og:title", content: "ARZ Construction Ltd — Building Better Spaces" },
       {
         property: "og:description",
         content:
@@ -73,7 +72,7 @@ function Home() {
       <section className="relative isolate overflow-hidden">
         <img
           src={images.hero}
-          alt="Modern UK home with a contemporary rear extension built by LOPO Construction"
+          alt="Modern UK home with a contemporary rear extension built by ARZ Construction"
           width={1920}
           height={1080}
           className="absolute inset-0 size-full object-cover"
@@ -82,7 +81,7 @@ function Home() {
         <div className="container-x relative py-20 lg:py-32">
           <div className="max-w-2xl">
             <span className="inline-block rounded-sm bg-yellow px-3 py-1 text-[11px] font-bold tracking-[0.16em] text-navy uppercase">
-              LOPO Construction Ltd
+              ARZ Construction Ltd
             </span>
             <h1 className="mt-6 text-4xl leading-[1.08] font-extrabold text-white sm:text-5xl lg:text-6xl">
               Building Better Spaces.
@@ -122,7 +121,7 @@ function Home() {
               align="left"
               eyebrow="Who We Are"
               title="Transforming Homes Through Quality Construction"
-              subtitle="LOPO Construction Ltd provides professional construction, renovation and property improvement services for homeowners across London. We take on the whole job — structure, services and finishes — so you deal with one team that is accountable for the result."
+              subtitle="ARZ Construction Ltd provides professional construction, renovation and property improvement services for homeowners across London. We take on the whole job — structure, services and finishes — so you deal with one team that is accountable for the result."
             />
             <ul className="mt-8 space-y-3">
               {["Quality workmanship", "Reliable project management", "Clear communication"].map((point) => (
@@ -155,7 +154,7 @@ function Home() {
       <section className="pb-16 lg:pb-24">
         <div className="container-x">
           <Reveal>
-            <h2 className="sr-only">LOPO Construction in numbers</h2>
+            <h2 className="sr-only">ARZ Construction in numbers</h2>
             <Stats />
           </Reveal>
         </div>
@@ -381,7 +380,7 @@ function Home() {
           <Reveal>
             <SectionHeading
               eyebrow="Why Us"
-              title="Why Choose LOPO Construction?"
+              title="Why Choose ARZ Construction?"
               subtitle="The things our clients tell us made the difference on their project."
             />
           </Reveal>
@@ -430,30 +429,6 @@ function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-16 lg:py-24">
-        <div className="container-x">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Reviews"
-              title="What Our Customers Say"
-              subtitle="Feedback from homeowners across London."
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {reviews.slice(0, 3).map((review, i) => (
-              <Reveal key={review.name} delay={i * 80}>
-                <ReviewCard review={review} />
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <ButtonLink to="/reviews" variant="outline">
-              Read More Reviews
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
 
       {/* AREAS */}
       <section className="bg-blue-tint py-16 lg:py-24">
@@ -462,7 +437,7 @@ function Home() {
             <SectionHeading
               eyebrow="Coverage"
               title="Areas We Cover"
-              subtitle={`LOPO Construction serves selected areas across London and the surrounding counties — ${company.areasSummary}.`}
+              subtitle={`ARZ Construction serves selected areas across London and the surrounding counties — ${company.areasSummary}.`}
             />
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

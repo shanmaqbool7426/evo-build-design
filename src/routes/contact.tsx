@@ -9,13 +9,13 @@ import { company } from "@/data/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us — LOPO Construction Ltd" },
+      { title: "Contact Us — ARZ Construction Ltd" },
       {
         name: "description",
         content:
-          "Get in touch with LOPO Construction for a free quotation. Call, WhatsApp, email or fill in our enquiry form. We respond within one working day.",
+          "Get in touch with ARZ Construction for a free quotation. Call, WhatsApp, email or fill in our enquiry form. We respond within one working day.",
       },
-      { property: "og:title", content: "Contact & Free Quotation — LOPO Construction Ltd" },
+      { property: "og:title", content: "Contact & Free Quotation — ARZ Construction Ltd" },
       {
         property: "og:description",
         content:

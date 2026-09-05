@@ -6,12 +6,12 @@ import { company } from "@/data/site";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms & Conditions — LOPO Construction Ltd" },
+      { title: "Terms & Conditions — ARZ Construction Ltd" },
       {
         name: "description",
         content: `${company.name} terms and conditions for construction services, quotations, payments and guarantees.`,
       },
-      { property: "og:title", content: "Terms & Conditions — LOPO Construction Ltd" },
+      { property: "og:title", content: "Terms & Conditions — ARZ Construction Ltd" },
       { property: "og:url", content: "/terms" },
     ],
     links: [{ rel: "canonical", href: "/terms" }],

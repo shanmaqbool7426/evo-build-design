@@ -11,13 +11,13 @@ export const Route = createFileRoute("/services/$slug")({
     return {
       meta: service
         ? [
-            { title: `${service.title} — LOPO Construction Ltd` },
+            { title: `${service.title} — ARZ Construction Ltd` },
             { name: "description", content: service.description },
-            { property: "og:title", content: `${service.title} — LOPO Construction` },
+            { property: "og:title", content: `${service.title} — ARZ Construction` },
             { property: "og:description", content: service.short },
             { property: "og:url", content: `/services/${service.slug}` },
           ]
-        : [{ title: "Service — LOPO Construction Ltd" }],
+        : [{ title: "Service — ARZ Construction Ltd" }],
       links: service ? [{ rel: "canonical", href: `/services/${service.slug}` }] : [],
     };
   },
@@ -107,7 +107,7 @@ function ServiceDetail() {
               <div className="mt-10 overflow-hidden rounded-xl shadow-card">
                 <img
                   src={service.image}
-                  alt={`${service.title} work by LOPO Construction`}
+                  alt={`${service.title} work by ARZ Construction`}
                   loading="lazy"
                   width={1400}
                   height={1000}

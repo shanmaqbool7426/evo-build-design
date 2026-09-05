@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none">
+  <!-- Outer hexagonal shield badge in ARZ Navy with Gold border -->
+  <path d="M22 2L38 11V33L22 42L6 33V11L22 2Z" fill="#123B7A" stroke="#F5C400" stroke-width="2.2"/>
+  <!-- A-frame architectural construction beam in ARZ Gold -->
+  <path d="M10 31L22 10L34 31" stroke="#F5C400" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cross-beam -->
+  <path d="M14 24H30" stroke="#F5C400" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Crown accent circle at apex -->
+  <circle cx="22" cy="10" r="1.8" fill="#F5C400"/>
+</svg>

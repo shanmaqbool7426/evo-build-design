@@ -27,22 +27,22 @@ export const images = {
 };
 
 export const company = {
-  name: "LOPO Construction Ltd",
-  shortName: "LOPO",
+  name: "ARZ Construction Ltd",
+  shortName: "ARZ",
   tagline: "Building Better Spaces. Built to Last.",
-  companyNumber: "13947856",
-  phone: "020 3778 4120",
-  phoneDisplay: "+44 20 3778 4120",
-  phoneHref: "tel:+442037784120",
-  whatsapp: "442037784120",
-  whatsappHref: "https://wa.me/442037784120",
-  email: "hello@lopoconstruction.co.uk",
+  companyNumber: "12858978",
+  phone: "07860 135189",
+  phoneDisplay: "+44 7860 135189",
+  phoneHref: "tel:+447860135189",
+  whatsapp: "447860135189",
+  whatsappHref: "https://wa.me/447860135189",
+  email: "Arzconstruction23@gmail.com",
   hours: "Mon – Fri: 8:00 – 18:00 · Sat: 9:00 – 14:00",
   areasSummary: "London & surrounding counties",
   addressLines: [
-    "Suite 14, 2nd Floor",
-    "Kingsgate House",
-    "26–42 Victoria Road, London W3 7TS",
+    "4th Floor, Silverstream House",
+    "45 Fitzroy Street, Fitzrovia",
+    "London W1T 6EB",
   ],
 };
 
@@ -272,45 +272,6 @@ export const stats = [
   { value: "100%", label: "Commitment to Quality" },
 ];
 
-export const reviews = [
-  {
-    name: "Rebecca H.",
-    location: "Barnet, London",
-    rating: 5,
-    text: "LOPO handled our rear extension from groundworks to decorating. The site was kept tidy, we always knew what was happening next, and the finish is excellent.",
-  },
-  {
-    name: "Daniel O.",
-    location: "Ealing, London",
-    rating: 5,
-    text: "We had a full house renovation done. Honest pricing, no surprises and a team that clearly cared about the detail. We'd use them again without hesitation.",
-  },
-  {
-    name: "Priya S.",
-    location: "Richmond, London",
-    rating: 5,
-    text: "Our kitchen and bathroom were both completed on schedule. Great communication throughout and the quality of the tiling and joinery is superb.",
-  },
-  {
-    name: "Mark T.",
-    location: "Walthamstow, London",
-    rating: 5,
-    text: "The loft conversion transformed our home. Everything was signed off properly and the team were respectful of our neighbours throughout.",
-  },
-  {
-    name: "Alison C.",
-    location: "Croydon, London",
-    rating: 5,
-    text: "Clear quotation, clear programme, and they stuck to both. That's rarer than it should be in this industry.",
-  },
-  {
-    name: "James W.",
-    location: "Islington, London",
-    rating: 5,
-    text: "Careful, professional work in a period property. The new staircase and flooring look like they've always been there.",
-  },
-];
-
 export const faqs = [
   {
     q: "Do you provide free quotations?",
@@ -364,7 +325,6 @@ export const navLinks = [
   { label: "About Us", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Projects", to: "/projects" },
-  { label: "Reviews", to: "/reviews" },
   { label: "Areas We Cover", to: "/areas-we-cover" },
   { label: "FAQs", to: "/faqs" },
   { label: "Contact", to: "/contact" },

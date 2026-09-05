@@ -9,13 +9,13 @@ import { areas, company } from "@/data/site";
 export const Route = createFileRoute("/areas-we-cover")({
   head: () => ({
     meta: [
-      { title: "Areas We Cover — LOPO Construction Ltd" },
+      { title: "Areas We Cover — ARZ Construction Ltd" },
       {
         name: "description",
         content:
-          "LOPO Construction provides renovation, extension and building services across London and the surrounding counties. Check if we cover your area.",
+          "ARZ Construction provides renovation, extension and building services across London and the surrounding counties. Check if we cover your area.",
       },
-      { property: "og:title", content: "Areas We Cover — LOPO Construction Ltd" },
+      { property: "og:title", content: "Areas We Cover — ARZ Construction Ltd" },
       {
         property: "og:description",
         content:

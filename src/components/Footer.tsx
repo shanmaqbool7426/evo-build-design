@@ -98,7 +98,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs sm:flex-row">
-          <p>© 2026 Lopo Construction Ltd. All Rights Reserved.</p>
+          <p>© 2026 ARZ Construction Ltd. All Rights Reserved.</p>
           <p>{company.hours}</p>
         </div>
       </div>

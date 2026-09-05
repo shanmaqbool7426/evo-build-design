@@ -16,7 +16,6 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
@@ -57,11 +56,6 @@ const ProjectsRoute = ProjectsRouteImport.update({
   path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReviewsRoute = ReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -91,7 +85,6 @@ export interface FileRoutesByFullPath {
   '/faqs': typeof FaqsRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -105,7 +98,6 @@ export interface FileRoutesByTo {
   '/faqs': typeof FaqsRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/reviews': typeof ReviewsRoute
   '/terms': typeof TermsRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
@@ -119,7 +111,6 @@ export interface FileRoutesById {
   '/faqs': typeof FaqsRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -135,7 +126,6 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/privacy'
     | '/projects'
-    | '/reviews'
     | '/services'
     | '/terms'
     | '/services/$slug'
@@ -149,7 +139,6 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/privacy'
     | '/projects'
-    | '/reviews'
     | '/terms'
     | '/services/$slug'
     | '/services'
@@ -162,7 +151,6 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/privacy'
     | '/projects'
-    | '/reviews'
     | '/services'
     | '/terms'
     | '/services/$slug'
@@ -177,7 +165,6 @@ export interface RootRouteChildren {
   FaqsRoute: typeof FaqsRoute
   PrivacyRoute: typeof PrivacyRoute
   ProjectsRoute: typeof ProjectsRoute
-  ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsRoute: typeof TermsRoute
 }
@@ -233,13 +220,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reviews': {
-      id: '/reviews'
-      path: '/reviews'
-      fullPath: '/reviews'
-      preLoaderRoute: typeof ReviewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -293,7 +273,6 @@ const rootRouteChildren: RootRouteChildren = {
   FaqsRoute: FaqsRoute,
   PrivacyRoute: PrivacyRoute,
   ProjectsRoute: ProjectsRoute,
-  ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsRoute: TermsRoute,
 }

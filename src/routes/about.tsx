@@ -10,13 +10,13 @@ import { images, process } from "@/data/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — LOPO Construction Ltd" },
+      { title: "About Us — ARZ Construction Ltd" },
       {
         name: "description",
         content:
-          "Meet LOPO Construction Ltd: a London construction company delivering renovations, extensions and property improvements with quality workmanship since 2015.",
+          "Meet ARZ Construction Ltd: a London construction company delivering renovations, extensions and property improvements with quality workmanship.",
       },
-      { property: "og:title", content: "About LOPO Construction Ltd" },
+      { property: "og:title", content: "About ARZ Construction Ltd" },
       {
         property: "og:description",
         content:
@@ -35,7 +35,7 @@ function About() {
       <PageHero
         eyebrow="Who We Are"
         title="Transforming Homes Through Quality Construction"
-        subtitle="LOPO Construction Ltd is a London-based construction company working with homeowners and property owners on renovations, extensions and improvements of every scale."
+        subtitle="ARZ Construction Ltd is a London-based construction company working with homeowners and property owners on renovations, extensions and improvements of every scale."
       />
 
       <section className="py-16 lg:py-24">
@@ -66,7 +66,7 @@ function About() {
           <Reveal delay={120}>
             <img
               src={images.about}
-              alt="LOPO Construction team reviewing plans on a residential site"
+              alt="ARZ Construction team reviewing plans on a residential site"
               loading="lazy"
               width={1200}
               height={900}

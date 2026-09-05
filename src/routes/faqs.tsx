@@ -9,13 +9,13 @@ import { faqs } from "@/data/site";
 export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: [
-      { title: "Frequently Asked Questions — LOPO Construction Ltd" },
+      { title: "Frequently Asked Questions — ARZ Construction Ltd" },
       {
         name: "description",
         content:
-          "Answers to common questions about quotations, project timelines, payments, building regulations and more. LOPO Construction Ltd.",
+          "Answers to common questions about quotations, project timelines, payments, building regulations and more. ARZ Construction Ltd.",
       },
-      { property: "og:title", content: "FAQs — LOPO Construction Ltd" },
+      { property: "og:title", content: "FAQs — ARZ Construction Ltd" },
       {
         property: "og:description",
         content:
