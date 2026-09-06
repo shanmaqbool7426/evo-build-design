@@ -1,7 +1,7 @@
 # ARZ Construction Ltd — Robots.txt
 # Domain: https://arzconstructionltd.com
 
-Sitemap: https://www.arzconstruction.com/sitemap.xml
+Sitemap: https://www.arzconstructionltd.com/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
