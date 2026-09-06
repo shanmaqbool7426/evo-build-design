@@ -5,25 +5,17 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { services } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
-    meta: [
-      { title: "Our Services — ARZ Construction Ltd" },
-      {
-        name: "description",
-        content:
-          "Renovations, extensions, loft conversions, kitchens, bathrooms, plumbing, electrical and more. Full construction services across London.",
-      },
-      { property: "og:title", content: "Our Services — ARZ Construction Ltd" },
-      {
-        property: "og:description",
-        content:
-          "Complete construction services including house renovations, extensions, loft conversions, kitchen and bathroom installations.",
-      },
-      { property: "og:url", content: "/services" },
-    ],
-    links: [{ rel: "canonical", href: "/services" }],
+    meta: buildSeoMeta({
+      title: "Our Services — ARZ Construction Ltd",
+      description:
+        "Renovations, extensions, loft conversions, kitchens, bathrooms, plumbing, electrical and more. Full construction services across London.",
+      path: "/services",
+    }),
+    links: buildCanonical("/services"),
   }),
   component: ServicesPage,
 });

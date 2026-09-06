@@ -2,19 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { company } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
-    meta: [
-      { title: "Privacy Policy — ARZ Construction Ltd" },
-      {
-        name: "description",
-        content: `${company.name} privacy and cookie policy. How we collect, use and protect your personal data.`,
-      },
-      { property: "og:title", content: "Privacy Policy — ARZ Construction Ltd" },
-      { property: "og:url", content: "/privacy" },
-    ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    meta: buildSeoMeta({
+      title: "Privacy Policy — ARZ Construction Ltd",
+      description: `${company.name} privacy and cookie policy. How we collect, use and protect your personal data.`,
+      path: "/privacy",
+    }),
+    links: buildCanonical("/privacy"),
   }),
   component: PrivacyPage,
 });

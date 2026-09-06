@@ -5,25 +5,17 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { projects } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
-    meta: [
-      { title: "Our Projects — ARZ Construction Ltd" },
-      {
-        name: "description",
-        content:
-          "Browse our portfolio of completed construction projects — extensions, renovations, kitchens, bathrooms and loft conversions across London.",
-      },
-      { property: "og:title", content: "Our Projects — ARZ Construction Ltd" },
-      {
-        property: "og:description",
-        content:
-          "Real projects, real craftsmanship. See how we've transformed homes across London.",
-      },
-      { property: "og:url", content: "/projects" },
-    ],
-    links: [{ rel: "canonical", href: "/projects" }],
+    meta: buildSeoMeta({
+      title: "Our Projects — ARZ Construction Ltd",
+      description:
+        "Browse our portfolio of completed construction projects — extensions, renovations, kitchens, bathrooms and loft conversions across London.",
+      path: "/projects",
+    }),
+    links: buildCanonical("/projects"),
   }),
   component: ProjectsPage,
 });

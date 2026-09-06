@@ -22,25 +22,17 @@ import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
 import { areas, company, images, process, projects, services } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "ARZ Construction Ltd — Renovations & Extensions in London" },
-      {
-        name: "description",
-        content:
-          "Professional construction, renovations, extensions and property improvements in London. 10+ years' experience, free quotations and quality workmanship.",
-      },
-      { property: "og:title", content: "ARZ Construction Ltd — Building Better Spaces" },
-      {
-        property: "og:description",
-        content:
-          "Renovations, extensions, loft conversions and property improvements delivered with quality, precision and care.",
-      },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
+    meta: buildSeoMeta({
+      title: "ARZ Construction Ltd — Renovations & Extensions in London",
+      description:
+        "Professional construction, renovations, extensions and property improvements in London. 10+ years' experience, free quotations and quality workmanship.",
+      path: "/",
+    }),
+    links: buildCanonical("/"),
   }),
   component: Home,
 });

@@ -5,25 +5,34 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { faqs } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/faqs")({
   head: () => ({
-    meta: [
-      { title: "Frequently Asked Questions — ARZ Construction Ltd" },
+    meta: buildSeoMeta({
+      title: "Frequently Asked Questions — ARZ Construction Ltd",
+      description:
+        "Answers to common questions about quotations, project timelines, payments, building regulations and more. ARZ Construction Ltd.",
+      path: "/faqs",
+    }),
+    links: buildCanonical("/faqs"),
+    scripts: [
       {
-        name: "description",
-        content:
-          "Answers to common questions about quotations, project timelines, payments, building regulations and more. ARZ Construction Ltd.",
+        type: "application/ld+json" as const,
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.a,
+            },
+          })),
+        }),
       },
-      { property: "og:title", content: "FAQs — ARZ Construction Ltd" },
-      {
-        property: "og:description",
-        content:
-          "Everything you need to know before starting your construction project with us.",
-      },
-      { property: "og:url", content: "/faqs" },
     ],
-    links: [{ rel: "canonical", href: "/faqs" }],
   }),
   component: FAQsPage,
 });

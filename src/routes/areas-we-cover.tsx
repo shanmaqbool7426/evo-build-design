@@ -5,25 +5,17 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { areas, company } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/areas-we-cover")({
   head: () => ({
-    meta: [
-      { title: "Areas We Cover — ARZ Construction Ltd" },
-      {
-        name: "description",
-        content:
-          "ARZ Construction provides renovation, extension and building services across London and the surrounding counties. Check if we cover your area.",
-      },
-      { property: "og:title", content: "Areas We Cover — ARZ Construction Ltd" },
-      {
-        property: "og:description",
-        content:
-          "Professional construction services across North, South, East, West and Central London, plus Hertfordshire, Essex, Surrey and Kent.",
-      },
-      { property: "og:url", content: "/areas-we-cover" },
-    ],
-    links: [{ rel: "canonical", href: "/areas-we-cover" }],
+    meta: buildSeoMeta({
+      title: "Areas We Cover — ARZ Construction Ltd",
+      description:
+        "ARZ Construction provides renovation, extension and building services across London and the surrounding counties. Check if we cover your area.",
+      path: "/areas-we-cover",
+    }),
+    links: buildCanonical("/areas-we-cover"),
   }),
   component: AreasPage,
 });

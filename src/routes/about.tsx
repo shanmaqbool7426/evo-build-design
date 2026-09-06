@@ -6,25 +6,17 @@ import { Stats } from "@/components/Stats";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { images, process } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
-    meta: [
-      { title: "About Us — ARZ Construction Ltd" },
-      {
-        name: "description",
-        content:
-          "Meet ARZ Construction Ltd: a London construction company delivering renovations, extensions and property improvements with quality workmanship.",
-      },
-      { property: "og:title", content: "About ARZ Construction Ltd" },
-      {
-        property: "og:description",
-        content:
-          "A London construction team delivering renovations, extensions and property improvements with quality workmanship.",
-      },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
+    meta: buildSeoMeta({
+      title: "About Us — ARZ Construction Ltd",
+      description:
+        "Meet ARZ Construction Ltd: a London construction company delivering renovations, extensions and property improvements with quality workmanship.",
+      path: "/about",
+    }),
+    links: buildCanonical("/about"),
   }),
   component: About,
 });

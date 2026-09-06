@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCta } from "@/components/MobileCta";
+import { SITE_URL } from "@/lib/seo";
+import { company } from "@/data/site";
 
 function NotFoundComponent() {
   return (
@@ -84,16 +86,41 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "ARZ Construction Ltd delivers professional renovations, extensions, loft conversions and property improvements across London.",
       },
+
+      // ── Open Graph ──────────────────────────────────────────────────────
       { property: "og:site_name", content: "ARZ Construction Ltd" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_GB" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:title", content: "ARZ Construction Ltd — Renovations & Extensions in London" },
+      {
+        property: "og:description",
+        content:
+          "ARZ Construction Ltd delivers professional renovations, extensions, loft conversions and property improvements across London.",
+      },
+
+      // ── Twitter ─────────────────────────────────────────────────────────
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@ARZConstruction" },
+
+      // ── Geo meta (local SEO) ────────────────────────────────────────────
+      { name: "geo.region", content: "GB-LND" },
+      { name: "geo.placename", content: "London" },
+      { name: "geo.position", content: "51.5975;-0.1354" },
+      { name: "ICBM", content: "51.5975, -0.1354" },
+
+      // ── Misc ────────────────────────────────────────────────────────────
       { name: "theme-color", content: "#123B7A" },
+      { name: "robots", content: "index, follow" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "apple-touch-icon", href: "/favicon.svg" },
+      { rel: "canonical", href: SITE_URL },
+      { rel: "sitemap", href: "/sitemap.xml", type: "application/xml" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -102,17 +129,71 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
+      // ── Organisation structured data (LocalBusiness + GeneralContractor) ──
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "GeneralContractor",
-          name: "ARZ Construction Ltd",
+          "@id": `${SITE_URL}/#organisation`,
+          name: company.name,
+          alternateName: company.shortName,
+          url: SITE_URL,
+          logo: `${SITE_URL}/favicon.svg`,
+          image: `${SITE_URL}/favicon.svg`,
           description:
             "Professional construction, renovation and property improvement services across London and the surrounding areas.",
-          telephone: "+44 7860 135189",
-          email: "Arzconstruction23@gmail.com",
-          areaServed: "London, United Kingdom",
+          telephone: company.phoneHref.replace("tel:", ""),
+          email: company.email,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: company.addressLines.slice(0, 2).join(", "),
+            addressLocality: "London",
+            addressRegion: "Greater London",
+            postalCode: "W1T 6EB",
+            addressCountry: "GB",
+          },
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 51.5975,
+            longitude: -0.1354,
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "08:00",
+              closes: "18:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: "Saturday",
+              opens: "09:00",
+              closes: "14:00",
+            },
+          ],
+          areaServed: {
+            "@type": "Place",
+            name: "London and surrounding counties",
+          },
+          priceRange: "££",
+          sameAs: [],
+        }),
+      },
+      // ── BreadcrumbList schema ────────────────────────────────────────────
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: SITE_URL,
+            },
+          ],
         }),
       },
     ],
@@ -143,7 +224,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <main id="main">
+      <main id="main" aria-label="Main content">
         {/* Required: nested routes render here. */}
         <Outlet />
       </main>

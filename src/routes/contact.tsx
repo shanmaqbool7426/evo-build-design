@@ -5,25 +5,17 @@ import { ContactForm } from "@/components/ContactForm";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { company } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
-    meta: [
-      { title: "Contact Us — ARZ Construction Ltd" },
-      {
-        name: "description",
-        content:
-          "Get in touch with ARZ Construction for a free quotation. Call, WhatsApp, email or fill in our enquiry form. We respond within one working day.",
-      },
-      { property: "og:title", content: "Contact & Free Quotation — ARZ Construction Ltd" },
-      {
-        property: "og:description",
-        content:
-          "Ready to start your project? Contact us today for a free, no-obligation quotation.",
-      },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    meta: buildSeoMeta({
+      title: "Contact Us — ARZ Construction Ltd",
+      description:
+        "Get in touch with ARZ Construction for a free quotation. Call, WhatsApp, email or fill in our enquiry form. We respond within one working day.",
+      path: "/contact",
+    }),
+    links: buildCanonical("/contact"),
   }),
   component: ContactPage,
 });

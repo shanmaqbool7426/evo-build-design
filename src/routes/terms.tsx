@@ -2,19 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { company } from "@/data/site";
+import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
-    meta: [
-      { title: "Terms & Conditions — ARZ Construction Ltd" },
-      {
-        name: "description",
-        content: `${company.name} terms and conditions for construction services, quotations, payments and guarantees.`,
-      },
-      { property: "og:title", content: "Terms & Conditions — ARZ Construction Ltd" },
-      { property: "og:url", content: "/terms" },
-    ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    meta: buildSeoMeta({
+      title: "Terms & Conditions — ARZ Construction Ltd",
+      description: `${company.name} terms and conditions for construction services, quotations, payments and guarantees.`,
+      path: "/terms",
+    }),
+    links: buildCanonical("/terms"),
   }),
   component: TermsPage,
 });

@@ -4,21 +4,45 @@ import { ButtonLink } from "@/components/Button";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { services } from "@/data/site";
+import { buildSeoMeta, buildCanonical, absoluteUrl, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/services/$slug")({
   head: ({ params }) => {
     const service = services.find((s) => s.slug === params.slug);
+    if (!service) {
+      return {
+        meta: [{ title: "Service — ARZ Construction Ltd" }],
+        links: [],
+      };
+    }
     return {
-      meta: service
-        ? [
-            { title: `${service.title} — ARZ Construction Ltd` },
-            { name: "description", content: service.description },
-            { property: "og:title", content: `${service.title} — ARZ Construction` },
-            { property: "og:description", content: service.short },
-            { property: "og:url", content: `/services/${service.slug}` },
-          ]
-        : [{ title: "Service — ARZ Construction Ltd" }],
-      links: service ? [{ rel: "canonical", href: `/services/${service.slug}` }] : [],
+      meta: [
+        ...buildSeoMeta({
+          title: `${service.title} — ARZ Construction Ltd`,
+          description: service.description,
+          path: `/services/${service.slug}`,
+          ogImage: service.image,
+        }),
+      ],
+      links: buildCanonical(`/services/${service.slug}`),
+      scripts: [
+        {
+          type: "application/ld+json" as const,
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: service.title,
+            description: service.description,
+            provider: { "@id": `${SITE_URL}/#organisation` },
+            url: absoluteUrl(`/services/${service.slug}`),
+            areaServed: {
+              "@type": "Place",
+              name: "London and surrounding counties",
+            },
+            serviceType: service.title,
+          }),
+        },
+      ],
     };
   },
   component: ServiceDetail,

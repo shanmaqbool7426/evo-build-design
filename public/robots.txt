@@ -1,3 +1,8 @@
+# ARZ Construction Ltd — Robots.txt
+# Domain: https://www.arzconstruction.co.uk
+
+Sitemap: https://www.arzconstruction.co.uk/sitemap.xml
+
 User-agent: Googlebot
 Allow: /
 
@@ -12,3 +17,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Block access to any potential sensitive paths
+Disallow: /api/
+Disallow: /_server/
