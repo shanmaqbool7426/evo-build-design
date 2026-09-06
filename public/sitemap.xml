@@ -3,7 +3,7 @@
 
   <!--
     ARZ Construction Ltd — Sitemap
-    Domain: https://www.arzconstruction.co.uk
+    Domain: https://arzconstructionltd.com
   -->
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -11,14 +11,14 @@
        ═══════════════════════════════════════════════════════════ -->
 
   <url>
-    <loc>https://www.arzconstruction.co.uk/</loc>
+    <loc>https://www.arzconstruction.com/</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.arzconstruction.co.uk/about</loc>
+    <loc>https://www.arzconstruction.com/about</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

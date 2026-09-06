@@ -1,6 +1,6 @@
 /**
  * Centralised SEO configuration for ARZ Construction Ltd.
- * Domain: https://www.arzconstruction.co.uk
+ * Domain: https://arzconstructionltd.com
  *
  * All canonical URLs, og:url, og:image and structured-data URLs
  * are derived from the SITE_URL constant below.
@@ -9,7 +9,7 @@
 import heroImg from "@/assets/hero.png";
 
 // ─── Site ────────────────────────────────────────────────────────────────────
-export const SITE_URL = "https://www.arzconstruction.co.uk";
+export const SITE_URL = "https://arzconstructionltd.com";
 
 // ─── Default social-share image (1200×630 minimum recommended) ───────────────
 export const DEFAULT_OG_IMAGE = heroImg;

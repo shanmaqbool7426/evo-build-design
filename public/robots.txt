@@ -1,5 +1,5 @@
 # ARZ Construction Ltd — Robots.txt
-# Domain: https://www.arzconstruction.co.uk
+# Domain: https://arzconstructionltd.com
 
 Sitemap: https://www.arzconstruction.co.uk/sitemap.xml
 
