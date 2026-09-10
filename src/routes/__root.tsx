@@ -92,7 +92,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_GB" },
       { property: "og:url", content: SITE_URL },
-      { property: "og:title", content: "ARZ Construction Ltd — Renovations & Extensions in London" },
+      {
+        property: "og:title",
+        content: "ARZ Construction Ltd — Renovations & Extensions in London",
+      },
       {
         property: "og:description",
         content:
@@ -112,6 +115,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // ── Misc ────────────────────────────────────────────────────────────
       { name: "theme-color", content: "#123B7A" },
       { name: "robots", content: "index, follow" },
+
+      // ── Google Search Console verification ──────────────────────────────
+      // GTM (GT-TQR2XG2K) can verify Search Console ownership automatically
+      // once the GTM tag is published. No separate meta tag needed when using GTM.
+      // If you prefer the HTML tag method, uncomment the line below and paste your token:
+      // { name: "google-site-verification", content: "YOUR_TOKEN_HERE" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -129,6 +138,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
+      // ── Google Analytics 4 (GA4) ────────────────────────────────────────
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-9259G9KNNH",
+        async: true,
+      },
+      {
+        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9259G9KNNH');`,
+      },
+
+      // ── Google Tag Manager (GTM) ─────────────────────────────────────────
+      // Container: GT-TQR2XG2K — loads additional tags configured in GTM
+      {
+        children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GT-TQR2XG2K');`,
+      },
+
       // ── Organisation structured data (LocalBusiness + GeneralContractor) ──
       {
         type: "application/ld+json",
@@ -211,6 +235,16 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        {/* GTM noscript fallback — required by GTM implementation spec */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GT-TQR2XG2K"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         {children}
         <Scripts />
       </body>

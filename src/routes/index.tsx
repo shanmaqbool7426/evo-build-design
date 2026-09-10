@@ -16,20 +16,30 @@ import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Stats } from "@/components/Stats";
 import { ServiceCard } from "@/components/ServiceCard";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectGalleryCard } from "@/components/ProjectLightbox";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
-import { areas, company, images, process, projects, services } from "@/data/site";
+import { ReviewCard, ReviewsBanner } from "@/components/ReviewCard";
+import {
+  areas,
+  company,
+  images,
+  process,
+  projects,
+  reviews,
+  reviewSummary,
+  services,
+} from "@/data/site";
 import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "ARZ Construction Ltd — Renovations & Extensions in London",
+      title: "Loft Conversions & House Extensions in Croydon — ARZ Construction Ltd",
       description:
-        "Professional construction, renovations, extensions and property improvements in London. 10+ years' experience, free quotations and quality workmanship.",
+        "Expert loft conversions, house extensions, kitchen & bathroom renovations and electrical services in Croydon & South London. Free quote within 24 hours. 10+ years' experience.",
       path: "/",
     }),
     links: buildCanonical("/"),
@@ -37,21 +47,62 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const trust = ["10+ Years Experience", "Quality Craftsmanship", "Fully Professional", "Free Quotations"];
+const trust = [
+  "10+ Years in South London",
+  "5★ Google Rated",
+  "Free Quote in 24 Hours",
+  "No Hidden Extras",
+];
 
 const whyChoose = [
-  { icon: HardHat, title: "Quality Craftsmanship", text: "Experienced trades who take pride in a clean, precise finish." },
-  { icon: MessageSquare, title: "Transparent Communication", text: "Weekly updates and one number to call, from start to sign-off." },
-  { icon: ClipboardCheck, title: "Reliable Project Management", text: "Programmes we plan properly and then actually stick to." },
-  { icon: Ruler, title: "Attention to Detail", text: "Level lines, tidy junctions and details that hold up close." },
-  { icon: Layers, title: "Complete Building Services", text: "Structure, services and finishes handled under one contract." },
-  { icon: Smile, title: "Customer Satisfaction", text: "Work isn't finished until you've walked it and you're happy." },
+  {
+    icon: HardHat,
+    title: "Proper Tradespeople",
+    text: "Not subcontractors hired last minute — our core team has worked together for years and knows what a good finish looks like.",
+  },
+  {
+    icon: MessageSquare,
+    title: "You'll Always Know What's Happening",
+    text: "One project manager, one phone number. Weekly updates as standard — no chasing, no silence.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "We Stick to the Programme",
+    text: "We plan the build properly before we start, so the timeline we give you is one we can actually keep.",
+  },
+  {
+    icon: Ruler,
+    title: "The Details Matter to Us",
+    text: "Level lines, neat junctions, tidy reveals. The things you notice up close are the things we care about most.",
+  },
+  {
+    icon: Layers,
+    title: "One Team, Everything Covered",
+    text: "Structure, plumbing, electrics, plastering, decorating — all under one contract. No coordinating separate trades yourself.",
+  },
+  {
+    icon: Smile,
+    title: "We're Not Done Until You're Happy",
+    text: "We walk every finished job with you. If something's not right, we fix it. That's not a policy — it's just how we work.",
+  },
 ];
 
 const quality = [
-  { icon: BadgeCheck, title: "Quality Workmanship", text: "Every stage checked against a defined standard before we move on." },
-  { icon: ShieldCheck, title: "Reliable Service", text: "Agreed start dates, predictable hours and a site kept safe and tidy." },
-  { icon: Users, title: "Professional Standards", text: "Insured, certificated and fully documented work at handover." },
+  {
+    icon: BadgeCheck,
+    title: "Quality You Can See",
+    text: "We check our own work at every stage before moving on. You shouldn't have to point out problems — we find them first.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "We Show Up When We Say We Will",
+    text: "Agreed start date, consistent hours, site kept clean and safe. Basics that too many builders get wrong.",
+  },
+  {
+    icon: Users,
+    title: "Fully Insured and Certified",
+    text: "All work is carried out by insured trades and signed off properly. You get the paperwork at handover — no chasing for certificates.",
+  },
 ];
 
 function Home() {
@@ -73,21 +124,37 @@ function Home() {
         <div className="container-x relative py-20 lg:py-32">
           <div className="max-w-2xl">
             <span className="inline-block rounded-sm bg-yellow px-3 py-1 text-[11px] font-bold tracking-[0.16em] text-navy uppercase">
-              ARZ Construction Ltd
+              ARZ Construction Ltd · Croydon &amp; South London
             </span>
             <h1 className="mt-6 text-4xl leading-[1.08] font-extrabold text-white sm:text-5xl lg:text-6xl">
-              Building Better Spaces.
-              <span className="block text-yellow">Built to Last.</span>
+              Loft Conversions &amp; House Extensions
+              <span className="block text-yellow">in Croydon &amp; South London</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-blue-soft sm:text-lg">
-              Professional construction, renovations, extensions and property improvements delivered
-              with quality, precision and care.
+              We build loft conversions, house extensions, kitchen and bathroom renovations, and
+              handle electrical work — all across Croydon and South London. One team, one point of
+              contact, and a finish you'll actually be proud of.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            {/* 24-Hour Quote Promise */}
+            <div className="mt-6 inline-flex items-center gap-2.5 rounded-lg bg-white/10 border border-white/20 px-4 py-2.5 backdrop-blur-sm">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-yellow font-bold text-[11px] text-navy">
+                ✓
+              </span>
+              <span className="text-sm font-semibold text-white">
+                Send us a message — we'll get back to you within{" "}
+                <span className="text-yellow font-bold">24 hours</span>, guaranteed
+              </span>
+            </div>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink to="/contact" variant="accent" size="lg" className="w-full sm:w-auto">
-                Request a Free Quotation
+                Get Your Free Quote in 24 Hours
               </ButtonLink>
-              <ButtonLink to="/projects" variant="ghostLight" size="lg" className="w-full sm:w-auto">
+              <ButtonLink
+                to="/projects"
+                variant="ghostLight"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
                 View Our Projects
               </ButtonLink>
             </div>
@@ -112,11 +179,15 @@ function Home() {
             <SectionHeading
               align="left"
               eyebrow="Who We Are"
-              title="Transforming Homes Through Quality Construction"
-              subtitle="ARZ Construction Ltd provides professional construction, renovation and property improvement services for homeowners across London. We take on the whole job — structure, services and finishes — so you deal with one team that is accountable for the result."
+              title="Croydon's Local Construction Team — Not a Big Firm, Not a One-Man Band"
+              subtitle="ARZ Construction has been working with homeowners across Croydon and South London for over a decade. We're not a large national contractor passing your job to whoever's available — we're a tight team of experienced tradespeople who take on a limited number of projects so every one gets proper attention."
             />
             <ul className="mt-8 space-y-3">
-              {["Quality workmanship", "Reliable project management", "Clear communication"].map((point) => (
+              {[
+                "We manage the whole build — no coordinating separate trades yourself",
+                "Fixed-price quotes with no surprise extras at the end",
+                "You'll have one project manager's direct number from day one",
+              ].map((point) => (
                 <li key={point} className="flex items-center gap-3 text-sm font-semibold text-navy">
                   <span className="flex size-6 items-center justify-center rounded-full bg-yellow-soft">
                     <Check className="size-3.5 text-navy" aria-hidden="true" />
@@ -167,7 +238,9 @@ function Home() {
           </Reveal>
           <Reveal delay={120}>
             <span className="eyebrow">Featured Project</span>
-            <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">{featured.title}</h2>
+            <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">
+              {featured.title}
+            </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">{featured.description}</p>
             <dl className="mt-7 grid gap-4 sm:grid-cols-2">
               {featured.metrics?.map((m) => (
@@ -191,9 +264,9 @@ function Home() {
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="Services"
-              title="Our Construction Expertise"
-              subtitle="From complete renovations to specialist building work, we provide dependable solutions for every stage of your project."
+              eyebrow="What We Do"
+              title="Loft Conversions, Extensions & More in Croydon"
+              subtitle="Whether you need an extra bedroom, a bigger kitchen, or a full house renovation — we cover it all. Based in South London, with 10+ years of completed projects across the borough."
             />
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -216,7 +289,9 @@ function Home() {
         <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <Reveal>
             <span className="eyebrow">Latest Project</span>
-            <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">{latest.title}</h2>
+            <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">
+              {latest.title}
+            </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">{latest.description}</p>
             <ul className="mt-7 space-y-3">
               {[
@@ -257,15 +332,27 @@ function Home() {
             <SectionHeading
               align="left"
               light
-              eyebrow="Our Approach"
-              title="Built With Precision"
-              subtitle="Every project is managed with careful planning, experienced workmanship and attention to detail."
+              eyebrow="How We Build"
+              title="We Plan It Properly Before We Touch a Wall"
+              subtitle="Rushed starts cause most build problems. We take time upfront to plan the programme, sort materials and coordinate trades — so the build itself runs smoothly and you're not constantly firefighting."
             />
             <ol className="mt-9 space-y-6">
               {[
-                { n: "01", t: "Experienced Team", d: "Long-standing trades who have worked together for years." },
-                { n: "02", t: "Quality Materials", d: "Specified properly and sourced from suppliers we trust." },
-                { n: "03", t: "Reliable Project Management", d: "One manager accountable for programme and quality." },
+                {
+                  n: "01",
+                  t: "An Experienced Team You Can Trust",
+                  d: "Our core trades have worked together for years. You get experienced hands on your job, not whoever was free this week.",
+                },
+                {
+                  n: "02",
+                  t: "Materials Specified and Sourced Properly",
+                  d: "We don't leave material choices to chance. Everything is specified correctly and ordered from suppliers we have long relationships with.",
+                },
+                {
+                  n: "03",
+                  t: "One Manager Responsible for Everything",
+                  d: "One person runs your project from first visit to final walkthrough. They're accountable for the programme, the quality and the communication.",
+                },
               ].map((item) => (
                 <li key={item.n} className="flex gap-4">
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-yellow font-display text-sm font-extrabold text-navy">
@@ -297,9 +384,9 @@ function Home() {
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="Standards"
-              title="Quality Above All"
-              subtitle="We believe great construction starts with careful planning, quality workmanship and attention to every detail."
+              eyebrow="Our Standards"
+              title="Good Enough Isn't Good Enough for Us"
+              subtitle="Most complaints about builders come down to the same things — they cut corners, they don't communicate, and they disappear when something goes wrong. We've built our business on doing the opposite."
             />
           </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -324,9 +411,9 @@ function Home() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               align="left"
-              eyebrow="Portfolio"
-              title="Gallery of Our Work"
-              subtitle="Real projects. Real craftsmanship."
+              eyebrow="Recent Work"
+              title="Projects We've Completed in South London"
+              subtitle="Every photo below is from a real ARZ Construction project. No stock images, no renders — just finished work in people's homes."
             />
             <Link
               to="/projects"
@@ -338,7 +425,7 @@ function Home() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, i) => (
               <Reveal key={project.id} delay={i * 60}>
-                <ProjectCard project={project} />
+                <ProjectGalleryCard project={project} />
               </Reveal>
             ))}
           </div>
@@ -350,9 +437,9 @@ function Home() {
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="Transformations"
-              title="See The Transformation"
-              subtitle="Drag the slider to see the difference."
+              eyebrow="Before & After"
+              title="This Is What a Proper Renovation Looks Like"
+              subtitle="Drag the slider to see the difference. Same room, same house — completely transformed. This is the kind of result we aim for on every project."
             />
           </Reveal>
           <Reveal delay={100} className="mx-auto mt-12 max-w-4xl">
@@ -371,9 +458,9 @@ function Home() {
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="Why Us"
-              title="Why Choose ARZ Construction?"
-              subtitle="The things our clients tell us made the difference on their project."
+              eyebrow="Why ARZ?"
+              title="Why Croydon Homeowners Choose Us Over Other Builders"
+              subtitle="We're not going to tell you we're the best — our clients' reviews say that. Here's what they actually tell us made the difference."
             />
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -385,7 +472,9 @@ function Home() {
                   </span>
                   <span>
                     <h3 className="text-base font-bold">{item.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      {item.text}
+                    </p>
                   </span>
                 </div>
               </Reveal>
@@ -399,9 +488,9 @@ function Home() {
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="How We Work"
-              title="Our Process"
-              subtitle="Five clear stages, so you always know where your project stands."
+              eyebrow="How It Works"
+              title="From First Call to Finished Build — Here's What Happens"
+              subtitle="No mystery, no vague timelines. Here's exactly how a project with ARZ Construction runs from start to finish."
             />
           </Reveal>
           <ol className="mt-12 grid gap-6 md:grid-cols-3 lg:grid-cols-5">
@@ -421,15 +510,47 @@ function Home() {
         </div>
       </section>
 
+      {/* GOOGLE REVIEWS */}
+      <section className="py-16 lg:py-24">
+        <div className="container-x">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <SectionHeading
+                align="left"
+                eyebrow="Google Reviews"
+                title="Don't Take Our Word for It"
+                subtitle="These are real reviews from homeowners in Croydon and South London — verified on Google, unedited."
+              />
+              <ReviewsBanner
+                average={reviewSummary.average}
+                total={reviewSummary.total}
+                link={reviewSummary.link}
+              />
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {reviews.slice(0, 3).map((review, i) => (
+              <Reveal key={review.id} delay={i * 70}>
+                <ReviewCard review={review} featured={i === 0} />
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <ButtonLink to="/reviews" variant="outline">
+              Read All Reviews <ArrowRight className="size-4" />
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
 
       {/* AREAS */}
       <section className="bg-blue-tint py-16 lg:py-24">
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="Coverage"
-              title="Areas We Cover"
-              subtitle={`ARZ Construction serves selected areas across London and the surrounding counties — ${company.areasSummary}.`}
+              eyebrow="Where We Work"
+              title="Based in Croydon, Building Across South London"
+              subtitle="We're a local team — not a national company dispatching crews from a depot. Most of our work is within 30 minutes of our base, which means we're on site when we say we will be."
             />
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -453,13 +574,15 @@ function Home() {
           <Reveal>
             <SectionHeading
               align="left"
-              eyebrow="Contact"
-              title="Let's Talk About Your Project."
-              subtitle="Send us a few details and we'll arrange a visit at a time that suits you. Quotations are free and there's no obligation."
+              eyebrow="Get in Touch"
+              title="Tell Us About Your Project — We'll Take It From There"
+              subtitle="Fill in the form and we'll come back to you within 24 hours. If you'd rather talk first, just call or WhatsApp — no scripts, no sales pressure, just a straight conversation about what you're looking to do."
             />
             <dl className="mt-9 space-y-5 text-sm">
               <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">Phone</dt>
+                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                  Phone
+                </dt>
                 <dd className="mt-1 font-semibold text-navy">
                   <a href={company.phoneHref} className="hover:text-bright">
                     {company.phoneDisplay}
@@ -467,7 +590,9 @@ function Home() {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">Email</dt>
+                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                  Email
+                </dt>
                 <dd className="mt-1 font-semibold text-navy">
                   <a href={`mailto:${company.email}`} className="hover:text-bright">
                     {company.email}
@@ -475,7 +600,9 @@ function Home() {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">WhatsApp</dt>
+                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                  WhatsApp
+                </dt>
                 <dd className="mt-1 font-semibold text-navy">
                   <a
                     href={company.whatsappHref}

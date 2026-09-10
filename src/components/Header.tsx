@@ -1,9 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { ChevronDown, MapPin, Menu, MessageCircle, Phone, Star, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { ButtonAnchor, ButtonLink } from "./Button";
-import { company, navLinks, navServices } from "@/data/site";
+import { company, navLinks, navServices, navSeoServices } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -19,8 +19,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu + services dropdown on route change
   useEffect(() => {
     setOpen(false);
+    setServicesOpen(false);
   }, [pathname]);
 
   return (
@@ -28,7 +30,9 @@ export function Header() {
       {/* ANNOUNCEMENT BAR */}
       <div className="bg-navy text-blue-soft text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-2 border-b border-white/10">
         <span className="inline-block w-1.5 h-1.5 rounded-full bg-yellow animate-pulse" />
-        <span>London Design &amp; Build Specialists · Fixed-Price Guaranteed Quotes</span>
+        <span>
+          Croydon &amp; South London Specialists · Free Quote Within 24 Hours · 5★ Google Reviews
+        </span>
       </div>
 
       {/* HEADER */}
@@ -38,7 +42,12 @@ export function Header() {
           scrolled && "shadow-card",
         )}
       >
-        <div className={cn("container-x flex items-center justify-between transition-all duration-300", scrolled ? "h-16" : "h-20")}>
+        <div
+          className={cn(
+            "container-x flex items-center justify-between transition-all duration-300",
+            scrolled ? "h-16" : "h-20",
+          )}
+        >
           <Logo />
 
           {/* DESKTOP NAV */}
@@ -62,8 +71,10 @@ export function Header() {
                           "size-3.5 transition-transform duration-300",
                           servicesOpen && "rotate-180",
                         )}
+                        aria-hidden="true"
                       />
                     </Link>
+
                     {/* MEGA MENU */}
                     <div
                       className={cn(
@@ -73,46 +84,82 @@ export function Header() {
                           : "invisible opacity-0 -translate-y-1",
                       )}
                     >
-                      <div className="w-[540px] rounded-xl border border-border bg-white p-4 shadow-lift">
-                        <div className="grid grid-cols-2 gap-1">
-                          <div className="col-span-2 px-3 py-1">
-                            <p className="text-[11px] font-bold tracking-[0.2em] text-bright uppercase">
-                              Our Services
+                      <div className="w-[640px] rounded-xl border border-border bg-white p-5 shadow-lift">
+                        <div className="grid grid-cols-2 gap-5">
+                          {/* LEFT — All services */}
+                          <div>
+                            <p className="px-1 pb-2 text-[11px] font-bold tracking-[0.2em] text-bright uppercase">
+                              All Services
                             </p>
+                            <div className="space-y-0.5">
+                              {navServices.map((s) => (
+                                <Link
+                                  key={s.slug}
+                                  to="/services/$slug"
+                                  params={{ slug: s.slug }}
+                                  className="group flex items-start gap-2.5 rounded-lg px-3 py-2 transition-colors hover:bg-blue-tint"
+                                >
+                                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-border group-hover:bg-yellow transition-colors" />
+                                  <span className="block text-sm font-semibold text-navy transition-colors group-hover:text-bright">
+                                    {s.title}
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
                           </div>
-                          {navServices.map((s) => (
-                            <Link
-                              key={s.slug}
-                              to="/services/$slug"
-                              params={{ slug: s.slug }}
-                              className="group flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-blue-tint"
-                            >
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-yellow" />
-                              <span>
-                                <span className="block text-sm font-bold text-navy transition-colors group-hover:text-bright">
-                                  {s.title}
-                                </span>
-                                <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
-                                  {s.description}
-                                </span>
-                              </span>
-                            </Link>
-                          ))}
+
+                          {/* RIGHT — South London specialists */}
+                          <div className="rounded-lg bg-blue-tint p-3">
+                            <div className="flex items-center gap-1.5 px-1 pb-2">
+                              <MapPin className="size-3 text-bright" aria-hidden="true" />
+                              <p className="text-[11px] font-bold tracking-[0.2em] text-bright uppercase">
+                                South London Specialists
+                              </p>
+                            </div>
+                            <div className="space-y-0.5">
+                              {navSeoServices.map((s) => (
+                                <Link
+                                  key={s.slug}
+                                  to="/services/$slug"
+                                  params={{ slug: s.slug }}
+                                  className="group flex items-start gap-2.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-white"
+                                >
+                                  <span className="mt-1.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-yellow text-[8px] font-extrabold text-navy">
+                                    ★
+                                  </span>
+                                  <span>
+                                    <span className="block text-sm font-bold text-navy transition-colors group-hover:text-bright">
+                                      {s.title}
+                                    </span>
+                                    <span className="mt-0.5 block text-[11px] leading-snug text-muted-foreground">
+                                      Croydon &amp; South London
+                                    </span>
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
                         </div>
-                        <div className="mt-2 border-t border-border px-3 pt-3">
+
+                        {/* Footer row */}
+                        <div className="mt-3 flex items-center justify-between border-t border-border pt-3 px-1">
                           <Link
                             to="/services"
                             className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-bright uppercase hover:text-navy transition-colors"
                           >
-                            <span>View All Services</span>
-                            <span>→</span>
+                            View All Services →
                           </Link>
+                          <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                            <Star className="size-3 fill-yellow text-yellow" aria-hidden="true" />
+                            5★ Google Reviews · Free 24hr Quotes
+                          </span>
                         </div>
                       </div>
                     </div>
                   </div>
                 );
               }
+
               return (
                 <Link
                   key={link.to}
@@ -126,25 +173,20 @@ export function Header() {
             })}
           </nav>
 
+          {/* RIGHT ACTIONS */}
           <div className="flex items-center gap-2">
             <a
               href={company.phoneHref}
               aria-label={`Call ${company.name}`}
               className="hidden sm:flex items-center gap-2 rounded-md border border-border px-3.5 py-2 text-[13px] font-semibold text-navy transition-colors hover:border-navy hover:bg-blue-tint"
             >
-              <Phone className="size-4" />
+              <Phone className="size-4" aria-hidden="true" />
               {company.phoneDisplay}
             </a>
-            <a
-              href={company.whatsappHref}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Message us on WhatsApp"
-              className="hidden sm:flex items-center gap-2 rounded-md bg-[#25D366] px-4 py-2 text-[12px] font-bold tracking-wide text-white uppercase transition-all hover:bg-[#20bd5a] hover:-translate-y-0.5"
-            >
-              <MessageCircle className="size-4" />
-              WhatsApp Us
-            </a>
+            <ButtonLink to="/contact" variant="accent" className="hidden lg:inline-flex">
+              Free Quote · 24hrs
+            </ButtonLink>
+
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -162,41 +204,81 @@ export function Header() {
         {open ? (
           <div id="mobile-nav" className="border-t border-border bg-white xl:hidden">
             <nav aria-label="Mobile" className="container-x flex flex-col py-3">
-              {navLinks.filter(l => l.label !== "Services").map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  activeOptions={{ exact: link.to === "/" }}
-                  className="border-b border-border/70 py-3 text-sm font-semibold text-navy last:border-0 data-[status=active]:text-bright"
-                >
-                  {link.label}
+              {/* Main links (excluding Services) */}
+              {navLinks
+                .filter((l) => l.label !== "Services")
+                .map((link) => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    activeOptions={{ exact: link.to === "/" }}
+                    className="flex items-center justify-between border-b border-border/70 py-3 text-sm font-semibold text-navy last:border-0 data-[status=active]:text-bright"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+              {/* Services section */}
+              <div className="border-b border-border/70 pb-3">
+                <p className="px-0 pt-3 pb-1 text-[11px] font-bold tracking-[0.2em] text-bright uppercase">
+                  All Services
+                </p>
+                {navServices.map((s) => (
+                  <Link
+                    key={s.slug}
+                    to="/services/$slug"
+                    params={{ slug: s.slug }}
+                    className="block border-b border-border/40 py-2.5 pl-2 text-sm font-semibold text-navy/80 hover:text-bright last:border-0"
+                  >
+                    {s.title}
+                  </Link>
+                ))}
+                <Link to="/services" className="block py-2.5 text-sm font-bold text-bright">
+                  All Services →
                 </Link>
-              ))}
-              <p className="px-1 pt-3 text-[11px] font-bold tracking-[0.2em] text-bright uppercase">
-                Services
-              </p>
-              {navServices.map((s) => (
-                <Link
-                  key={s.slug}
-                  to="/services/$slug"
-                  params={{ slug: s.slug }}
-                  className="border-b border-border/70 py-2.5 pl-3 text-sm font-semibold text-navy/80 hover:text-bright"
-                >
-                  {s.title}
-                </Link>
-              ))}
-              <Link
-                to="/services"
-                className="py-2.5 text-sm font-bold text-bright"
-              >
-                All Services →
-              </Link>
+              </div>
+
+              {/* SEO landing pages */}
+              <div className="border-b border-border/70 pb-3">
+                <div className="flex items-center gap-1.5 pt-3 pb-1">
+                  <MapPin className="size-3 text-bright" aria-hidden="true" />
+                  <p className="text-[11px] font-bold tracking-[0.2em] text-bright uppercase">
+                    South London Specialists
+                  </p>
+                </div>
+                {navSeoServices.map((s) => (
+                  <Link
+                    key={s.slug}
+                    to="/services/$slug"
+                    params={{ slug: s.slug }}
+                    className="flex items-center gap-2 border-b border-border/40 py-2.5 pl-2 text-sm font-semibold text-navy/80 hover:text-bright last:border-0"
+                  >
+                    <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-yellow text-[8px] font-extrabold text-navy">
+                      ★
+                    </span>
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+
+              {/* CTAs */}
               <div className="mt-4 grid gap-2 pb-4">
                 <ButtonLink to="/contact" variant="accent" className="w-full">
-                  Get a Free Quote
+                  Get Free Quote in 24 Hours
                 </ButtonLink>
+                <ButtonAnchor
+                  href={company.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  variant="outline"
+                  className="w-full border-[#25D366] text-[#25D366]"
+                >
+                  <MessageCircle className="size-4" aria-hidden="true" />
+                  WhatsApp Us
+                </ButtonAnchor>
                 <ButtonAnchor href={company.phoneHref} variant="outline" className="w-full">
-                  <Phone className="size-4" /> {company.phone}
+                  <Phone className="size-4" aria-hidden="true" />
+                  {company.phone}
                 </ButtonAnchor>
               </div>
             </nav>

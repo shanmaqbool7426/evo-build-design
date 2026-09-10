@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { Logo } from "./Logo";
-import { company, navLinks, services } from "@/data/site";
+import { company, navLinks, services, seoLandingPages } from "@/data/site";
 
 const legal = [
   { label: "Privacy Policy", to: "/privacy" as const },
@@ -16,12 +16,14 @@ export function Footer() {
         <div>
           <Logo light />
           <p className="mt-4 max-w-xs text-sm leading-relaxed">
-            Professional construction, renovation and property improvement services across London
-            and the surrounding areas.
+            Professional loft conversions, house extensions, kitchen &amp; bathroom renovations and
+            electrical services across Croydon and South London.
           </p>
           <div className="mt-4 text-xs text-blue-soft/70">
             {company.addressLines.map((line) => (
-              <span key={line} className="block">{line}</span>
+              <span key={line} className="block">
+                {line}
+              </span>
             ))}
             <span className="mt-2 block">
               Registered in England &amp; Wales · Company No. {company.companyNumber}
@@ -57,6 +59,22 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          <h3 className="mt-5 text-xs font-bold tracking-[0.14em] text-yellow uppercase">
+            South London Specialists
+          </h3>
+          <ul className="mt-3 space-y-2.5 text-sm">
+            {seoLandingPages.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  to="/services/$slug"
+                  params={{ slug: p.slug }}
+                  className="transition-colors hover:text-yellow"
+                >
+                  {p.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>
@@ -68,7 +86,10 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={`mailto:${company.email}`} className="flex items-center gap-2 hover:text-yellow">
+              <a
+                href={`mailto:${company.email}`}
+                className="flex items-center gap-2 hover:text-yellow"
+              >
                 <Mail className="size-4 text-yellow" /> {company.email}
               </a>
             </li>
