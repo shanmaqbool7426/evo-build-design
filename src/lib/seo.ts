@@ -6,7 +6,7 @@
  * are derived from the SITE_URL constant below.
  */
 
-import heroImg from "@/assets/hero.png";
+import heroImg from "@/assets/hero.webp";
 
 // ─── Site ────────────────────────────────────────────────────────────────────
 export const SITE_URL = "https://www.arzconstructionltd.com";
@@ -29,7 +29,9 @@ export type SeoMeta = {
 };
 
 export function buildSeoMeta({ title, description, path, ogImage }: SeoMeta) {
-  const image = ogImage ?? DEFAULT_OG_IMAGE;
+  const rawImage = ogImage ?? DEFAULT_OG_IMAGE;
+  // og:image must be an absolute URL — Vite returns asset paths like /assets/x.webp.
+  const image = rawImage.startsWith("http") ? rawImage : absoluteUrl(rawImage);
   const url = absoluteUrl(path);
 
   return [
@@ -57,4 +59,60 @@ export function buildSeoMeta({ title, description, path, ogImage }: SeoMeta) {
 // ─── Helper: build canonical link ────────────────────────────────────────────
 export function buildCanonical(path: string) {
   return [{ rel: "canonical", href: absoluteUrl(path) }];
+}
+
+// ─── Helper: build a BreadcrumbList structured-data trail ────────────────────
+export function buildBreadcrumb(items: { name: string; path?: string }[]) {
+  return [
+    {
+      type: "application/ld+json" as const,
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((item, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: item.name,
+          ...(item.path ? { item: absoluteUrl(item.path) } : {}),
+        })),
+      }),
+    },
+  ];
+}
+
+// ─── Helper: BlogPosting structured data for a guide post ───────────────
+export function buildArticle(post: {
+  title: string;
+  description: string;
+  path: string;
+  image: string;
+  date: string;
+}) {
+  return [
+    {
+      type: "application/ld+json" as const,
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description,
+        image: absoluteUrl(post.image),
+        datePublished: post.date,
+        dateModified: post.date,
+        author: {
+          "@type": "Organization",
+          name: "ARZ Construction Ltd",
+          url: SITE_URL,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "ARZ Construction Ltd",
+          url: SITE_URL,
+          logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` },
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(post.path) },
+        url: absoluteUrl(post.path),
+      }),
+    },
+  ];
 }

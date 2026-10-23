@@ -12,4 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Vercel git deployments: nitro's default target is cloudflare-module, so pin the
+  // vercel preset only when building on Vercel CI (VERCEL=1). Local builds stay cloudflare.
+  ...(process.env["VERCEL"] ? { nitro: { preset: "vercel" as const } } : {}),
 });

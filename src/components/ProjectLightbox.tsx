@@ -216,17 +216,18 @@ export function ProjectGalleryCard({ project }: { project: Project }) {
         <div className="p-5">
           <h3 className="text-base font-bold">{project.title}</h3>
           <p className="mt-0.5 text-sm text-muted-foreground">{project.location}</p>
-          {project.metrics && (
-            <dl className="mt-3 flex gap-4">
-              {project.metrics.map((m) => (
-                <div key={m.label}>
-                  <dt className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-                    {m.label}
-                  </dt>
-                  <dd className="text-sm font-extrabold text-navy">{m.value}</dd>
-                </div>
+          {project.scope.length > 0 && (
+            <ul className="mt-3 space-y-1">
+              {project.scope.slice(0, 3).map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-1.5 text-xs font-semibold text-navy/80"
+                >
+                  <span className="mt-1.5 size-1 shrink-0 rounded-full bg-bright" aria-hidden="true" />
+                  {item}
+                </li>
               ))}
-            </dl>
+            </ul>
           )}
 
           {/* Thumbnail strip preview */}

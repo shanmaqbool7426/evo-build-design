@@ -10,9 +10,9 @@ import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "Frequently Asked Questions — ARZ Construction Ltd",
+      title: "FAQs — Loft Conversions, Extensions & Renovations | ARZ",
       description:
-        "Answers to common questions about quotations, project timelines, payments, building regulations and more. ARZ Construction Ltd.",
+        "Answers on quotes, timelines, party wall notices, building regs and payments for loft conversions, extensions and renovations — ARZ Construction Ltd.",
       path: "/faqs",
     }),
     links: buildCanonical("/faqs"),

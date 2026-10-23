@@ -12,7 +12,7 @@ export function MobileCta() {
         Call Us
       </a>
       <a
-        className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 py-3 text-center text-xs font-bold tracking-wider text-white uppercase"
+        className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 py-3 text-center text-xs font-bold tracking-wider text-navy uppercase"
         href={company.whatsappHref}
         target="_blank"
         rel="noreferrer noopener"

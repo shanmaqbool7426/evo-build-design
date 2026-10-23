@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCta } from "@/components/MobileCta";
+import { CookieConsent } from "@/components/CookieConsent";
+import { initConversionTracking } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/seo";
 import { company } from "@/data/site";
 
@@ -80,11 +82,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ARZ Construction Ltd — Renovations & Extensions in London" },
+      { title: "ARZ Construction Ltd — Builders in Croydon & South London" },
       {
         name: "description",
         content:
-          "ARZ Construction Ltd delivers professional renovations, extensions, loft conversions and property improvements across London.",
+          "ARZ Construction Ltd provides house extensions, loft conversions, renovations and property improvements across Croydon and South London.",
       },
 
       // ── Open Graph ──────────────────────────────────────────────────────
@@ -94,23 +96,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:url", content: SITE_URL },
       {
         property: "og:title",
-        content: "ARZ Construction Ltd — Renovations & Extensions in London",
+        content: "ARZ Construction Ltd — Builders in Croydon & South London",
       },
       {
         property: "og:description",
         content:
-          "ARZ Construction Ltd delivers professional renovations, extensions, loft conversions and property improvements across London.",
+          "ARZ Construction Ltd provides house extensions, loft conversions, renovations and property improvements across Croydon and South London.",
       },
 
       // ── Twitter ─────────────────────────────────────────────────────────
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@ARZConstruction" },
-
-      // ── Geo meta (local SEO) ────────────────────────────────────────────
-      { name: "geo.region", content: "GB-LND" },
-      { name: "geo.placename", content: "London" },
-      { name: "geo.position", content: "51.5975;-0.1354" },
-      { name: "ICBM", content: "51.5975, -0.1354" },
 
       // ── Misc ────────────────────────────────────────────────────────────
       { name: "theme-color", content: "#123B7A" },
@@ -127,7 +123,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "apple-touch-icon", href: "/favicon.svg" },
-      { rel: "canonical", href: SITE_URL },
       { rel: "sitemap", href: "/sitemap.xml", type: "application/xml" },
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -138,13 +133,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
-      // ── Google Analytics 4 (GA4) ────────────────────────────────────────
+      // ── Analytics: single path via GTM ─────────────────────────────────
+      // GA4 (G-9259G9KNNH) must be added as a "Google tag" inside the GTM
+      // container GT-TQR2XG2K. The standalone gtag.js below was removed to
+      // avoid double-counting pageviews when both paths are active.
+
+      // ── Consent Mode v2 defaults ────────────────────────────────────────
+      // Must run before GTM. Everything non-essential starts denied; only
+      // components/CookieConsent.tsx can flip these to granted.
       {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-9259G9KNNH",
-        async: true,
-      },
-      {
-        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9259G9KNNH');`,
+        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});`,
       },
 
       // ── Google Tag Manager (GTM) ─────────────────────────────────────────
@@ -166,21 +164,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           logo: `${SITE_URL}/favicon.svg`,
           image: `${SITE_URL}/favicon.svg`,
           description:
-            "Professional construction, renovation and property improvement services across London and the surrounding areas.",
+            "House extensions, loft conversions, renovations and property improvements in Croydon and South London.",
           telephone: company.phoneHref.replace("tel:", ""),
           email: company.email,
+          identifier: {
+            "@type": "PropertyValue",
+            name: "Company number",
+            value: company.companyNumber,
+          },
+          contactPoint: {
+            "@type": "ContactPoint",
+            contactType: "customer service",
+            telephone: company.phoneHref.replace("tel:", ""),
+            email: company.email,
+            areaServed: "GB",
+            availableLanguage: "en-GB",
+          },
+          // Registered office only — the operating address has not been
+          // confirmed, so no geo coordinates or map link are claimed here.
           address: {
             "@type": "PostalAddress",
-            streetAddress: company.addressLines.slice(0, 2).join(", "),
+            streetAddress: "Silverstream House, 45 Fitzroy Street",
             addressLocality: "London",
             addressRegion: "Greater London",
             postalCode: "W1T 6EB",
             addressCountry: "GB",
-          },
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: 51.5975,
-            longitude: -0.1354,
           },
           openingHoursSpecification: [
             {
@@ -196,28 +204,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               closes: "14:00",
             },
           ],
-          areaServed: {
-            "@type": "Place",
-            name: "London and surrounding counties",
-          },
-          priceRange: "££",
-          sameAs: [],
-        }),
-      },
-      // ── BreadcrumbList schema ────────────────────────────────────────────
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "Home",
-              item: SITE_URL,
-            },
+          areaServed: [
+            { "@type": "City", name: "Croydon" },
+            { "@type": "City", name: "Bromley" },
+            { "@type": "City", name: "Sutton" },
+            { "@type": "City", name: "Merton" },
+            { "@type": "City", name: "Lambeth" },
+            { "@type": "City", name: "Lewisham" },
+            { "@type": "City", name: "Southwark" },
+            { "@type": "Place", name: "South London" },
+            { "@type": "Place", name: "Greater London" },
           ],
+          priceRange: "££",
+          sameAs: Object.values(company.socials).filter((url) => url.length > 0),
         }),
       },
     ],
@@ -255,6 +254,8 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => initConversionTracking(), []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
@@ -264,6 +265,7 @@ function RootComponent() {
       </main>
       <Footer />
       <MobileCta />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }

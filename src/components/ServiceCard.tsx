@@ -71,10 +71,36 @@ function ServiceIcon({ number }: { number: string }) {
       </>
     ),
     "08": (
-      // Other services
+      // Roofing & Guttering
       <>
         <path
-          d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+          d="M3 21h18M12 3 2 12h3v9h14v-9h3L12 3z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path d="M9 12h6" strokeLinecap="round" />
+        <path d="M10 15h4" strokeLinecap="round" />
+      </>
+    ),
+    "09": (
+      // Plastering & Tiling
+      <>
+        <rect x="3" y="3" width="8" height="8" rx="1" />
+        <rect x="13" y="3" width="8" height="8" rx="1" />
+        <rect x="3" y="13" width="8" height="8" rx="1" />
+        <rect x="13" y="13" width="8" height="8" rx="1" />
+      </>
+    ),
+    "10": (
+      // Decorating
+      <>
+        <path
+          d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 0 0-3-3z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"
           strokeLinecap="round"
           strokeLinejoin="round"
         />

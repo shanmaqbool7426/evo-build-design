@@ -3,6 +3,7 @@ import { CheckCircle2, Loader2, AlertCircle, Send } from "lucide-react";
 import { z } from "zod";
 import { Button } from "./Button";
 import { services, company } from "@/data/site";
+import { trackEvent } from "@/lib/analytics";
 
 // ─── Web3Forms ───────────────────────────────────────────────────────────────
 const WEB3FORMS_KEY = "02b2cb25-9bae-454e-bda2-02228432290f";
@@ -70,7 +71,7 @@ export function ContactForm() {
       access_key: WEB3FORMS_KEY,
       subject: `New Quotation Request — ${parsed.data.projectType} (${parsed.data.postcode})`,
       from_name: parsed.data.name,
-      botcheck: "",
+      botcheck: typeof raw["botcheck"] === "string" ? raw["botcheck"] : "",
 
       // Structured fields in email
       "Full Name": parsed.data.name,
@@ -96,6 +97,11 @@ export function ContactForm() {
       const json = await res.json();
 
       if (res.ok && json.success) {
+        // Conversion event for GTM/GA4 — no personal data is pushed.
+        trackEvent("quote_request_submitted", {
+          project_type: parsed.data.projectType,
+          postcode_area: parsed.data.postcode.split(/\s+/)[0] ?? "",
+        });
         setStatus("success");
         form.reset();
       } else {
@@ -121,8 +127,8 @@ export function ContactForm() {
           Request Received — Thank You!
         </h3>
         <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-          A member of the ARZ Construction team will contact you within one working day to
-          arrange your <strong>free, no-obligation quotation</strong>.
+          A member of the ARZ Construction team will be in touch to arrange your{" "}
+          <strong>free, no-obligation quotation</strong>.
         </p>
         <div className="mt-3 flex flex-col items-center gap-1 text-xs text-muted-foreground">
           <span>
@@ -159,6 +165,16 @@ export function ContactForm() {
       className="rounded-xl border border-border bg-white p-6 shadow-card sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
+        {/* Honeypot — hidden from people, filled in by bots */}
+        <input
+          type="checkbox"
+          name="botcheck"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
+
         {/* ── Full Name ── */}
         <div>
           <label className={labelCls} htmlFor="cf-name">
@@ -218,7 +234,7 @@ export function ContactForm() {
             name="postcode"
             autoComplete="postal-code"
             className={f("postcode")}
-            placeholder="W1T 6EB"
+            placeholder="CR0 1AA"
             maxLength={12}
           />
           <FieldError message={errors.postcode ?? undefined} />
@@ -338,8 +354,8 @@ export function ContactForm() {
       </Button>
 
       <p className="mt-3 text-center text-xs text-muted-foreground">
-        No obligation · We respond within 1 working day ·{" "}
-        <a href={`mailto:${company.email}`} className="hover:underline font-medium text-navy">
+        No obligation · Free, itemised quotation ·{" "}
+        <a href={`mailto:${company.email}`} className="font-medium text-navy hover:underline">
           {company.email}
         </a>
       </p>

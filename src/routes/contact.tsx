@@ -10,9 +10,9 @@ import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "Contact Us — ARZ Construction Ltd",
+      title: "Contact ARZ Construction Ltd | Croydon & South London",
       description:
-        "Get in touch with ARZ Construction for a free quotation. Call, WhatsApp, email or fill in our enquiry form. We respond within one working day.",
+        "Contact ARZ Construction Ltd for a free quotation. Call, WhatsApp or email our Croydon and South London team, or send the enquiry form.",
       path: "/contact",
     }),
     links: buildCanonical("/contact"),
@@ -36,8 +36,8 @@ function ContactPage() {
             <Reveal>
               <h2 className="text-2xl font-extrabold">Contact Information</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                We're available by phone, email and WhatsApp during business hours.
-                Or fill in the form and we'll get back to you within one working day.
+                We're available by phone, email and WhatsApp during business hours. Or send the
+                form and we'll contact you to arrange a site visit at a time that suits you.
               </p>
 
               <dl className="mt-8 space-y-6">
@@ -93,17 +93,29 @@ function ContactPage() {
                     <MapPin className="size-5" aria-hidden="true" />
                   </span>
                   <div>
-                    <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">Office</dt>
+                    <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">{company.addressLabel}</dt>
                     <dd className="mt-1">
                       {company.addressLines.map((line) => (
                         <span key={line} className="block text-sm font-semibold text-navy">
                           {line}
                         </span>
                       ))}
+                      <span className="mt-1 block text-xs text-muted-foreground">
+                        Company No. {company.companyNumber}
+                      </span>
                     </dd>
                   </div>
                 </div>
               </dl>
+
+              <div className="mt-6 rounded-lg border border-border bg-blue-tint p-5">
+                <p className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                  Where We Work
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-navy">
+                  {company.operatingStatement}
+                </p>
+              </div>
 
               <div className="mt-8 rounded-lg border border-border bg-blue-tint p-5">
                 <p className="text-xs font-bold tracking-wide text-muted-foreground uppercase">Business Hours</p>

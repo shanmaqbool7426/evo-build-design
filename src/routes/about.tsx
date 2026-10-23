@@ -11,9 +11,9 @@ import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "About Us — ARZ Construction Ltd",
+      title: "About ARZ Construction Ltd | Builders in Croydon & South London",
       description:
-        "Meet ARZ Construction Ltd: a London construction company delivering renovations, extensions and property improvements with quality workmanship.",
+        "ARZ Construction Ltd is a residential construction company working on extensions, loft conversions and renovations in Croydon and South London. Company No. 12858978.",
       path: "/about",
     }),
     links: buildCanonical("/about"),
@@ -27,7 +27,7 @@ function About() {
       <PageHero
         eyebrow="Who We Are"
         title="Transforming Homes Through Quality Construction"
-        subtitle="ARZ Construction Ltd is a London-based construction company working with homeowners and property owners on renovations, extensions and improvements of every scale."
+        subtitle="ARZ Construction Ltd is a residential construction company working with homeowners across Croydon and South London on extensions, loft conversions, renovations and property improvements."
       />
 
       <section className="py-16 lg:py-24">
@@ -36,15 +36,15 @@ function About() {
             <SectionHeading
               align="left"
               eyebrow="Our Story"
-              title="Ten years of building work we're happy to put our name to"
-              subtitle="We started as a small team of trades taking on local renovations. A decade later we run full-scale extensions, loft conversions and whole-house refurbishments — with the same principle: one accountable team, honest pricing and a finish that stands up to inspection."
+              title="A Small Team, a Clear Process and Work We're Happy to Put Our Name To"
+              subtitle="ARZ Construction Ltd is a limited company (Company No. 12858978) built around a core team of trades rather than a sales operation. We take on extensions, loft conversions and whole-house refurbishments across Croydon and South London, with one project manager coordinating every trade on site and a written, itemised quotation agreed before work starts."
             />
             <ul className="mt-8 space-y-3">
               {[
-                "Quality workmanship on every stage of the build",
+                "Quality workmanship checked at every stage of the build",
                 "Reliable project management and realistic programmes",
                 "Clear communication from first visit to final sign-off",
-                "Insured, certificated and fully documented work",
+                "Certificates, warranties and care information handed over at completion",
               ].map((point) => (
                 <li key={point} className="flex gap-3 text-sm font-semibold text-navy">
                   <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-yellow-soft">

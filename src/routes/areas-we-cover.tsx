@@ -10,9 +10,9 @@ import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 export const Route = createFileRoute("/areas-we-cover")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "Areas We Cover — ARZ Construction Ltd",
+      title: "Areas We Cover — Croydon, Bromley & South London | ARZ",
       description:
-        "ARZ Construction provides renovation, extension and building services across London and the surrounding counties. Check if we cover your area.",
+        "Builders covering Croydon, Bromley, Sutton, Beckenham, Orpington and across South London — loft conversions, extensions and renovations by ARZ Construction.",
       path: "/areas-we-cover",
     }),
     links: buildCanonical("/areas-we-cover"),
@@ -26,7 +26,7 @@ function AreasPage() {
       <PageHero
         eyebrow="Coverage"
         title="Areas We Cover"
-        subtitle={`${company.name} provides construction, renovation and property improvement services across London and the surrounding counties.`}
+        subtitle={`${company.name} works across Croydon and South London, with wider London and the surrounding counties covered by arrangement.`}
       />
 
       <section className="py-16 lg:py-24">
@@ -34,8 +34,8 @@ function AreasPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Service Area"
-              title="Working Across London & Beyond"
-              subtitle="We take on projects in every corner of the capital and regularly work in the home counties. If you're unsure whether we cover your area, just get in touch."
+              title="Croydon and South London First"
+              subtitle="Croydon borough and the neighbouring South London boroughs are our core service area. Projects further out are considered case by case — if your postcode isn't listed, ask and we'll tell you honestly whether we can help."
             />
           </Reveal>
 

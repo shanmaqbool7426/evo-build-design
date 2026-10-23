@@ -1,153 +1,144 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  BadgeCheck,
   Check,
   ClipboardCheck,
   HardHat,
   Layers,
-  MessageSquare,
+  MapPin,
+  MessageCircle,
+  Phone,
   Ruler,
   ShieldCheck,
-  Smile,
-  Users,
 } from "lucide-react";
-import { ButtonLink } from "@/components/Button";
+
+import { ButtonAnchor, ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Stats } from "@/components/Stats";
 import { ServiceCard } from "@/components/ServiceCard";
-import { ProjectGalleryCard } from "@/components/ProjectLightbox";
-import { BeforeAfter } from "@/components/BeforeAfter";
-import { CTASection } from "@/components/CTASection";
+import { FAQAccordion } from "@/components/FAQAccordion";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
-import { ReviewCard, ReviewsBanner } from "@/components/ReviewCard";
 import {
   areas,
   company,
+  faqs,
   images,
   process,
   projects,
-  reviews,
-  reviewSummary,
   services,
+  stats,
 } from "@/data/site";
 import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "Loft Conversions & House Extensions in Croydon — ARZ Construction Ltd",
+      title: "Builders in Croydon | Extensions & Lofts | ARZ Construction",
       description:
-        "Expert loft conversions, house extensions, kitchen & bathroom renovations and electrical services in Croydon & South London. Free quote within 24 hours. 10+ years' experience.",
+        "ARZ Construction Ltd provides house extensions, loft conversions and home renovations in Croydon and South London. Contact our team for a free quote.",
       path: "/",
     }),
+    // No <link rel=preload> for the hero: the image sits at the top of <main>
+    // with fetchpriority="high", so the preload scanner finds it immediately and
+    // a second request only duplicates the one the browser already starts.
     links: buildCanonical("/"),
   }),
   component: Home,
 });
 
-const trust = [
-  "10+ Years in South London",
-  "5★ Google Rated",
-  "Free Quote in 24 Hours",
-  "No Hidden Extras",
+// ─── Section 2: the services the homepage promotes, in the order the brief
+// lists them. Titles here are the customer-facing names, not the page H1s.
+const homeServiceOrder: { slug: string; title: string }[] = [
+  { slug: "extensions", title: "House Extensions" },
+  { slug: "loft-conversions", title: "Loft Conversions" },
+  { slug: "house-renovations", title: "Full House Renovations" },
+  { slug: "kitchen-renovations", title: "Kitchen Renovations" },
+  { slug: "bathroom-renovations", title: "Bathroom Renovations" },
+  { slug: "roofing", title: "Roofing and Guttering" },
+  { slug: "plumbing", title: "Plumbing" },
+  { slug: "electrical", title: "Electrical Services" },
+];
+
+const homeServices = homeServiceOrder.flatMap((entry) => {
+  const service = services.find((s) => s.slug === entry.slug);
+  return service ? [{ ...service, title: entry.title }] : [];
+});
+
+const heroPoints = [
+  "Free, itemised quotations",
+  "One project manager per job",
+  "Trades coordinated under one contract",
+  "12-month workmanship guarantee",
 ];
 
 const whyChoose = [
   {
-    icon: HardHat,
-    title: "Proper Tradespeople",
-    text: "Not subcontractors hired last minute — our core team has worked together for years and knows what a good finish looks like.",
-  },
-  {
-    icon: MessageSquare,
-    title: "You'll Always Know What's Happening",
-    text: "One project manager, one phone number. Weekly updates as standard — no chasing, no silence.",
+    icon: Layers,
+    title: "Coordinated Trades",
+    text: "Groundworks, brickwork, carpentry, plumbing, electrics, plastering and decorating are sequenced by one team — you are not left managing separate contractors.",
   },
   {
     icon: ClipboardCheck,
-    title: "We Stick to the Programme",
-    text: "We plan the build properly before we start, so the timeline we give you is one we can actually keep.",
+    title: "Transparent Quotations",
+    text: "Quotations are written and itemised, so you can see what is included in the price before you commit to anything.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Clear Communication",
+    text: "One project manager and one point of contact, with updates as the work progresses rather than silence followed by surprises.",
   },
   {
     icon: Ruler,
-    title: "The Details Matter to Us",
-    text: "Level lines, neat junctions, tidy reveals. The things you notice up close are the things we care about most.",
+    title: "Attention to Workmanship",
+    text: "Each stage is checked before the next trade starts, so issues are put right as we go instead of being left on a snagging list at the end.",
   },
   {
-    icon: Layers,
-    title: "One Team, Everything Covered",
-    text: "Structure, plumbing, electrics, plastering, decorating — all under one contract. No coordinating separate trades yourself.",
-  },
-  {
-    icon: Smile,
-    title: "We're Not Done Until You're Happy",
-    text: "We walk every finished job with you. If something's not right, we fix it. That's not a policy — it's just how we work.",
-  },
-];
-
-const quality = [
-  {
-    icon: BadgeCheck,
-    title: "Quality You Can See",
-    text: "We check our own work at every stage before moving on. You shouldn't have to point out problems — we find them first.",
+    icon: HardHat,
+    title: "Realistic Programmes",
+    text: "The programme is planned around lead times and site access before work starts, and any change that affects it is discussed with you first.",
   },
   {
     icon: ShieldCheck,
-    title: "We Show Up When We Say We Will",
-    text: "Agreed start date, consistent hours, site kept clean and safe. Basics that too many builders get wrong.",
-  },
-  {
-    icon: Users,
-    title: "Fully Insured and Certified",
-    text: "All work is carried out by insured trades and signed off properly. You get the paperwork at handover — no chasing for certificates.",
+    title: "Aftercare",
+    text: "Workmanship is covered by a 12-month guarantee from practical completion, with manufacturer warranties passed to you at handover.",
   },
 ];
 
 function Home() {
-  const featured = projects[0]!;
-  const latest = projects[1]!;
-
   return (
     <>
-      {/* HERO */}
+      {/* ── 1. HERO ───────────────────────────────────────────────────────── */}
       <section className="relative isolate overflow-hidden">
         <img
           src={images.hero}
-          alt="Modern UK home with a contemporary rear extension built by ARZ Construction"
-          width={1920}
-          height={1080}
+          srcSet={images.heroSrcSet}
+          sizes={images.heroSizes}
+          alt="Home in South London with a contemporary rear extension built by ARZ Construction"
+          width={1792}
+          height={1024}
+          fetchPriority="high"
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-navy/92 via-navy/75 to-navy/35" />
-        <div className="container-x relative py-20 lg:py-32">
-          <div className="max-w-2xl">
+        <div className="absolute inset-0 bg-linear-to-r from-navy/94 via-navy/80 to-navy/40" />
+        <div className="container-x relative py-20 lg:py-28">
+          <div className="max-w-3xl">
             <span className="inline-block rounded-sm bg-yellow px-3 py-1 text-[11px] font-bold tracking-[0.16em] text-navy uppercase">
-              ARZ Construction Ltd · Croydon &amp; South London
+              Croydon &amp; South London
             </span>
-            <h1 className="mt-6 text-4xl leading-[1.08] font-extrabold text-white sm:text-5xl lg:text-6xl">
-              Loft Conversions &amp; House Extensions
-              <span className="block text-yellow">in Croydon &amp; South London</span>
+            <h1 className="mt-6 text-3xl leading-[1.1] font-extrabold text-white sm:text-4xl lg:text-5xl">
+              House Extensions, Loft Conversions &amp; Renovations
+              <span className="block text-yellow">in Croydon and South London</span>
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-blue-soft sm:text-lg">
-              We build loft conversions, house extensions, kitchen and bathroom renovations, and
-              handle electrical work — all across Croydon and South London. One team, one point of
-              contact, and a finish you'll actually be proud of.
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-blue-soft sm:text-lg">
+              ARZ Construction Ltd provides residential construction and property renovation
+              services across Croydon and South London. From house extensions and loft
+              conversions to complete property refurbishments, our team helps homeowners
+              transform their spaces with careful planning and quality workmanship.
             </p>
-            {/* 24-Hour Quote Promise */}
-            <div className="mt-6 inline-flex items-center gap-2.5 rounded-lg bg-white/10 border border-white/20 px-4 py-2.5 backdrop-blur-sm">
-              <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-yellow font-bold text-[11px] text-navy">
-                ✓
-              </span>
-              <span className="text-sm font-semibold text-white">
-                Send us a message — we'll get back to you within{" "}
-                <span className="text-yellow font-bold">24 hours</span>, guaranteed
-              </span>
-            </div>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink to="/contact" variant="accent" size="lg" className="w-full sm:w-auto">
-                Get Your Free Quote in 24 Hours
+                Request a Free Quote
               </ButtonLink>
               <ButtonLink
                 to="/projects"
@@ -158,11 +149,35 @@ function Home() {
                 View Our Projects
               </ButtonLink>
             </div>
+
+            {/* Prominent call and WhatsApp options */}
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <a
+                href={company.phoneHref}
+                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                <Phone className="size-4 text-yellow" aria-hidden="true" />
+                {company.phoneDisplay}
+              </a>
+              <a
+                href={company.whatsappHref}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                <MessageCircle className="size-4 text-yellow" aria-hidden="true" />
+                WhatsApp us
+              </a>
+            </div>
+
+            <p className="mt-6 text-[11px] font-semibold tracking-[0.14em] text-blue-soft/70 uppercase">
+              {company.name} · Company No. {company.companyNumber}
+            </p>
           </div>
         </div>
         <div className="relative border-t border-white/15 bg-navy-deep/80">
           <ul className="container-x grid gap-y-3 py-5 sm:grid-cols-2 lg:grid-cols-4">
-            {trust.map((item) => (
+            {heroPoints.map((item) => (
               <li key={item} className="flex items-center gap-2 text-sm font-semibold text-white">
                 <Check className="size-4 shrink-0 text-yellow" aria-hidden="true" />
                 {item}
@@ -172,248 +187,105 @@ function Home() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="py-16 lg:py-24">
-        <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <SectionHeading
-              align="left"
-              eyebrow="Who We Are"
-              title="Croydon's Local Construction Team — Not a Big Firm, Not a One-Man Band"
-              subtitle="ARZ Construction has been working with homeowners across Croydon and South London for over a decade. We're not a large national contractor passing your job to whoever's available — we're a tight team of experienced tradespeople who take on a limited number of projects so every one gets proper attention."
-            />
-            <ul className="mt-8 space-y-3">
-              {[
-                "We manage the whole build — no coordinating separate trades yourself",
-                "Fixed-price quotes with no surprise extras at the end",
-                "You'll have one project manager's direct number from day one",
-              ].map((point) => (
-                <li key={point} className="flex items-center gap-3 text-sm font-semibold text-navy">
-                  <span className="flex size-6 items-center justify-center rounded-full bg-yellow-soft">
-                    <Check className="size-3.5 text-navy" aria-hidden="true" />
-                  </span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-            <ButtonLink to="/about" variant="primary" className="mt-8">
-              More About Us
-            </ButtonLink>
-          </Reveal>
-          <Reveal delay={120}>
-            <img
-              src={images.about}
-              alt="Construction professionals reviewing architectural plans on site"
-              loading="lazy"
-              width={1200}
-              height={900}
-              className="w-full rounded-xl object-cover shadow-card"
-            />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* STATISTICS */}
-      <section className="pb-16 lg:pb-24">
-        <div className="container-x">
-          <Reveal>
-            <h2 className="sr-only">ARZ Construction in numbers</h2>
-            <Stats />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* FEATURED PROJECT */}
-      <section className="bg-blue-tint py-16 lg:py-24">
-        <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <img
-              src={featured.image}
-              alt={`${featured.title} in ${featured.location}`}
-              loading="lazy"
-              width={1400}
-              height={1000}
-              className="w-full rounded-xl object-cover shadow-card"
-            />
-          </Reveal>
-          <Reveal delay={120}>
-            <span className="eyebrow">Featured Project</span>
-            <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">
-              {featured.title}
-            </h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{featured.description}</p>
-            <dl className="mt-7 grid gap-4 sm:grid-cols-2">
-              {featured.metrics?.map((m) => (
-                <div key={m.label} className="rounded-lg border border-border bg-white px-5 py-4">
-                  <dt className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
-                    {m.label}
-                  </dt>
-                  <dd className="font-display text-xl font-extrabold text-navy">{m.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <ButtonLink to="/projects" variant="primary" className="mt-8">
-              View Project Details <ArrowRight className="size-4" />
-            </ButtonLink>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* SERVICES */}
+      {/* ── 2. MAIN SERVICES ─────────────────────────────────────────────── */}
       <section className="py-16 lg:py-24">
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="What We Do"
-              title="Loft Conversions, Extensions & More in Croydon"
-              subtitle="Whether you need an extra bedroom, a bigger kitchen, or a full house renovation — we cover it all. Based in South London, with 10+ years of completed projects across the borough."
+              eyebrow="Main Services"
+              title="Construction and Renovation Services in Croydon"
+              subtitle="Eight core services delivered under one contract, from the structure and roof through to the kitchen, bathroom and finish."
             />
           </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.slice(0, 6).map((service, i) => (
-              <Reveal key={service.slug} delay={i * 70} className="h-full">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {homeServices.map((service, i) => (
+              <Reveal key={service.slug} delay={i * 60} className="h-full">
                 <ServiceCard service={service} />
               </Reveal>
             ))}
           </div>
           <div className="mt-10 text-center">
             <ButtonLink to="/services" variant="outline">
-              All Services <ArrowRight className="size-4" />
+              View All Services <ArrowRight className="size-4" />
             </ButtonLink>
           </div>
         </div>
       </section>
 
-      {/* LATEST PROJECT */}
-      <section className="bg-blue-tint py-16 lg:py-24">
-        <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      {/* ── 3. ABOUT ARZ CONSTRUCTION ────────────────────────────────────── */}
+      <section className="border-y border-border bg-blue-tint py-16 lg:py-24">
+        <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <span className="eyebrow">Latest Project</span>
-            <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">
-              {latest.title}
-            </h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{latest.description}</p>
+            <SectionHeading
+              align="left"
+              eyebrow="About ARZ Construction"
+              title="A Residential Construction Team Built Around How Your Home Actually Works"
+              subtitle="ARZ Construction Ltd is a limited company delivering extensions, loft conversions and whole-property renovations in Croydon and South London. Work is managed by one project manager who coordinates every trade on site, so the build runs to an agreed programme instead of being passed between subcontractors."
+            />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Projects are carried out at customers' homes and site visits are by appointment.
+              Registered office and company details are listed in the footer and on our contact
+              page.
+            </p>
             <ul className="mt-7 space-y-3">
               {[
-                "Complete renovation",
-                "Modern interior finishes",
-                "Professional project management",
-                "High-quality materials",
+                "One project manager accountable from first visit to handover",
+                "Trades coordinated under a single written contract",
+                "Itemised written quotations before work starts",
+                "Building control inspections coordinated where the work requires them",
               ].map((point) => (
-                <li key={point} className="flex items-center gap-3 text-sm font-semibold text-navy">
-                  <span className="flex size-6 items-center justify-center rounded-full bg-yellow">
+                <li key={point} className="flex items-start gap-3 text-sm font-semibold text-navy">
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-yellow-soft">
                     <Check className="size-3.5 text-navy" aria-hidden="true" />
                   </span>
                   {point}
                 </li>
               ))}
             </ul>
-            <ButtonLink to="/projects" variant="primary" className="mt-8">
-              View Project <ArrowRight className="size-4" />
-            </ButtonLink>
+            <div className="mt-8">
+              <ButtonLink to="/about" variant="primary">
+                More About Us
+              </ButtonLink>
+            </div>
           </Reveal>
           <Reveal delay={120}>
             <img
-              src={latest.image}
-              alt={`${latest.title} in ${latest.location}`}
+              src={images.about}
+              alt="ARZ Construction project manager reviewing plans on a residential site"
               loading="lazy"
-              width={1400}
-              height={1000}
+              width={1200}
+              height={900}
               className="w-full rounded-xl object-cover shadow-card"
             />
           </Reveal>
         </div>
-      </section>
 
-      {/* BLUE FEATURE */}
-      <section className="bg-navy py-16 lg:py-24">
-        <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <SectionHeading
-              align="left"
-              light
-              eyebrow="How We Build"
-              title="We Plan It Properly Before We Touch a Wall"
-              subtitle="Rushed starts cause most build problems. We take time upfront to plan the programme, sort materials and coordinate trades — so the build itself runs smoothly and you're not constantly firefighting."
-            />
-            <ol className="mt-9 space-y-6">
-              {[
-                {
-                  n: "01",
-                  t: "An Experienced Team You Can Trust",
-                  d: "Our core trades have worked together for years. You get experienced hands on your job, not whoever was free this week.",
-                },
-                {
-                  n: "02",
-                  t: "Materials Specified and Sourced Properly",
-                  d: "We don't leave material choices to chance. Everything is specified correctly and ordered from suppliers we have long relationships with.",
-                },
-                {
-                  n: "03",
-                  t: "One Manager Responsible for Everything",
-                  d: "One person runs your project from first visit to final walkthrough. They're accountable for the programme, the quality and the communication.",
-                },
-              ].map((item) => (
-                <li key={item.n} className="flex gap-4">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-yellow font-display text-sm font-extrabold text-navy">
-                    {item.n}
-                  </span>
-                  <span>
-                    <span className="block font-bold text-white">{item.t}</span>
-                    <span className="mt-1 block text-sm text-blue-soft">{item.d}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-          <Reveal delay={120}>
-            <img
-              src={images.precision}
-              alt="Project manager reviewing architectural plans"
-              loading="lazy"
-              width={1200}
-              height={900}
-              className="w-full rounded-xl object-cover"
-            />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* QUALITY */}
-      <section className="bg-yellow-soft py-16 lg:py-24">
-        <div className="container-x">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Our Standards"
-              title="Good Enough Isn't Good Enough for Us"
-              subtitle="Most complaints about builders come down to the same things — they cut corners, they don't communicate, and they disappear when something goes wrong. We've built our business on doing the opposite."
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {quality.map((item, i) => (
-              <Reveal key={item.title} delay={i * 80}>
-                <div className="h-full rounded-xl border border-border bg-white p-6 shadow-card">
-                  <span className="flex size-11 items-center justify-center rounded-md bg-blue-tint text-navy">
-                    <item.icon className="size-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-                </div>
-              </Reveal>
+        <div className="container-x mt-14">
+          <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-xl border border-border bg-white px-5 py-5 text-center"
+              >
+                <dd className="font-display text-3xl font-extrabold text-navy">{stat.value}</dd>
+                <dt className="mt-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                  {stat.label}
+                </dt>
+              </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
-      {/* GALLERY */}
+      {/* ── 4. COMPLETED PROJECTS ────────────────────────────────────────── */}
       <section className="py-16 lg:py-24">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               align="left"
-              eyebrow="Recent Work"
-              title="Projects We've Completed in South London"
-              subtitle="Every photo below is from a real ARZ Construction project. No stock images, no renders — just finished work in people's homes."
+              eyebrow="Completed Projects"
+              title="Recent Work, Shown With the Scope of Each Job"
+              subtitle="A selection of completed projects. Each one lists the work carried out and the general area — we show locations at borough level, never a customer's address."
             />
             <Link
               to="/projects"
@@ -423,49 +295,28 @@ function Home() {
             </Link>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, i) => (
-              <Reveal key={project.id} delay={i * 60}>
-                <ProjectGalleryCard project={project} />
+            {projects.slice(0, 3).map((project, i) => (
+              <Reveal key={project.id} delay={i * 70} className="h-full">
+                <ProjectSummaryCard project={project} />
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* BEFORE & AFTER */}
-      <section className="bg-blue-tint py-16 lg:py-24">
+      {/* ── 5. WHY CHOOSE ARZ ────────────────────────────────────────────── */}
+      <section className="border-y border-border bg-yellow-soft py-16 lg:py-24">
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="Before & After"
-              title="This Is What a Proper Renovation Looks Like"
-              subtitle="Drag the slider to see the difference. Same room, same house — completely transformed. This is the kind of result we aim for on every project."
-            />
-          </Reveal>
-          <Reveal delay={100} className="mx-auto mt-12 max-w-4xl">
-            <BeforeAfter
-              before={images.before}
-              after={images.after}
-              beforeAlt="Dated living room before renovation"
-              afterAlt="The same living room after full renovation"
-            />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE */}
-      <section className="py-16 lg:py-24">
-        <div className="container-x">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Why ARZ?"
-              title="Why Croydon Homeowners Choose Us Over Other Builders"
-              subtitle="We're not going to tell you we're the best — our clients' reviews say that. Here's what they actually tell us made the difference."
+              eyebrow="Why Choose ARZ Construction"
+              title="What You Can Expect When We Take On Your Project"
+              subtitle="Coordinated trades, a written scope before work starts and one project manager who stays with the job from the first visit to the final walkthrough."
             />
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {whyChoose.map((item, i) => (
-              <Reveal key={item.title} delay={i * 60}>
+              <Reveal key={item.title} delay={i * 60} className="h-full">
                 <div className="flex h-full gap-4 rounded-xl border border-border bg-white p-6">
                   <span className="flex size-11 shrink-0 items-center justify-center rounded-md border border-blue-soft text-bright">
                     <item.icon className="size-5" aria-hidden="true" />
@@ -483,150 +334,185 @@ function Home() {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="border-y border-border bg-blue-tint py-16 lg:py-24">
+      {/* ── 6. HOW WE WORK ───────────────────────────────────────────────── */}
+      <section className="py-16 lg:py-24">
         <div className="container-x">
           <Reveal>
             <SectionHeading
-              eyebrow="How It Works"
-              title="From First Call to Finished Build — Here's What Happens"
-              subtitle="No mystery, no vague timelines. Here's exactly how a project with ARZ Construction runs from start to finish."
+              eyebrow="How We Work"
+              title="Five Stages From First Enquiry to Handover"
+              subtitle="Every project follows the same sequence, so you always know what happens next and what is expected of you."
             />
           </Reveal>
-          <ol className="mt-12 grid gap-6 md:grid-cols-3 lg:grid-cols-5">
+          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {process.map((step, i) => (
-              <Reveal key={step.number} delay={i * 70}>
-                <li className="relative h-full rounded-xl border border-border bg-white p-6">
-                  <span className="font-display text-3xl font-extrabold text-navy">
-                    {step.number}
-                    <span className="text-yellow">.</span>
-                  </span>
-                  <h3 className="mt-3 text-sm font-bold tracking-wide uppercase">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-                </li>
-              </Reveal>
+              <li key={step.number} className="h-full">
+                <Reveal delay={i * 70} className="h-full">
+                  <div className="h-full rounded-xl border border-border bg-white p-6 shadow-card">
+                    <span className="font-display text-3xl font-extrabold text-navy">
+                      {step.number}
+                      <span className="text-yellow">.</span>
+                    </span>
+                    <h3 className="mt-3 text-sm font-bold tracking-wide uppercase">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {step.text}
+                    </p>
+                  </div>
+                </Reveal>
+              </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* GOOGLE REVIEWS */}
-      <section className="py-16 lg:py-24">
+      {/* ── 7. AREAS COVERED ─────────────────────────────────────────────── */}
+      <section className="border-y border-border bg-blue-tint py-16 lg:py-24">
         <div className="container-x">
           <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeading
-                align="left"
-                eyebrow="Google Reviews"
-                title="Don't Take Our Word for It"
-                subtitle="These are real reviews from homeowners in Croydon and South London — verified on Google, unedited."
-              />
-              <ReviewsBanner
-                average={reviewSummary.average}
-                total={reviewSummary.total}
-                link={reviewSummary.link}
-              />
-            </div>
+            <SectionHeading
+              eyebrow="Areas Covered"
+              title="Where We Work Across Croydon and South London"
+              subtitle="Croydon and the surrounding South London boroughs are our core area. Wider London and the surrounding counties are taken on by arrangement."
+            />
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {reviews.slice(0, 3).map((review, i) => (
-              <Reveal key={review.id} delay={i * 70}>
-                <ReviewCard review={review} featured={i === 0} />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {areas.map((area, i) => (
+              <Reveal key={area.name} delay={i * 60} className="h-full">
+                <div className="flex h-full gap-4 rounded-xl border border-border bg-white p-6">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-blue-tint text-navy">
+                    <MapPin className="size-5" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h3 className="text-base font-bold">{area.name}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      {area.places}
+                    </p>
+                  </div>
+                </div>
               </Reveal>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <ButtonLink to="/reviews" variant="outline">
-              Read All Reviews <ArrowRight className="size-4" />
+          <div className="mt-10 text-center">
+            <ButtonLink to="/areas-we-cover" variant="outline">
+              See Full Coverage <ArrowRight className="size-4" />
             </ButtonLink>
           </div>
         </div>
       </section>
 
-      {/* AREAS */}
-      <section className="bg-blue-tint py-16 lg:py-24">
-        <div className="container-x">
+      {/* ── 8. FAQs ──────────────────────────────────────────────────────── */}
+      <section className="py-16 lg:py-24">
+        <div className="container-x grid gap-10 lg:grid-cols-5 lg:gap-16">
           <Reveal>
             <SectionHeading
-              eyebrow="Where We Work"
-              title="Based in Croydon, Building Across South London"
-              subtitle="We're a local team — not a national company dispatching crews from a depot. Most of our work is within 30 minutes of our base, which means we're on site when we say we will be."
+              align="left"
+              eyebrow="FAQs"
+              title="Questions Homeowners Ask Before Starting"
+              subtitle="Quotations, timelines, planning permission and building regulations — answered without promising that every project is the same."
             />
+            <div className="mt-6">
+              <Link
+                to="/faqs"
+                className="inline-flex items-center gap-2 text-sm font-bold text-bright transition-colors hover:text-navy"
+              >
+                All frequently asked questions <ArrowRight className="size-4" />
+              </Link>
+            </div>
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {areas.map((area, i) => (
-              <Reveal key={area.name} delay={i * 60}>
-                <div className="h-full rounded-xl border border-border bg-white p-6">
-                  <h3 className="text-base font-bold">{area.name}</h3>
-                  <p className="mt-1.5 text-sm text-muted-foreground">{area.places}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="lg:col-span-3">
+            <Reveal delay={100}>
+              <FAQAccordion items={faqs} />
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <CTASection />
-
-      {/* CONTACT */}
-      <section className="py-16 lg:py-24">
+      {/* ── 9. CONTACT ───────────────────────────────────────────────────── */}
+      <section className="bg-navy py-16 lg:py-24">
         <div className="container-x grid gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <SectionHeading
-              align="left"
-              eyebrow="Get in Touch"
-              title="Tell Us About Your Project — We'll Take It From There"
-              subtitle="Fill in the form and we'll come back to you within 24 hours. If you'd rather talk first, just call or WhatsApp — no scripts, no sales pressure, just a straight conversation about what you're looking to do."
-            />
+            <span className="eyebrow text-yellow">Get in Touch</span>
+            <h2 className="mt-3 text-3xl leading-tight font-extrabold text-white sm:text-4xl">
+              Request a Free Quote for Your Project
+            </h2>
+            <p className="mt-4 leading-relaxed text-blue-soft">
+              Send us a few details and we will arrange a site visit at a time that suits you.
+              Quotations are free, written and itemised, with no obligation.
+            </p>
+
             <dl className="mt-9 space-y-5 text-sm">
               <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                <dt className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase">
                   Phone
                 </dt>
-                <dd className="mt-1 font-semibold text-navy">
-                  <a href={company.phoneHref} className="hover:text-bright">
+                <dd className="mt-1">
+                  <a
+                    href={company.phoneHref}
+                    className="text-base font-bold text-white hover:text-yellow"
+                  >
                     {company.phoneDisplay}
                   </a>
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
-                  Email
-                </dt>
-                <dd className="mt-1 font-semibold text-navy">
-                  <a href={`mailto:${company.email}`} className="hover:text-bright">
-                    {company.email}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                <dt className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase">
                   WhatsApp
                 </dt>
-                <dd className="mt-1 font-semibold text-navy">
+                <dd className="mt-1">
                   <a
                     href={company.whatsappHref}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="hover:text-bright"
+                    className="text-base font-bold text-white hover:text-yellow"
                   >
                     Message us on WhatsApp
                   </a>
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
-                  Business Hours
+                <dt className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase">
+                  Email
                 </dt>
-                <dd className="mt-1 font-semibold text-navy">{company.hours}</dd>
+                <dd className="mt-1">
+                  <a
+                    href={`mailto:${company.email}`}
+                    className="text-base font-bold text-white hover:text-yellow"
+                  >
+                    {company.email}
+                  </a>
+                </dd>
               </div>
               <div>
-                <dt className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                <dt className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase">
+                  Business Hours
+                </dt>
+                <dd className="mt-1 font-semibold text-white">{company.hours}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase">
                   Areas Covered
                 </dt>
-                <dd className="mt-1 font-semibold text-navy">{company.areasSummary}</dd>
+                <dd className="mt-1 font-semibold text-white">{company.areasSummary}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase">
+                  {company.addressLabel}
+                </dt>
+                <dd className="mt-1">
+                  {company.addressLines.map((line) => (
+                    <span key={line} className="block font-semibold text-white">
+                      {line}
+                    </span>
+                  ))}
+                  <span className="mt-1 block text-xs text-blue-soft/80">
+                    Company No. {company.companyNumber}
+                  </span>
+                </dd>
               </div>
             </dl>
+            <p className="mt-6 max-w-md text-xs leading-relaxed text-blue-soft/80">
+              {company.operatingStatement}
+            </p>
           </Reveal>
           <Reveal delay={120}>
             <ContactForm />
@@ -634,5 +520,56 @@ function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+// ─── Homepage project card — photo, scope and the related service link ────────
+
+function ProjectSummaryCard({ project }: { project: (typeof projects)[number] }) {
+  const service = project.relatedService
+    ? services.find((s) => s.slug === project.relatedService)
+    : undefined;
+
+  return (
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white shadow-card">
+      <div className="relative aspect-4/3 overflow-hidden">
+        <img
+          src={project.image}
+          alt={`${project.title} — ${project.category.toLowerCase()} in ${project.location}`}
+          loading="lazy"
+          width={1200}
+          height={900}
+          className="size-full object-cover"
+        />
+        <span className="absolute top-4 left-4 rounded-sm bg-white/95 px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] text-navy uppercase">
+          {project.category}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-base font-bold">{project.title}</h3>
+        <p className="mt-1 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+          <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
+          {project.location}
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+        <ul className="mt-4 space-y-1.5">
+          {project.scope.slice(0, 3).map((item) => (
+            <li key={item} className="flex items-start gap-2 text-xs font-semibold text-navy">
+              <Check className="mt-0.5 size-3.5 shrink-0 text-bright" aria-hidden="true" />
+              {item}
+            </li>
+          ))}
+        </ul>
+        {service && (
+          <Link
+            to="/services/$slug"
+            params={{ slug: service.slug }}
+            className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-bold tracking-wide text-bright uppercase transition-colors hover:text-navy"
+          >
+            {service.title} <ArrowRight className="size-3.5" aria-hidden="true" />
+          </Link>
+        )}
+      </div>
+    </article>
   );
 }

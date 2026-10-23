@@ -1,18 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
-import { services } from "@/data/site";
+import { services, seoLandingPages } from "@/data/site";
 import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "Our Services — ARZ Construction Ltd",
+      title: "Building Services Croydon — 10 Trades, One Team | ARZ",
       description:
-        "Renovations, extensions, loft conversions, kitchens, bathrooms, plumbing, electrical and more. Full construction services across London.",
+        "Renovations, extensions, loft conversions, kitchens, bathrooms, plumbing, electrical, roofing, plastering, tiling and decorating across Croydon & South London.",
       path: "/services",
     }),
     links: buildCanonical("/services"),
@@ -25,8 +25,8 @@ function ServicesPage() {
     <>
       <PageHero
         eyebrow="What We Do"
-        title="Complete Construction Services"
-        subtitle="From whole-house renovations to specialist building work, we provide dependable solutions for every stage of your project — all managed by one accountable team."
+        title="10 Services. One Team. One Contract."
+        subtitle="House renovations, extensions, loft conversions, kitchens, bathrooms, plumbing, electrical, roofing, plastering and decorating — all managed by ARZ Construction from start to finish."
         breadcrumb="Services"
       />
 
@@ -65,10 +65,15 @@ function ServicesPage() {
                       </span>
                       <h2 className="text-2xl font-extrabold sm:text-3xl">{service.title}</h2>
                     </div>
-                    <p className="mt-4 leading-relaxed text-muted-foreground">{service.description}</p>
+                    <p className="mt-4 leading-relaxed text-muted-foreground">
+                      {service.description}
+                    </p>
                     <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                       {service.highlights.map((h) => (
-                        <li key={h} className="flex items-center gap-2.5 text-sm font-semibold text-navy">
+                        <li
+                          key={h}
+                          className="flex items-center gap-2.5 text-sm font-semibold text-navy"
+                        >
                           <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-yellow-soft">
                             <Check className="size-3 text-navy" aria-hidden="true" />
                           </span>
@@ -81,6 +86,30 @@ function ServicesPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* LOCAL SERVICE PAGES — internal linking for Croydon / Bromley intent */}
+      <section className="border-y border-border bg-blue-tint py-16">
+        <div className="container-x">
+          <h2 className="text-2xl font-extrabold sm:text-3xl">Croydon &amp; Bromley Service Pages</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Detailed pages for our most-requested projects, with local guidance, typical costs and
+            answers to the questions homeowners ask most often.
+          </p>
+          <ul className="mt-7 flex flex-wrap gap-2.5">
+            {seoLandingPages.map((page) => (
+              <li key={page.slug}>
+                <Link
+                  to="/services/$slug"
+                  params={{ slug: page.slug }}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-4 py-2 text-xs font-bold text-navy transition-colors hover:border-bright hover:text-bright"
+                >
+                  {page.title} <ArrowRight className="size-3" aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

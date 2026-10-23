@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronDown, MapPin, Menu, MessageCircle, Phone, Star, X } from "lucide-react";
+import { Check, ChevronDown, MapPin, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { ButtonAnchor, ButtonLink } from "./Button";
 import { company, navLinks, navServices, navSeoServices } from "@/data/site";
@@ -31,7 +31,7 @@ export function Header() {
       <div className="bg-navy text-blue-soft text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-2 border-b border-white/10">
         <span className="inline-block w-1.5 h-1.5 rounded-full bg-yellow animate-pulse" />
         <span>
-          Croydon &amp; South London Specialists · Free Quote Within 24 Hours · 5★ Google Reviews
+          Croydon &amp; South London Specialists · Free, Itemised Quotations · One Project Manager
         </span>
       </div>
 
@@ -124,9 +124,10 @@ export function Header() {
                                   params={{ slug: s.slug }}
                                   className="group flex items-start gap-2.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-white"
                                 >
-                                  <span className="mt-1.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-yellow text-[8px] font-extrabold text-navy">
-                                    ★
-                                  </span>
+                                  <span
+                                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-yellow ring-2 ring-navy/10"
+                                    aria-hidden="true"
+                                  />
                                   <span>
                                     <span className="block text-sm font-bold text-navy transition-colors group-hover:text-bright">
                                       {s.title}
@@ -150,8 +151,8 @@ export function Header() {
                             View All Services →
                           </Link>
                           <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                            <Star className="size-3 fill-yellow text-yellow" aria-hidden="true" />
-                            5★ Google Reviews · Free 24hr Quotes
+                            <Check className="size-3 text-bright" aria-hidden="true" />
+                            Free, no-obligation quotations
                           </span>
                         </div>
                       </div>
@@ -184,7 +185,7 @@ export function Header() {
               {company.phoneDisplay}
             </a>
             <ButtonLink to="/contact" variant="accent" className="hidden lg:inline-flex">
-              Free Quote · 24hrs
+              Request a Free Quote
             </ButtonLink>
 
             <button
@@ -253,9 +254,10 @@ export function Header() {
                     params={{ slug: s.slug }}
                     className="flex items-center gap-2 border-b border-border/40 py-2.5 pl-2 text-sm font-semibold text-navy/80 hover:text-bright last:border-0"
                   >
-                    <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-yellow text-[8px] font-extrabold text-navy">
-                      ★
-                    </span>
+                    <span
+                      className="size-1.5 shrink-0 rounded-full bg-yellow ring-2 ring-navy/10"
+                      aria-hidden="true"
+                    />
                     {s.title}
                   </Link>
                 ))}
@@ -264,14 +266,14 @@ export function Header() {
               {/* CTAs */}
               <div className="mt-4 grid gap-2 pb-4">
                 <ButtonLink to="/contact" variant="accent" className="w-full">
-                  Get Free Quote in 24 Hours
+                  Request a Free Quote
                 </ButtonLink>
                 <ButtonAnchor
                   href={company.whatsappHref}
                   target="_blank"
                   rel="noreferrer noopener"
                   variant="outline"
-                  className="w-full border-[#25D366] text-[#25D366]"
+                  className="w-full border-[#0B7A6B] text-[#0B7A6B]"
                 >
                   <MessageCircle className="size-4" aria-hidden="true" />
                   WhatsApp Us

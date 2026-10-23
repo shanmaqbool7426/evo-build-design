@@ -10,7 +10,7 @@ export function Logo({ light = false }: { light?: boolean }) {
     <Link
       to="/"
       className="group inline-flex items-center gap-3"
-      aria-label="ARZ Construction Ltd — home"
+      aria-label="ARZ Construction Ltd home"
     >
       {/* ─── Badge / Mark ─────────────────────────────── */}
       <span className="arz-badge relative shrink-0 transition-transform duration-300 group-hover:scale-105">
@@ -108,7 +108,7 @@ export function Logo({ light = false }: { light?: boolean }) {
             fontSize: "0.48rem",
             color: light
               ? "rgba(210,225,255,0.80)"
-              : "rgba(18,59,122,0.55)",
+              : "rgba(18,59,122,0.80)",
             lineHeight: 1,
             letterSpacing: "0.22em",
           }}

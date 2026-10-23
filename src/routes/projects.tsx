@@ -27,8 +27,8 @@ function ProjectsPage() {
     <>
       <PageHero
         eyebrow="Portfolio"
-        title="Real Projects. Real Photos."
-        subtitle="Every image below is from an actual ARZ Construction project in Croydon or South London — no stock photos, no mock-ups. Click any card to open the full photo gallery."
+        title="Our Completed Projects"
+        subtitle="Completed projects with the scope of work carried out and the general area. Locations are shown at borough level only — never a customer's address. Click any card to open the full photo gallery."
       />
 
       {/* CATEGORY LEGEND */}
@@ -58,7 +58,7 @@ function ProjectsPage() {
             <SectionHeading
               eyebrow="Our Work"
               title="Built With Precision, Finished With Care"
-              subtitle="From contemporary loft conversions to complete property transformations — each project reflects our commitment to quality workmanship in South London."
+              subtitle="From loft conversions and extensions to full property refurbishments — each entry lists the work involved so you can see what a project of that type covers."
             />
           </Reveal>
 
@@ -81,8 +81,8 @@ function ProjectsPage() {
       </section>
 
       <CTASection
-        title="Like What You See?"
-        text="Get a free quote for your loft conversion, extension or renovation in Croydon or South London. We respond within 24 hours."
+        title="Planning Something Similar?"
+        text="Request a free, no-obligation quotation for your extension, loft conversion or renovation. We'll visit the property and confirm the scope in writing."
       />
     </>
   );

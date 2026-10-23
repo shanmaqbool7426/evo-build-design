@@ -20,6 +20,9 @@ export function Footer() {
             electrical services across Croydon and South London.
           </p>
           <div className="mt-4 text-xs text-blue-soft/70">
+            <span className="block font-semibold tracking-wide text-blue-soft uppercase">
+              {company.addressLabel}
+            </span>
             {company.addressLines.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -28,6 +31,7 @@ export function Footer() {
             <span className="mt-2 block">
               Registered in England &amp; Wales · Company No. {company.companyNumber}
             </span>
+            <span className="mt-2 block">{company.operatingStatement}</span>
           </div>
         </div>
 
@@ -113,6 +117,15 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event("arz:cookie-settings"))}
+                className="transition-colors hover:text-yellow"
+              >
+                Cookie settings
+              </button>
+            </li>
           </ul>
         </div>
       </div>

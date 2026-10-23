@@ -1,15 +1,23 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Clock, MessageCircle, Phone, Star } from "lucide-react";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ArrowLeft, ArrowRight, Check, ClipboardCheck, MessageCircle, Phone } from "lucide-react";
 import { ButtonAnchor, ButtonLink } from "@/components/Button";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
-import { ReviewCard } from "@/components/ReviewCard";
-import { services, seoLandingPages, reviews, company } from "@/data/site";
-import { buildSeoMeta, buildCanonical, absoluteUrl, SITE_URL } from "@/lib/seo";
+import { services, seoLandingPages, projects, company } from "@/data/site";
+import { guidesByService } from "@/data/blog";
+import { buildSeoMeta, buildCanonical, buildBreadcrumb, absoluteUrl, SITE_URL } from "@/lib/seo";
 
 // ─── Route head — resolves meta for both service types ───────────────────────
 
 export const Route = createFileRoute("/services/$slug")({
+  // Unknown service slugs must return a real HTTP 404 (not a soft-404 page with
+  // status 200) so search engines drop them instead of indexing duplicates.
+  beforeLoad: ({ params }) => {
+    const knownSlug =
+      seoLandingPages.some((p) => p.slug === params.slug) ||
+      services.some((s) => s.slug === params.slug);
+    if (!knownSlug) throw notFound();
+  },
   head: ({ params }) => {
     // Check SEO landing pages first (more specific)
     const seoPage = seoLandingPages.find((p) => p.slug === params.slug);
@@ -52,6 +60,12 @@ export const Route = createFileRoute("/services/$slug")({
               })),
             }),
           },
+          // Breadcrumb trail
+          ...buildBreadcrumb([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+            { name: seoPage.title },
+          ]),
         ],
       };
     }
@@ -83,6 +97,11 @@ export const Route = createFileRoute("/services/$slug")({
             serviceType: service.title,
           }),
         },
+        ...buildBreadcrumb([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: service.title },
+        ]),
       ],
     };
   },
@@ -121,8 +140,12 @@ import type { SeoLandingPage } from "@/data/site";
 
 function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
   const relatedServices = services.filter((s) => page.relatedSlugs.includes(s.slug));
-  // Show 2 on-topic reviews
-  const featuredReviews = reviews.slice(0, 2);
+  // Genuine project examples for the services this page cross-links to.
+  const relatedProjects = projects
+    .filter((p) => p.relatedService && page.relatedSlugs.includes(p.relatedService))
+    .slice(0, 3);
+  // Contextual links to relevant guides (internal linking: money page → blog)
+  const guides = guidesByService[page.slug] ?? [];
 
   return (
     <>
@@ -137,12 +160,16 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
         />
         <div className="absolute inset-0 bg-linear-to-r from-navy/93 via-navy/78 to-navy/38" />
         <div className="container-x relative py-20 lg:py-32">
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 text-xs font-bold tracking-wide text-blue-soft uppercase hover:text-yellow"
+          <nav
+            aria-label="Breadcrumb"
+            className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase"
           >
-            <ArrowLeft className="size-3.5" /> All Services
-          </Link>
+            <Link to="/" className="transition-colors hover:text-yellow">Home</Link>
+            <span className="mx-1.5 text-yellow" aria-hidden="true">/</span>
+            <Link to="/services" className="transition-colors hover:text-yellow">Services</Link>
+            <span className="mx-1.5 text-yellow" aria-hidden="true">/</span>
+            <span className="text-white">{page.title}</span>
+          </nav>
           <span className="mt-6 inline-block rounded-sm bg-yellow px-3 py-1 text-[11px] font-bold tracking-[0.16em] text-navy uppercase">
             {page.eyebrow}
           </span>
@@ -153,17 +180,17 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
             {page.heroSubtitle}
           </p>
 
-          {/* 24hr promise */}
-          <div className="mt-6 inline-flex items-center gap-2.5 rounded-lg bg-white/10 border border-white/20 px-4 py-2.5 backdrop-blur-sm">
-            <Clock className="size-4 shrink-0 text-yellow" aria-hidden="true" />
+          {/* Quotation promise — no fixed response-time claim */}
+          <div className="mt-6 inline-flex items-center gap-2.5 rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 backdrop-blur-sm">
+            <ClipboardCheck className="size-4 shrink-0 text-yellow" aria-hidden="true" />
             <span className="text-sm font-semibold text-white">
-              Free quote guaranteed within <span className="text-yellow font-bold">24 hours</span>
+              Free, itemised quotation with no obligation
             </span>
           </div>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <ButtonLink to="/contact" variant="accent" size="lg" className="w-full sm:w-auto">
-              Get Your Free Quote in 24 Hours
+              Request a Free Quote
             </ButtonLink>
             <ButtonAnchor
               href={company.whatsappHref}
@@ -189,6 +216,13 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">{page.intro}</p>
             </Reveal>
 
+            {page.localParagraphs?.map((p, i) => (
+              <Reveal key={p.heading} delay={40 + i * 20}>
+                <h2 className="text-xl font-extrabold">{p.heading}</h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">{p.text}</p>
+              </Reveal>
+            ))}
+
             <Reveal delay={60}>
               <h2 className="text-xl font-extrabold">What's Included</h2>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -206,6 +240,52 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
               </ul>
             </Reveal>
 
+            {page.pricing && page.pricing.length > 0 && (
+              <Reveal delay={90}>
+                <h2 className="text-xl font-extrabold">Typical Costs</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Indicative pricing only. Every quotation is itemised and confirmed in writing
+                  before any work starts.
+                </p>
+                <div className="mt-5 overflow-hidden rounded-xl border border-border bg-white">
+                  <table className="w-full text-sm">
+                    <tbody>
+                      {page.pricing.map((row) => (
+                        <tr key={row.item} className="border-b border-border last:border-b-0">
+                          <th scope="row" className="px-4 py-3 text-left font-semibold text-navy">
+                            {row.item}
+                          </th>
+                          <td className="px-4 py-3 text-right font-extrabold whitespace-nowrap text-navy">
+                            {row.range}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Reveal>
+            )}
+
+            {page.localAreas && page.localAreas.length > 0 && (
+              <Reveal delay={110}>
+                <h2 className="text-xl font-extrabold">Areas We Cover</h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  We carry out {page.title.toLowerCase()} projects throughout{" "}
+                  {page.localAreas.map((area, i) => (
+                    <span key={area}>
+                      {i > 0 && ", "}
+                      <span className="font-semibold text-navy">{area}</span>
+                    </span>
+                  ))}{" "}
+                  and the surrounding streets. Not sure if we reach your door?{" "}
+                  <Link to="/contact" className="font-bold text-bright transition-colors hover:text-navy">
+                    Just ask
+                  </Link>
+                  .
+                </p>
+              </Reveal>
+            )}
+
             <Reveal delay={80}>
               <div className="overflow-hidden rounded-xl shadow-card">
                 <img
@@ -219,30 +299,59 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
               </div>
             </Reveal>
 
-            {/* REVIEWS */}
-            <Reveal delay={100}>
-              <div className="flex items-center gap-3">
-                <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-4 fill-yellow text-yellow" aria-hidden="true" />
+            {/* RELATED PROJECTS — replaces the retired reviews block */}
+            {relatedProjects.length > 0 && (
+              <Reveal delay={100}>
+                <h2 className="text-xl font-extrabold">Related Completed Projects</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Examples of the work involved, shown with the scope carried out and the general
+                  area. No customer addresses are published.
+                </p>
+                <div className="mt-5 grid gap-5 sm:grid-cols-3">
+                  {relatedProjects.map((project) => (
+                    <article
+                      key={project.id}
+                      className="overflow-hidden rounded-xl border border-border bg-white shadow-sm"
+                    >
+                      <img
+                        src={project.image}
+                        alt={`${project.title} — ${project.category.toLowerCase()} in ${project.location}`}
+                        loading="lazy"
+                        width={800}
+                        height={600}
+                        className="aspect-4/3 w-full object-cover"
+                      />
+                      <div className="p-4">
+                        <span className="text-[10px] font-bold tracking-[0.12em] text-bright uppercase">
+                          {project.category}
+                        </span>
+                        <h3 className="mt-1.5 text-sm font-bold text-navy">{project.title}</h3>
+                        <p className="mt-0.5 text-xs text-muted-foreground">{project.location}</p>
+                        <ul className="mt-2.5 space-y-1">
+                          {project.scope.slice(0, 2).map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-1.5 text-xs font-semibold text-navy/80"
+                            >
+                              <Check className="mt-0.5 size-3 shrink-0 text-bright" aria-hidden="true" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </article>
                   ))}
                 </div>
-                <span className="text-sm font-semibold text-navy">What our clients say</span>
-              </div>
-              <div className="mt-5 grid gap-5 sm:grid-cols-2">
-                {featuredReviews.map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))}
-              </div>
-              <div className="mt-5">
-                <Link
-                  to="/reviews"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-bright hover:text-navy"
-                >
-                  Read all Google reviews <ArrowRight className="size-4" />
-                </Link>
-              </div>
-            </Reveal>
+                <div className="mt-5">
+                  <Link
+                    to="/projects"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-bright hover:text-navy"
+                  >
+                    See all completed projects <ArrowRight className="size-4" />
+                  </Link>
+                </div>
+              </Reveal>
+            )}
 
             {/* FAQ */}
             <Reveal delay={120}>
@@ -258,20 +367,20 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
           {/* SIDEBAR */}
           <Reveal delay={100}>
             <aside className="sticky top-28 space-y-5">
-              {/* 24hr Quote card */}
+              {/* Quotation card */}
               <div className="rounded-xl border-2 border-yellow bg-yellow-soft p-6">
                 <div className="flex items-center gap-2">
-                  <Clock className="size-5 text-navy" aria-hidden="true" />
-                  <h3 className="text-sm font-extrabold uppercase tracking-wide text-navy">
-                    Free Quote · 24 Hours
+                  <ClipboardCheck className="size-5 text-navy" aria-hidden="true" />
+                  <h3 className="text-sm font-extrabold tracking-wide text-navy uppercase">
+                    Free, No-Obligation Quote
                   </h3>
                 </div>
                 <p className="mt-2 text-sm text-navy/80">
-                  Tell us about your project. We'll respond with a detailed, no-obligation quotation
-                  within one working day.
+                  Tell us about your project. We'll arrange a site visit and put the scope and price
+                  in writing before any work starts.
                 </p>
                 <ButtonLink to="/contact" variant="accent" size="lg" className="mt-4 w-full">
-                  Get My Free Quote
+                  Request a Free Quote
                 </ButtonLink>
               </div>
 
@@ -292,7 +401,7 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
                     target="_blank"
                     rel="noreferrer noopener"
                     variant="outline"
-                    className="w-full border-[#25D366] text-[#25D366] hover:bg-[#25D366]/5"
+                    className="w-full border-[#0B7A6B] text-[#0B7A6B] hover:bg-[#0B7A6B]/5"
                   >
                     <MessageCircle className="size-4" /> WhatsApp Us
                   </ButtonAnchor>
@@ -322,15 +431,38 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
                 </div>
               )}
 
+              {/* Helpful guides */}
+              {guides.length > 0 && (
+                <div className="rounded-xl border border-border bg-white p-6 shadow-card">
+                  <h3 className="text-sm font-bold tracking-wide text-navy uppercase">
+                    Helpful Guides
+                  </h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {guides.map((g) => (
+                      <li key={g.slug}>
+                        <Link
+                          to="/blog/$slug"
+                          params={{ slug: g.slug }}
+                          className="flex items-center justify-between gap-3 text-sm font-semibold text-navy/80 transition-colors hover:text-bright"
+                        >
+                          {g.title}
+                          <ArrowRight className="size-3.5 shrink-0" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* Trust signals */}
               <div className="rounded-xl bg-blue-tint p-5">
                 <ul className="space-y-2.5">
                   {[
-                    "10+ years' experience",
-                    "5★ Google reviews",
-                    "Free no-obligation quotes",
+                    "Free, itemised quotations",
+                    "Written scope and price before work starts",
                     "Croydon & South London specialists",
                     "One project manager throughout",
+                    "12-month workmanship guarantee",
                   ].map((point) => (
                     <li
                       key={point}
@@ -349,7 +481,7 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
 
       <CTASection
         title={`Ready to Start Your ${page.title}?`}
-        text="Get a free, no-obligation quotation. We respond to every enquiry within 24 hours — guaranteed."
+        text="Request a free, no-obligation quotation. We'll visit the property, confirm the scope in writing and set out an indicative programme."
       />
     </>
   );
@@ -392,6 +524,8 @@ function StandardServiceDetail({ slug }: { slug: string }) {
   const prevService = services[currentIndex - 1];
   const nextService = services[currentIndex + 1];
   const relatedServices = services.filter((s) => s.slug !== slug).slice(0, 3);
+  // Croydon/Bromley landing pages that feature this service.
+  const localPages = seoLandingPages.filter((p) => p.relatedSlugs.includes(slug));
 
   return (
     <>
@@ -406,12 +540,16 @@ function StandardServiceDetail({ slug }: { slug: string }) {
         />
         <div className="absolute inset-0 bg-linear-to-r from-navy/92 via-navy/75 to-navy/35" />
         <div className="container-x relative py-20 lg:py-28">
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 text-xs font-bold tracking-wide text-blue-soft uppercase hover:text-yellow"
+          <nav
+            aria-label="Breadcrumb"
+            className="text-xs font-bold tracking-wide text-blue-soft/80 uppercase"
           >
-            <ArrowLeft className="size-3.5" /> All Services
-          </Link>
+            <Link to="/" className="transition-colors hover:text-yellow">Home</Link>
+            <span className="mx-1.5 text-yellow" aria-hidden="true">/</span>
+            <Link to="/services" className="transition-colors hover:text-yellow">Services</Link>
+            <span className="mx-1.5 text-yellow" aria-hidden="true">/</span>
+            <span className="text-white">{service.title}</span>
+          </nav>
           <span className="mt-6 inline-block rounded-sm bg-yellow px-3 py-1 text-[11px] font-bold tracking-[0.16em] text-navy uppercase">
             {service.number} — {service.title}
           </span>
@@ -423,7 +561,7 @@ function StandardServiceDetail({ slug }: { slug: string }) {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink to="/contact" variant="accent" size="lg" className="w-full sm:w-auto">
-              Get Your Free Quote in 24 Hours
+              Request a Free Quote
             </ButtonLink>
           </div>
         </div>
@@ -473,16 +611,16 @@ function StandardServiceDetail({ slug }: { slug: string }) {
             <aside className="sticky top-28 space-y-6">
               <div className="rounded-xl border-2 border-yellow bg-yellow-soft p-6">
                 <div className="flex items-center gap-2">
-                  <Clock className="size-5 text-navy" aria-hidden="true" />
-                  <h3 className="text-sm font-extrabold uppercase tracking-wide text-navy">
-                    Free Quote · 24 Hours
+                  <ClipboardCheck className="size-5 text-navy" aria-hidden="true" />
+                  <h3 className="text-sm font-extrabold tracking-wide text-navy uppercase">
+                    Free, No-Obligation Quote
                   </h3>
                 </div>
                 <p className="mt-2 text-sm text-navy/80">
-                  Free, no-obligation quotation. We respond within one working day.
+                  Written, itemised quotation with no obligation.
                 </p>
                 <ButtonLink to="/contact" variant="accent" size="lg" className="mt-4 w-full">
-                  Get My Free Quote
+                  Request a Free Quote
                 </ButtonLink>
               </div>
               <div className="rounded-xl border border-border bg-white p-6 shadow-card">
@@ -504,6 +642,28 @@ function StandardServiceDetail({ slug }: { slug: string }) {
                   ))}
                 </ul>
               </div>
+
+              {localPages.length > 0 && (
+                <div className="rounded-xl border border-border bg-white p-6 shadow-card">
+                  <h3 className="text-sm font-bold tracking-wide text-navy uppercase">
+                    Local Service Pages
+                  </h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {localPages.map((p) => (
+                      <li key={p.slug}>
+                        <Link
+                          to="/services/$slug"
+                          params={{ slug: p.slug }}
+                          className="flex items-center justify-between gap-3 text-sm font-semibold text-navy/80 transition-colors hover:text-bright"
+                        >
+                          {p.title}
+                          <ArrowRight className="size-3.5 shrink-0" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </aside>
           </Reveal>
         </div>

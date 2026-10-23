@@ -70,19 +70,36 @@ function TermsPage() {
               <div>
                 <h2 className="text-xl font-bold text-navy">7. Insurance &amp; Liability</h2>
                 <p>
-                  {company.name} holds full public liability and employer's liability insurance. We are responsible for maintaining a safe site throughout the duration of the project. Clients are advised to notify their home insurance provider before construction work begins.
+                  We maintain public liability insurance for the work we carry out and keep a safe
+                  site throughout the project. A copy of our current insurance certificate is
+                  available on request before work starts. Clients are advised to notify their home
+                  insurance provider before construction work begins.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-xl font-bold text-navy">8. Dispute Resolution</h2>
+                <h2 className="text-xl font-bold text-navy">8. Right to Cancel</h2>
                 <p>
-                  In the unlikely event of a dispute, we aim to resolve matters promptly and fairly. If a resolution cannot be reached informally, both parties agree to mediation before pursuing any legal action.
+                  Where a contract is agreed at a distance or away from our premises, you may have
+                  a 14-day right to cancel under the Consumer Contracts Regulations 2013. Because
+                  building work is usually bespoke and may begin at your request within that
+                  period, we may ask you to confirm in writing that you want work to start, and you
+                  may be charged for work properly carried out before cancellation. This does not
+                  affect your statutory rights.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-xl font-bold text-navy">9. Contact</h2>
+                <h2 className="text-xl font-bold text-navy">9. Dispute Resolution</h2>
+                <p>
+                  In the unlikely event of a dispute, we aim to resolve matters promptly and fairly.
+                  If a resolution cannot be reached informally, both parties agree to mediation
+                  before pursuing any legal action.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-bold text-navy">10. Contact</h2>
                 <p>
                   For any questions about these terms, contact us at{" "}
                   <a href={`mailto:${company.email}`} className="font-semibold text-navy hover:text-bright">
@@ -96,7 +113,9 @@ function TermsPage() {
               </div>
 
               <p className="text-xs text-muted-foreground">
-                Last updated: January 2026. {company.name} · Company No. {company.companyNumber} · Registered in England &amp; Wales.
+                Last updated: October 2026. {company.name} · Company No. {company.companyNumber} ·
+                Registered in England &amp; Wales. Registered office:{" "}
+                {company.addressLines.join(", ")}.
               </p>
             </div>
           </Reveal>

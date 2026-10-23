@@ -3,7 +3,7 @@
 
   <!--
     ARZ Construction Ltd — Sitemap
-    Domain: https://arzconstructionltd.com
+    Domain: https://www.arzconstructionltd.com
   -->
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -12,109 +12,220 @@
 
   <url>
     <loc>https://www.arzconstructionltd.com/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/about</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/services</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/projects</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/areas-we-cover</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/faqs</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/contact</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- ═══════════════════════════════════════════════════════════
-       SERVICE PAGES
+       GEO-TARGETED SEO LANDING PAGES (highest commercial intent)
+       ═══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/loft-conversion-croydon</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/house-extension-croydon</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/kitchen-bathroom-renovations</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/house-renovations-croydon</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/kitchen-renovations-croydon</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/bathroom-renovations-croydon</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/electrical-services</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/loft-conversion-bromley</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/house-extension-bromley</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STANDARD SERVICE PAGES
        ═══════════════════════════════════════════════════════════ -->
 
   <url>
     <loc>https://www.arzconstructionltd.com/services/house-renovations</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/services/extensions</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/services/loft-conversions</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/services/kitchen-renovations</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/services/bathroom-renovations</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/services/plumbing</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/services/electrical</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.arzconstructionltd.com/services/other-building-services</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://www.arzconstructionltd.com/services/roofing</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/plastering-tiling</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/services/decorating</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog / guides section: long-tail informational queries -->
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/blog</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/blog/loft-conversion-cost-croydon</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/blog/dormer-vs-hip-to-gable</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.arzconstructionltd.com/blog/party-wall-loft-conversion-croydon</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -125,14 +236,14 @@
 
   <url>
     <loc>https://www.arzconstructionltd.com/privacy</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://www.arzconstructionltd.com/terms</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
