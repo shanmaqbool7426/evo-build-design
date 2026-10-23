@@ -34,4 +34,6 @@ dist-ssr
 # Vercel CLI/build output
 .vercel/
 
+# Local npm cache used to work around sandbox restrictions
+.npm-cache/
 
