@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { Logo } from "./Logo";
+import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 import { company, navLinks, services, seoLandingPages } from "@/data/site";
 
 const legal = [
@@ -86,7 +87,7 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm">
             <li>
               <a href={company.phoneHref} className="flex items-center gap-2 hover:text-yellow">
-                <Phone className="size-4 text-yellow" /> {company.phone}
+                <Phone className="size-4 text-yellow" /> {company.phoneDisplay}
               </a>
             </li>
             <li>
@@ -104,7 +105,7 @@ export function Footer() {
                 rel="noreferrer noopener"
                 className="flex items-center gap-2 hover:text-yellow"
               >
-                <MessageCircle className="size-4 text-yellow" /> WhatsApp us
+                <WhatsAppIcon className="size-4 text-yellow" /> WhatsApp us
               </a>
             </li>
           </ul>

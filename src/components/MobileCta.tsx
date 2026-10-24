@@ -1,4 +1,5 @@
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 import { company } from "@/data/site";
 
 export function MobileCta() {
@@ -17,7 +18,7 @@ export function MobileCta() {
         target="_blank"
         rel="noreferrer noopener"
       >
-        <MessageCircle className="size-4" />
+        <WhatsAppIcon className="size-4" />
         WhatsApp
       </a>
     </div>

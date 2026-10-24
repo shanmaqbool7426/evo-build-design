@@ -1,8 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Check, ChevronDown, MapPin, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { Check, ChevronDown, MapPin, Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { ButtonAnchor, ButtonLink } from "./Button";
+import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 import { company, navLinks, navServices, navSeoServices } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -275,12 +276,12 @@ export function Header() {
                   variant="outline"
                   className="w-full border-[#0B7A6B] text-[#0B7A6B]"
                 >
-                  <MessageCircle className="size-4" aria-hidden="true" />
+                  <WhatsAppIcon className="size-4" aria-hidden="true" />
                   WhatsApp Us
                 </ButtonAnchor>
                 <ButtonAnchor href={company.phoneHref} variant="outline" className="w-full">
                   <Phone className="size-4" aria-hidden="true" />
-                  {company.phone}
+                  {company.phoneDisplay}
                 </ButtonAnchor>
               </div>
             </nav>
