@@ -121,8 +121,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "apple-touch-icon", href: "/favicon.svg" },
+      {
+        rel: "icon",
+        href: "/favicon.ico",
+        type: "image/x-icon",
+        sizes: "16x16 32x32 48x48 96x96 256x256",
+      },
+      { rel: "apple-touch-icon", href: "/icon-192.png", sizes: "192x192" },
       { rel: "sitemap", href: "/sitemap.xml", type: "application/xml" },
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -161,8 +166,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: company.name,
           alternateName: company.shortName,
           url: SITE_URL,
-          logo: `${SITE_URL}/favicon.svg`,
-          image: `${SITE_URL}/favicon.svg`,
+          logo: `${SITE_URL}/icon-512.png`,
+          image: `${SITE_URL}/icon-512.png`,
           description:
             "House extensions, loft conversions, renovations and property improvements in Croydon and South London.",
           telephone: company.phoneHref.replace("tel:", ""),
