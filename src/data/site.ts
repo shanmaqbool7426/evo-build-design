@@ -45,13 +45,12 @@ export const company = {
   email: "Arzconstruction23@gmail.com",
   hours: "Mon – Fri: 8:00 – 18:00 · Sat: 9:00 – 14:00",
   areasSummary: "Croydon, South London & surrounding areas",
-  // The address below is the one currently published. It is labelled as a
-  // registered office because the operating address has not been confirmed;
-  // Companies House currently records a different registered office.
+  // Verified against Companies House (ARZ CONSTRUCTION LTD, 12858978) and the
+  // Google Business Profile location in Thornton Heath. Keep this NAP block in
+  // sync with the GBP — same name, same address, same phone everywhere.
   addressLabel: "Registered office",
-  addressLines: ["4th Floor, Silverstream House", "45 Fitzroy Street, Fitzrovia", "London W1T 6EB"],
-  // Where the work actually happens. No public walk-in office is advertised
-  // until the operating address is confirmed by the business owner.
+  addressLines: ["Flat 2, 23 Headcorn Road", "Thornton Heath", "London CR7 6JR"],
+  // Where the work actually happens.
   operatingStatement:
     "Projects are carried out at customers' homes across Croydon and South London. Site visits are by appointment.",
   // Profile URLs feed the `sameAs` structured-data array in __root.tsx.

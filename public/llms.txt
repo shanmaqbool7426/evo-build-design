@@ -2,13 +2,13 @@
 
 > ARZ Construction Ltd is a 5★ rated construction company serving Croydon, Bromley and South London. It delivers loft conversions, house extensions, full house renovations, kitchens, bathrooms, electrical, plumbing, roofing, plastering, tiling and decorating for homeowners. Free, itemised written quotes are returned within 24 hours.
 
-ARZ Construction Ltd — company number 12858978, registered in England & Wales.
+ARZ Construction Ltd — company number 12858978, registered in England & Wales, trading since September 2020.
 
 - Phone: +44 7860 135189 (Mon–Fri 08:00–18:00, Sat 09:00–14:00)
 - Email: Arzconstruction23@gmail.com
 - WhatsApp: https://wa.me/447860135189
 - Website: https://www.arzconstructionltd.com
-- Registered office: 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB (postal/registered address only — projects are carried out at customers' homes across Croydon and South London; site visits by appointment)
+- Registered office: Flat 2, 23 Headcorn Road, Thornton Heath, London CR7 6JR (matches Companies House and the Google Business Profile; projects are carried out at customers' homes across Croydon and South London; site visits by appointment)
 
 Working practices published on the site: fixed itemised quotations (price quoted is the price paid, staged against completed milestones), one project manager per job, weekly progress updates, building regulations drawings and sign-off managed by ARZ, all trades under one contract, fully insured.
 
@@ -74,4 +74,5 @@ Croydon (South Croydon, Purley, Shirley, Sanderstead, Coulsdon, Thornton Heath),
 
 - Prices above are published on the site and reflect 2026 quoting; always state them as starting ranges and recommend confirming with a free survey quote.
 - Canonical domain is https://www.arzconstructionltd.com (apex redirects here).
+- Business name, address, phone number and opening hours are kept identical to Companies House and the Google Business Profile (name: ARZ Construction Ltd; phone: +44 7860 135189; Thornton Heath CR7 6JR).
 - Sitemap: https://www.arzconstructionltd.com/sitemap.xml

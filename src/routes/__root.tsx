@@ -177,6 +177,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             name: "Company number",
             value: company.companyNumber,
           },
+          foundingDate: "2020-09-04",
           contactPoint: {
             "@type": "ContactPoint",
             contactType: "customer service",
@@ -185,14 +186,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             areaServed: "GB",
             availableLanguage: "en-GB",
           },
-          // Registered office only — the operating address has not been
-          // confirmed, so no geo coordinates or map link are claimed here.
+          // Registered office on Companies House (company 12858978) — kept
+          // identical to the address on the Google Business Profile.
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Silverstream House, 45 Fitzroy Street",
-            addressLocality: "London",
+            streetAddress: "Flat 2, 23 Headcorn Road",
+            addressLocality: "Thornton Heath",
             addressRegion: "Greater London",
-            postalCode: "W1T 6EB",
+            postalCode: "CR7 6JR",
             addressCountry: "GB",
           },
           openingHoursSpecification: [
