@@ -1,14 +1,60 @@
 # ARZ Construction Ltd — Robots.txt
-# Domain: https://arzconstructionltd.com
+# Domain: https://www.arzconstructionltd.com
+# AI-facing summary: https://www.arzconstructionltd.com/llms.txt
 
 Sitemap: https://www.arzconstructionltd.com/sitemap.xml
 
+# ── Search engines ───────────────────────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+# ── AI / answer engines — explicitly welcomed (AEO) ──────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# ── Social previews ──────────────────────────────────────────────────────────
 User-agent: Twitterbot
 Allow: /
 

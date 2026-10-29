@@ -221,6 +221,78 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             { "@type": "Place", name: "Greater London" },
           ],
           priceRange: "££",
+          // ── AEO: what this business is an authority on ──
+          knowsAbout: [
+            "Loft conversions",
+            "Dormer loft conversions",
+            "Hip-to-gable loft conversions",
+            "Attic and rooflight conversions",
+            "House extensions",
+            "Rear and side-return extensions",
+            "Wrap-around extensions",
+            "Full house renovations",
+            "Kitchen renovation",
+            "Bathroom renovation",
+            "Electrical rewires and Part P certification",
+            "Roofing",
+            "Plastering and tiling",
+            "Permitted development and planning permission",
+            "Party wall agreements",
+            "Building regulations",
+          ],
+          // ── AEO: service catalogue with published starting prices ──
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Construction services in Croydon & South London",
+            itemListElement: [
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Loft conversions",
+                  url: `${SITE_URL}/services/loft-conversion-croydon`,
+                  provider: { "@id": `${SITE_URL}/#organisation` },
+                },
+                priceSpecification: {
+                  "@type": "PriceSpecification",
+                  priceCurrency: "GBP",
+                  minPrice: 25000,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "House extensions",
+                  url: `${SITE_URL}/services/house-extension-croydon`,
+                  provider: { "@id": `${SITE_URL}/#organisation` },
+                },
+                priceSpecification: {
+                  "@type": "PriceSpecification",
+                  priceCurrency: "GBP",
+                  minPrice: 45000,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Kitchen and bathroom renovations",
+                  url: `${SITE_URL}/services/kitchen-bathroom-renovations`,
+                  provider: { "@id": `${SITE_URL}/#organisation` },
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Electrical services and Part P certification",
+                  url: `${SITE_URL}/services/electrical-services`,
+                  provider: { "@id": `${SITE_URL}/#organisation` },
+                },
+              },
+            ],
+          },
           sameAs: Object.values(company.socials).filter((url) => url.length > 0),
         }),
       },
