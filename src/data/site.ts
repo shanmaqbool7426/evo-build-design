@@ -43,13 +43,18 @@ export const company = {
   whatsapp: "447860135189",
   whatsappHref: "https://wa.me/447860135189",
   email: "Arzconstruction23@gmail.com",
-  hours: "Mon – Fri: 8:00 – 18:00 · Sat: 9:00 – 14:00",
+  hours: "Mon – Sat: 8:00 – 18:00 · Sun: Closed",
   areasSummary: "Croydon, South London & surrounding areas",
   // Verified against Companies House (ARZ CONSTRUCTION LTD, 12858978) and the
-  // Google Business Profile location in Thornton Heath. Keep this NAP block in
-  // sync with the GBP — same name, same address, same phone everywhere.
+  // Google Business Profile location. Keep this NAP block in sync with the
+  // GBP — same name, same address, same phone everywhere.
   addressLabel: "Registered office",
-  addressLines: ["Flat 2, 23 Headcorn Road", "Thornton Heath", "London CR7 6JR"],
+  addressLines: [
+    "4th Floor, Silverstream House",
+    "45 Fitzroy Street, Fitzrovia",
+    "London W1T 6EB",
+    "United Kingdom",
+  ],
   // Where the work actually happens.
   operatingStatement:
     "Projects are carried out at customers' homes across Croydon and South London. Site visits are by appointment.",

@@ -190,24 +190,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           // identical to the address on the Google Business Profile.
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Flat 2, 23 Headcorn Road",
-            addressLocality: "Thornton Heath",
+            streetAddress: "4th Floor, Silverstream House, 45 Fitzroy Street",
+            addressLocality: "London",
             addressRegion: "Greater London",
-            postalCode: "CR7 6JR",
+            postalCode: "W1T 6EB",
             addressCountry: "GB",
           },
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+              ],
               opens: "08:00",
               closes: "18:00",
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: "Saturday",
-              opens: "09:00",
-              closes: "14:00",
             },
           ],
           areaServed: [
