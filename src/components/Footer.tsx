@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./icons/WhatsAppIcon";
-import { company, navLinks, services, seoLandingPages } from "@/data/site";
+import { company, navLinks, services, seoLandingPages, townLandingPages } from "@/data/site";
 
 const legal = [
   { label: "Privacy Policy", to: "/privacy" as const },
@@ -68,7 +68,25 @@ export function Footer() {
             South London Specialists
           </h3>
           <ul className="mt-3 space-y-2.5 text-sm">
-            {seoLandingPages.map((p) => (
+            {seoLandingPages
+              .filter((p) => !p.isTown)
+              .map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: p.slug }}
+                    className="transition-colors hover:text-yellow"
+                  >
+                    {p.title}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+          <h3 className="mt-5 text-xs font-bold tracking-[0.14em] text-yellow uppercase">
+            Surrey &amp; North Downs
+          </h3>
+          <ul className="mt-3 space-y-2.5 text-sm">
+            {townLandingPages.map((p) => (
               <li key={p.slug}>
                 <Link
                   to="/services/$slug"
@@ -106,6 +124,16 @@ export function Footer() {
                 className="flex items-center gap-2 hover:text-yellow"
               >
                 <WhatsAppIcon className="size-4 text-yellow" /> WhatsApp us
+              </a>
+            </li>
+            <li>
+              <a
+                href={company.socials.googleBusiness}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex items-center gap-2 hover:text-yellow"
+              >
+                <MapPin className="size-4 text-yellow" /> Find us on Google
               </a>
             </li>
           </ul>

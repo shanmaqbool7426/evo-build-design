@@ -40,10 +40,9 @@ export const Route = createFileRoute("/services/$slug")({
               description: seoPage.metaDescription,
               provider: { "@id": `${SITE_URL}/#organisation` },
               url: absoluteUrl(`/services/${seoPage.slug}`),
-              areaServed: [
-                { "@type": "City", name: "Croydon" },
-                { "@type": "Place", name: "South London" },
-              ],
+              areaServed: (seoPage.areaServed ?? ["Croydon", "South London"]).map(
+                (name) => ({ "@type": "Place", name }),
+              ),
               serviceType: seoPage.title,
             }),
           },
@@ -77,7 +76,7 @@ export const Route = createFileRoute("/services/$slug")({
     }
     return {
       meta: buildSeoMeta({
-        title: `${service.title} — ARZ Construction Ltd`,
+        title: service.metaTitle ?? `${service.title} — ARZ Construction Ltd`,
         description: service.metaDescription,
         path: `/services/${service.slug}`,
         ogImage: service.image,
@@ -93,10 +92,31 @@ export const Route = createFileRoute("/services/$slug")({
             description: service.description,
             provider: { "@id": `${SITE_URL}/#organisation` },
             url: absoluteUrl(`/services/${service.slug}`),
-            areaServed: { "@type": "Place", name: "London and surrounding counties" },
+            areaServed: ["Croydon", "South London", "Surrey", "Kent"].map((name) => ({
+              "@type": "Place",
+              name,
+            })),
             serviceType: service.title,
           }),
         },
+        // Hub pages answer the questions that don't need a location qualifier.
+        // Without this the only FAQ markup on the site sat on geo pages.
+        ...(service.faqs?.length
+          ? [
+              {
+                type: "application/ld+json" as const,
+                children: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: service.faqs.map((faq) => ({
+                    "@type": "Question",
+                    name: faq.q,
+                    acceptedAnswer: { "@type": "Answer", text: faq.a },
+                  })),
+                }),
+              },
+            ]
+          : []),
         ...buildBreadcrumb([
           { name: "Home", path: "/" },
           { name: "Services", path: "/services" },
@@ -605,6 +625,17 @@ function StandardServiceDetail({ slug }: { slug: string }) {
                 />
               </div>
             </Reveal>
+
+            {service.faqs && service.faqs.length > 0 && (
+              <Reveal delay={200}>
+                <h2 className="mt-10 text-xl font-extrabold">Frequently Asked Questions</h2>
+                <dl className="mt-5 space-y-4">
+                  {service.faqs.map((faq, i) => (
+                    <FaqItem key={i} q={faq.q} a={faq.a} />
+                  ))}
+                </dl>
+              </Reveal>
+            )}
           </div>
 
           <Reveal delay={120}>

@@ -61,7 +61,9 @@ export const company = {
   // Profile URLs feed the `sameAs` structured-data array in __root.tsx.
   // Paste each real profile URL when available; empty entries are skipped.
   socials: {
-    googleBusiness: "",
+    // Knowledge-panel link for the verified GBP (kgmid /g/11zynn28sq).
+    // Powers `sameAs` in the LocalBusiness schema and the footer link.
+    googleBusiness: "https://www.google.com/search?kgmid=/g/11zynn28sq",
     facebook: "",
     instagram: "",
     checkatrade: "",
@@ -72,11 +74,18 @@ export type Service = {
   slug: string;
   number: string;
   title: string;
+  /** Head <title> override. Without it the title falls back to
+   *  "<service title> — ARZ Construction Ltd", which wastes a keyword slot. */
+  metaTitle?: string;
   short: string;
   description: string;
   metaDescription: string;
   image: string;
   highlights: string[];
+  /** Hub-page FAQs. Rendered as visible <details> blocks and emitted as
+   *  FAQPage schema — keeps hub pages answering the questions people
+   *  actually search for instead of only the geo-targeted pages. */
+  faqs?: { q: string; a: string }[];
 };
 
 export const services: Service[] = [
@@ -84,6 +93,7 @@ export const services: Service[] = [
     slug: "house-renovations",
     number: "01",
     title: "House Renovations",
+    metaTitle: "House Renovations South London | Full Refurbishment Builders",
     short: "Whole-house refurbishment delivered to a considered plan and a fixed schedule.",
     description:
       "From single rooms to complete property transformations, we manage structural work, first and second fix, plastering, decorating and finishing so your home is handed back ready to live in.",
@@ -96,11 +106,30 @@ export const services: Service[] = [
       "Plastering, flooring and decorating",
       "Single point of contact throughout",
     ],
+    faqs: [
+      {
+        q: "How long does a full house renovation take?",
+        a: "A whole-house refurbishment usually runs 12–20 weeks on site, depending on size, structural work and how long the property is empty. The programme is set out in the written quotation and updated as the job progresses.",
+      },
+      {
+        q: "Can we live in the house during the work?",
+        a: "Sometimes, if the work is staged room by room. For a whole-house renovation with structural alterations it is usually faster and cheaper to move out. Wherever possible we sequence the work so at least one bathroom and a working kitchen stay available.",
+      },
+      {
+        q: "Do you handle building regulations and structural calculations?",
+        a: "Yes. Structural calculations, building control applications and any planning submission are arranged as part of the project, and the completion certificate is handed over at the end.",
+      },
+      {
+        q: "How much does a house renovation cost in Croydon?",
+        a: "Full refurbishments typically start around £1,200–£2,000 per m² depending on specification. Structural work, kitchens and bathrooms are the biggest variables, which is why every quotation is itemised line by line.",
+      },
+    ],
   },
   {
     slug: "extensions",
     number: "02",
     title: "Extensions",
+    metaTitle: "House Extensions South London | Rear & Side-Return Builders",
     short: "Rear, side return and wrap-around extensions that add genuine living space.",
     description:
       "We build rear, side return, wrap-around and two-storey extensions, handling groundworks, brickwork, steels, roofing and glazing with careful attention to how new space meets the existing house.",
@@ -113,11 +142,30 @@ export const services: Service[] = [
       "Structural steel and roofing",
       "Bifold and rooflight installation",
     ],
+    faqs: [
+      {
+        q: "Do I need planning permission for a rear extension?",
+        a: "Many rear extensions fall under permitted development — up to 3m for terraced and semi-detached homes and 4m for detached, or up to 6m and 8m through the neighbour consultation scheme. Conservation areas, Article 4 directions and flats remove those rights, so we check your address before quoting.",
+      },
+      {
+        q: "How much does an extension cost?",
+        a: "A single-storey extension typically costs £2,000–£3,000 per m² finished, so a 4m × 3m rear extension usually lands between £30,000 and £45,000 depending on glazing, kitchen and drainage. Two-storey extensions cost more per m² because of the upper-floor structure.",
+      },
+      {
+        q: "Do you handle the steelwork and building regulations?",
+        a: "Yes — structural calculations, steel beams, building control inspections and the completion certificate are all part of the project, not extras bolted on later.",
+      },
+      {
+        q: "How long does an extension take to build?",
+        a: "A single-storey extension is usually 10–16 weeks from groundworks to completion. Two-storey and wrap-around builds take longer. Weather, drainage diversions and party wall awards are the usual variables.",
+      },
+    ],
   },
   {
     slug: "loft-conversions",
     number: "03",
     title: "Loft Conversions",
+    metaTitle: "Loft Conversions South London | Dormer, Hip-to-Gable & Mansard",
     short: "Unused roof space converted into bright, usable bedrooms and studies.",
     description:
       "Dormer, hip-to-gable and rooflight conversions including staircases, insulation, fire protection and en-suites, built to current building regulations.",
@@ -130,11 +178,30 @@ export const services: Service[] = [
       "Insulation and fire safety compliance",
       "En-suite and storage joinery",
     ],
+    faqs: [
+      {
+        q: "Do I need planning permission for a loft conversion?",
+        a: "Most loft conversions are permitted development if the additional roof volume stays within 40m³ for terraced houses and 50m³ for semi-detached and detached, the roof does not extend beyond the front slope, and no balcony or veranda is added. Flats, conservation areas and Article 4 directions need a full application.",
+      },
+      {
+        q: "How much does a loft conversion cost?",
+        a: "Rooflight conversions typically run £25,000–£35,000, rear dormers £40,000–£55,000, and a hip-to-gable with rear dormer £45,000–£65,000. En-suites, bespoke joinery and structural work add to that figure.",
+      },
+      {
+        q: "How long does a loft conversion take?",
+        a: "8–12 weeks on site for a standard dormer, from scaffold up to decoration. Planning or a party wall award adds time before work starts. The roof is normally made watertight within the first two weeks.",
+      },
+      {
+        q: "Do I need a party wall agreement for a loft conversion?",
+        a: "For semis and terraces, usually yes, because the new floor structure bears on the party wall. We serve the notices in the first week and coordinate with the party wall surveyor.",
+      },
+    ],
   },
   {
     slug: "kitchen-renovations",
     number: "04",
     title: "Kitchen Renovations",
+    metaTitle: "Kitchen Renovations South London | Design & Installation",
     short: "Kitchens installed with precise joinery, level worktops and clean services.",
     description:
       "We strip out, re-plan and install kitchens of any size, including plumbing, electrics, tiling, worktop templating and appliance fitting.",
@@ -147,11 +214,30 @@ export const services: Service[] = [
       "Worktop templating and fitting",
       "Tiling, splashbacks and finishing",
     ],
+    faqs: [
+      {
+        q: "How long does a kitchen renovation take?",
+        a: "A straightforward strip-out and refit is 2–3 weeks. Moving services, forming structural openings or waiting on bespoke joinery and worktop templating can take 4–6 weeks. Plumbing, electrics, plastering and tiling are sequenced so nothing is done twice.",
+      },
+      {
+        q: "How much does a kitchen renovation cost?",
+        a: "Labour and installation for a typical Croydon kitchen runs £8,000–£20,000, excluding units and appliances. Moving a soil stack, adding steel or reconfiguring the layout are the biggest cost drivers.",
+      },
+      {
+        q: "Can you move the sink, hob and boiler?",
+        a: "Usually yes, but it depends on drainage falls and the flue route. We confirm what can move and what should stay before the design is fixed, because relocating a soil stack costs far more than moving a water supply.",
+      },
+      {
+        q: "Do you fit kitchens supplied by other companies?",
+        a: "Yes — kitchens from Wren, Howdens, IKEA and others. We check the design against the actual room first: worktop runs, appliance gaps and service positions are where most supply-only problems originate.",
+      },
+    ],
   },
   {
     slug: "bathroom-renovations",
     number: "05",
     title: "Bathroom Renovations",
+    metaTitle: "Bathroom Renovations South London | Full Refits & Wet Rooms",
     short: "Waterproofed, well-detailed bathrooms and en-suites built to last.",
     description:
       "Complete bathroom installations with correct tanking, underfloor heating, considered tiling detail and reliable sanitaryware fitting.",
@@ -164,11 +250,30 @@ export const services: Service[] = [
       "Large-format tiling",
       "Sanitaryware and shower installation",
     ],
+    faqs: [
+      {
+        q: "How long does a bathroom renovation take?",
+        a: "2–3 weeks for a standard family bathroom, and 3–4 weeks for larger rooms with full tiling and bespoke joinery. Tanking and screed drying times are built into the programme rather than rushed.",
+      },
+      {
+        q: "How much does a bathroom renovation cost?",
+        a: "£6,000–£15,000 for a full bathroom and £5,000–£10,000 for an en-suite or shower room. Sanitaryware and tile choices are the biggest variables and are itemised separately in the quotation.",
+      },
+      {
+        q: "Do you tank behind the tiles?",
+        a: "Yes. Wet zones are tanked before tiling. It is the single most important part of a bathroom and the reason most leaks and failed grout lines happen. Tanking is included, not an optional extra.",
+      },
+      {
+        q: "Can you move the toilet and waste pipe?",
+        a: "Often, but it depends on the floor structure and drainage falls. If the waste cannot be re-routed within the floor, a macerator or raised floor build-up may be needed. We confirm this at survey stage.",
+      },
+    ],
   },
   {
     slug: "plumbing",
     number: "06",
     title: "Plumbing",
+    metaTitle: "Plumber in Croydon & South London | ARZ Construction",
     short: "Pipework, heating and bathroom plumbing carried out by experienced trades.",
     description:
       "Heating systems, radiators, boiler relocations, soil and waste alterations and full first-fix plumbing as part of a wider build or as standalone work.",
@@ -181,11 +286,30 @@ export const services: Service[] = [
       "Full first-fix pipework",
       "Leak investigation and repair",
     ],
+    faqs: [
+      {
+        q: "Can you relocate a boiler?",
+        a: "Yes, subject to the flue route and gas supply. Boiler relocations need a Gas Safe registered engineer and building control notification, both of which we arrange as part of the work.",
+      },
+      {
+        q: "Do you attend emergency leaks and heating failures?",
+        a: "Existing customers are prioritised, and we take on new repair work where the diary allows. For a genuine emergency, call rather than message — it is faster to assess the situation on the phone.",
+      },
+      {
+        q: "Do you provide certificates for the work?",
+        a: "Yes. Gas Safe notification for boiler and gas work, and building control notification where it is required. Certificates are handed over on completion.",
+      },
+      {
+        q: "Can you carry out first-fix plumbing only?",
+        a: "Yes. We regularly carry out first fix for other builders and for homeowners project-managing their own renovation, and can return for second fix and commissioning.",
+      },
+    ],
   },
   {
     slug: "electrical",
     number: "07",
     title: "Electrical",
+    metaTitle: "Electrician Croydon & South London | Rewires & Consumer Units",
     short: "Rewires, consumer units and lighting design, carried out by qualified electricians.",
     description:
       "Partial and full rewires, consumer unit upgrades, lighting circuits, data points and EV-ready provisions. Electrical work is carried out by qualified electricians, with test certificates provided for notifiable work.",
@@ -198,11 +322,30 @@ export const services: Service[] = [
       "Lighting and power circuit design",
       "Test certificates for notifiable work",
     ],
+    faqs: [
+      {
+        q: "Do you provide electrical test certificates?",
+        a: "Yes. Notifiable work is certified and notified to building control, and you receive the certificate on completion. Consumer unit upgrades, new circuits and bathroom electrics all require it.",
+      },
+      {
+        q: "Can you rewire a house while we live in it?",
+        a: "Usually yes, if the rewire is phased floor by floor and power is restored each evening. A full rewire of an empty property is faster and cheaper because trades are not working around furniture.",
+      },
+      {
+        q: "How much does a rewire cost?",
+        a: "A full rewire of a three-bedroom house typically runs £3,500–£6,000 depending on the number of points, floor construction and whether the property is occupied. Consumer unit upgrades start around £600–£900.",
+      },
+      {
+        q: "Do you install EV chargers and outside power?",
+        a: "Yes — EV charge points, garden supplies and external lighting, installed with the correct RCD and surge protection and the notification paperwork where required.",
+      },
+    ],
   },
   {
     slug: "roofing",
     number: "08",
     title: "Roofing & Guttering",
+    metaTitle: "Roofing in Croydon & South London | Repairs & New Roofs",
     short: "Roof repairs, full re-roofs, felt flat roofs and guttering replacement.",
     description:
       "We carry out pitched and flat roof repairs, full re-roofs in slate or tile, felt and EPDM flat roofs, fascias, soffits and guttering replacement. Roofing work is carried out by experienced trades and covered by our 12-month workmanship guarantee.",
@@ -217,11 +360,30 @@ export const services: Service[] = [
       "Ridge tiles and lead flashing",
       "12-month workmanship guarantee",
     ],
+    faqs: [
+      {
+        q: "How long does a new roof take?",
+        a: "A full re-roof on a typical semi-detached house is 2–3 weeks including scaffold, strip, felt and battens, tiling and leadwork. Weather can extend that, but the roof is made watertight at the end of each working day.",
+      },
+      {
+        q: "How much does a re-roof cost?",
+        a: "A full re-roof typically runs £6,000–£12,000 for a semi-detached house depending on tile type, roof size and access. Repairs and small sections are quoted individually after an inspection.",
+      },
+      {
+        q: "Do you repair or replace flat roofs?",
+        a: "Both. Felt and EPDM are repaired where the deck is sound and replaced where it is not. EPDM is the more durable option and carries a longer manufacturer guarantee than felt.",
+      },
+      {
+        q: "Is your roofing work guaranteed?",
+        a: "Roofing is covered by our 12-month workmanship guarantee, in addition to any manufacturer guarantee on materials. Any defect within that period is inspected and put right.",
+      },
+    ],
   },
   {
     slug: "plastering-tiling",
     number: "09",
     title: "Plastering & Tiling",
+    metaTitle: "Plastering & Tiling Croydon | Large-Format Tiling & Screeds",
     short: "Smooth plaster finishes, screeds and precision tiling throughout.",
     description:
       "From full room re-skims and dot-and-dab boarding to floor screeds and large-format tile installation, our finishing trades produce surfaces that are flat, true and ready to decorate. We also carry out specialist microcement and decorative plaster finishes.",
@@ -236,16 +398,35 @@ export const services: Service[] = [
       "Wet rooms and tanked shower enclosures",
       "Microcement and decorative finishes",
     ],
+    faqs: [
+      {
+        q: "How long does plaster take to dry before painting?",
+        a: "Fresh plaster needs 4–7 days before a mist coat, longer in cold or humid weather. Tiling can usually start sooner than painting, which is why the sequence matters on a tight programme.",
+      },
+      {
+        q: "Can you skim over Artex ceilings?",
+        a: "Often yes, if the Artex is sound and has been tested for asbestos where the age of the property makes that a risk. Loose or blown plaster is removed and boarded rather than skimmed over.",
+      },
+      {
+        q: "How much does plastering cost?",
+        a: "Re-skimming typically runs £18–£30 per m², and boarding plus skimming £35–£50 per m². Small rooms carry a minimum charge because of set-up and drying time.",
+      },
+      {
+        q: "Do you install large-format tiles?",
+        a: "Yes, including rectified porcelain and slab tiles with the correct adhesive, backer board and movement joints. Large-format tiles need a flat substrate, so the walls or floor are checked and levelled first.",
+      },
+    ],
   },
   {
     slug: "decorating",
     number: "10",
     title: "Decorating",
+    metaTitle: "Decorating in Croydon & South London | Interior & Exterior",
     short: "Interior and exterior painting and decorating, done properly.",
     description:
       "Our decorators prepare surfaces correctly before they pick up a brush — filling, sanding and priming as needed. The result is a finish that looks clean on completion and holds up over time. We cover interior painting, wallpapering and exterior masonry and timber.",
     metaDescription:
-      "Interior and exterior painting and decorating in Croydon and South London, properly prepared for a finish that lasts.",
+      "Interior and exterior painting and decorating in Croydon and South London, with proper surface preparation for a finish that holds up over time.",
     image: renovationImg,
     highlights: [
       "Interior painting — walls, ceilings and woodwork",
@@ -254,6 +435,24 @@ export const services: Service[] = [
       "Preparation, filling and priming",
       "Coving and cornice installation",
       "New build and refurbishment finishing",
+    ],
+    faqs: [
+      {
+        q: "Do you prepare surfaces or just paint?",
+        a: "Preparation is the bulk of the work. Filling, sanding, priming and any necessary stain blocking happen before paint. Skipping that is why cheap decorating fails within a year.",
+      },
+      {
+        q: "How much does decorating cost?",
+        a: "Interior painting typically runs £250–£450 per room for walls and ceilings, and £500–£800 including woodwork. Exterior masonry and timber is quoted per elevation.",
+      },
+      {
+        q: "Do you supply the paint?",
+        a: "Either way. Most clients choose their own colours and finishes; we advise on the right product for each surface and can supply trade-grade paint where it makes a difference.",
+      },
+      {
+        q: "Can you decorate after your own building work?",
+        a: "Yes, and it is usually cheaper to have the same team finish the job, because snagging and making good are handled before the decorators arrive instead of between two contractors.",
+      },
     ],
   },
 ];
@@ -280,6 +479,12 @@ export type SeoLandingPage = {
   localParagraphs?: { heading: string; text: string }[];
   localAreas?: string[];
   pricing?: { item: string; range: string }[];
+  /** Town pages are listed on /areas-we-cover and in the footer instead of
+   *  the "South London Specialists" menu, so the navigation stays readable. */
+  isTown?: boolean;
+  /** Places this page targets, used for the Service schema areaServed.
+   *  Defaults to Croydon / South London when omitted. */
+  areaServed?: string[];
 };
 
 export const seoLandingPages: SeoLandingPage[] = [
@@ -886,6 +1091,448 @@ export const seoLandingPages: SeoLandingPage[] = [
     ],
     relatedSlugs: ["bathroom-renovations", "plastering-tiling", "plumbing"],
   },
+  // ── Surrey & North Downs town pages ──────────────────────────────────
+  // Same template as the Croydon/Bromley pages. These target long-tail
+  // "loft conversion <town>" searches that the site already ranks for without
+  // a dedicated page.
+  {
+    slug: "loft-conversion-esher",
+    title: "Loft Conversion Esher",
+    metaTitle: "Loft Conversion Esher KT10 | Dormer & Hip-to-Gable Builders",
+    metaDescription:
+      "Loft conversions in Esher KT10 — dormer, hip-to-gable and rooflight builds with typical costs, Elmbridge planning guidance and a free itemised quotation.",
+    localParagraphs: [
+      {
+        heading: "Built for Esher's 1930s Semis and Edwardian Homes",
+        text: "Esher's housing stock is close to ideal for loft conversions. The 1930s semis around Esher Green, Douglas Road and the roads off Lammas Lane have the roof pitch and footprint for a hip-to-gable conversion or a rear dormer — the two builds that add the most usable headroom without touching the ridge line. The larger Edwardian and Victorian homes towards Claremont and Sandown Park generally support a loft that takes a double bedroom plus en-suite comfortably.",
+      },
+      {
+        heading: "Planning in Esher — Elmbridge Borough Council",
+        text: "Most loft conversions in Esher fall within permitted development: up to 40m³ of additional roof volume for terraced houses and 50m³ for semi-detached and detached homes, with no extension beyond the plane of the front roof slope. Parts of Esher sit in conservation areas or under Article 4 directions that remove those rights, and Elmbridge applies them street by street. We check your address against the council's constraints before you commit, prepare the drawings where a full application is needed and manage building control sign-off.",
+      },
+      {
+        heading: "What Your Esher Build Includes",
+        text: "Every ARZ loft conversion covers structural steelwork, the dormer or hip-to-gable build, a purpose-made staircase, insulation to current Part L standards, fire doors and alarms, first and second fix electrics and plumbing, plastering ready for decoration, and a written workmanship guarantee on completion. Party Wall notices for adjoining semis are served in the first week so the programme is not held up.",
+      },
+    ],
+    localAreas: ["Esher", "Claygate", "Hinchley Wood", "Thames Ditton", "Long Ditton", "Oxshott", "Cobham", "Hersham", "East Molesey", "West Molesey"],
+    pricing: [
+      { item: "Rooflight-only conversion", range: "£25,000 – £35,000" },
+      { item: "Rear dormer (semi-detached)", range: "£40,000 – £55,000" },
+      { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
+      { item: "Building regs drawings & sign-off", range: "Included" },
+    ],
+    eyebrow: "Esher & Elmbridge, Surrey",
+    heroHeading: "Loft Conversion Esher",
+    heroSubtitle:
+      "Add a bedroom and en-suite above your head in KT10 — loft conversions built by a team that checks Elmbridge's planning rules before you spend a penny.",
+    intro:
+      "A loft conversion is usually the cheapest way to add a genuine extra bedroom to an Esher home — no move, no stamp duty, no new mortgage. ARZ Construction builds dormer, hip-to-gable and rooflight conversions across Esher and the KT10 postcodes, working within permitted development wherever the property allows and handling the planning and party wall paperwork when it doesn't.",
+    image: loftImg,
+    highlights: [
+      "Dormer, hip-to-gable and Velux rooflight builds",
+      "Staircase design and joinery",
+      "En-suite bathrooms and storage joinery",
+      "Insulation and fire-safety compliance",
+      "Elmbridge planning and building regs handled",
+      "Structural engineer coordination included",
+    ],
+    faqs: [
+      {
+        q: "How much does a loft conversion cost in Esher?",
+        a: "Rooflight conversions typically start from around £25,000–£35,000. Dormer conversions range from £40,000–£55,000 and a hip-to-gable with rear dormer from £45,000–£65,000, depending on size and specification. Your Esher quote is itemised in writing after a free survey, so you can see exactly what is included.",
+      },
+      {
+        q: "Do I need planning permission for a loft conversion in Esher?",
+        a: "Most loft conversions fall within permitted development and do not need full planning permission. Exceptions include homes in conservation areas, listed buildings, Article 4 directions and builds that exceed the volume allowance. We check your specific address against Elmbridge Borough Council's constraints at the first visit.",
+      },
+      {
+        q: "How long does a loft conversion take in Esher?",
+        a: "A standard dormer loft conversion typically takes 8–12 weeks on site. Adding a hip-to-gable usually extends the programme by two to three weeks. Your written quotation includes a clear timeline for your scope of work.",
+      },
+      {
+        q: "Do I need a party wall agreement in Esher?",
+        a: "Dormer and hip-to-gable steelwork usually bears on the party wall, so the Party Wall etc. Act 1996 applies on most Esher semis. We serve the notices on your neighbours in the first week and manage the surveyor process as part of the job.",
+      },
+      {
+        q: "Will a loft conversion add value to my Esher home?",
+        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London and Surrey. An extra bedroom with en-suite is one of the highest-return home improvements available, and it avoids the cost of moving.",
+      },
+      {
+        q: "Do you work in Esher and the surrounding villages?",
+        a: "Yes — we build across Esher, Claygate, Hinchley Wood, Thames Ditton, Long Ditton, Oxshott and Cobham. If your postcode is KT10 or nearby, we can survey your property at no cost.",
+      },
+    ],
+    relatedSlugs: ["loft-conversions", "bathroom-renovations", "house-renovations"],
+    isTown: true,
+    areaServed: ["Esher", "Claygate", "Hinchley Wood", "Thames Ditton", "Oxshott", "Elmbridge", "Surrey"],
+  },
+  {
+    slug: "loft-conversion-cobham",
+    title: "Loft Conversion Cobham",
+    metaTitle: "Loft Conversion Cobham KT11 | Mansard & Dormer Loft Builders",
+    metaDescription:
+      "Loft conversions in Cobham KT11 — mansard, L-shaped and dormer builds for larger detached homes, Elmbridge planning handled, free itemised quotation.",
+    localParagraphs: [
+      {
+        heading: "Mansard and L-Shaped Conversions for Cobham's Larger Homes",
+        text: "Cobham's housing stock — the 1920s and 1930s detached and semi-detached homes around the High Street, Painshill and Fairmile — has the roof volume for conversions that add a master suite rather than just a bedroom. A mansard uses the full roof space and gives near-vertical walls; an L-shaped dormer works over a main roof and rear outrigger together. Both are common on KT11 homes and both need more design input than a standard dormer.",
+      },
+      {
+        heading: "Planning in Cobham — Elmbridge Borough Council",
+        text: "Permitted development allows up to 50m³ of additional roof volume on detached and semi-detached homes (40m³ on terraces), provided the roof does not extend beyond the front slope and no balcony or veranda is added. Mansards and larger schemes usually need a full householder application. Parts of Cobham sit in a conservation area or under Article 4 directions, so we check your exact address with Elmbridge before quoting and handle drawings and submission where planning is required.",
+      },
+      {
+        heading: "Loft and Extension as One Project",
+        text: "Many Cobham homeowners combine a loft conversion with a ground-floor extension. Running both as one project means one set of scaffolding, one programme and one project manager, rather than two contractors tripping over each other. We price the whole scope in a single itemised quotation so you can see how the costs split.",
+      },
+    ],
+    localAreas: ["Cobham", "Oxshott", "Stoke d'Abernon", "Downside", "Fairmile", "Effingham", "East Horsley", "Esher", "Walton-on-Thames", "Leatherhead"],
+    pricing: [
+      { item: "Rear dormer (semi-detached)", range: "£40,000 – £55,000" },
+      { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "L-shaped dormer", range: "Quoted after survey" },
+      { item: "Mansard loft conversion", range: "Quoted after survey" },
+      { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
+    ],
+    eyebrow: "Cobham & Elmbridge, Surrey",
+    heroHeading: "Loft Conversion Cobham",
+    heroSubtitle:
+      "Mansard, L-shaped and dormer loft conversions for Cobham's larger homes — designed around Elmbridge's planning rules, priced in one itemised quote.",
+    intro:
+      "Cobham homes tend to have the roof volume that makes a loft conversion genuinely generous — space for a master bedroom with dressing area and en-suite, not just a box room. ARZ Construction designs and builds loft conversions across Cobham and KT11, from straightforward rear dormers on the semis to mansard and L-shaped schemes on detached homes, with planning and party wall work managed in-house.",
+    image: extensionImg,
+    highlights: [
+      "Mansard, L-shaped dormer and hip-to-gable builds",
+      "Structural steelwork and roof alterations",
+      "Master suites, dressing areas and en-suites",
+      "Full householder planning applications",
+      "Loft and ground-floor extension as one project",
+      "Building regulations sign-off managed",
+    ],
+    faqs: [
+      {
+        q: "How much does a loft conversion cost in Cobham?",
+        a: "Rear dormers typically run £40,000–£55,000 and a hip-to-gable with rear dormer £45,000–£65,000. L-shaped and mansard conversions on larger detached homes depend on the roof volume and structural work involved, so they are quoted individually after a survey. Every quote is itemised in writing before work starts.",
+      },
+      {
+        q: "Do mansard loft conversions need planning permission in Cobham?",
+        a: "Usually yes. A mansard changes the roof shape beyond the permitted development limits, so it needs a householder application to Elmbridge Borough Council. We prepare the drawings and submit the application as part of the project.",
+      },
+      {
+        q: "Can you build a loft conversion and an extension together?",
+        a: "Yes, and many Cobham clients do. Combining both means one scaffold, one site team and one programme. The whole scope is priced in a single itemised quotation so you can see the cost of each element.",
+      },
+      {
+        q: "How long does a loft conversion take in Cobham?",
+        a: "A standard dormer takes 8–12 weeks on site. Mansard and L-shaped conversions typically take longer because of the roof alterations and usually the planning stage — your written quotation sets out the programme for your specific scope.",
+      },
+      {
+        q: "Do I need a party wall agreement in Cobham?",
+        a: "For semis and terraces, yes — the steelwork generally bears on the party wall. We serve the notices in the first week and coordinate with the party wall surveyor. Detached homes usually don't need one unless excavation is close to a boundary.",
+      },
+      {
+        q: "Do you cover the villages around Cobham?",
+        a: "Yes — we work across Cobham, Oxshott, Stoke d'Abernon, Downside, Effingham, East Horsley and the surrounding KT11 and KT postcodes.",
+      },
+    ],
+    relatedSlugs: ["loft-conversions", "extensions", "bathroom-renovations"],
+    isTown: true,
+    areaServed: ["Cobham", "Oxshott", "Stoke d'Abernon", "Effingham", "Elmbridge", "Surrey"],
+  },
+  {
+    slug: "loft-conversion-claygate",
+    title: "Loft Conversion Claygate",
+    metaTitle: "Loft Conversion Claygate KT10 | Dormer Loft Builders ARZ",
+    metaDescription:
+      "Dormer and hip-to-gable loft conversions in Claygate KT10 — Elmbridge planning and the village Neighbourhood Plan checked, free itemised quotation.",
+    localParagraphs: [
+      {
+        heading: "The Right Loft for Claygate's Village Semis",
+        text: "Claygate's 1930s semis are near-perfect loft stock: a rear dormer or hip-to-gable gives a full double bedroom and en-suite without eating into the garden, and the roof geometry on most roads off the High Street, Hare Lane and Common Road suits both. We survey the loft height and roof structure first, then recommend the build that gains the most usable space for the money rather than the one that is easiest to sell.",
+      },
+      {
+        heading: "Planning in Claygate — Elmbridge and the Neighbourhood Plan",
+        text: "Most Claygate loft conversions fall within permitted development, but two local layers matter: the village's Neighbourhood Plan sets design policies that some roads must follow, and parts of Claygate sit within a conservation area or an Article 4 direction that removes permitted development rights. We check your address against both as part of the free survey, and handle a full application where one is required.",
+      },
+      {
+        heading: "Working on Village Roads",
+        text: "Claygate's lanes are narrow and parking is limited, which affects scaffold placement and deliveries more than it affects the build itself. We plan access at survey stage — scaffold position, skip location and delivery windows — so the job does not stall on a morning when a lorry cannot get through.",
+      },
+    ],
+    localAreas: ["Claygate", "Esher", "Hinchley Wood", "Chessington", "Oxshott", "Thames Ditton", "Long Ditton", "Tolworth", "Surbiton", "Hook"],
+    pricing: [
+      { item: "Rooflight-only conversion", range: "£25,000 – £35,000" },
+      { item: "Rear dormer (semi-detached)", range: "£40,000 – £55,000" },
+      { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
+      { item: "Building regs drawings & sign-off", range: "Included" },
+    ],
+    eyebrow: "Claygate & Elmbridge, Surrey",
+    heroHeading: "Loft Conversion Claygate",
+    heroSubtitle:
+      "A bedroom and en-suite above the village — loft conversions in Claygate built around the Neighbourhood Plan and Elmbridge's planning rules.",
+    intro:
+      "Claygate homes are typically 1930s semis with roofs that convert beautifully — and because the village is compact, a loft is often the only way to add a bedroom without extending into a small garden. ARZ Construction builds dormer and hip-to-gable conversions across Claygate, checking the Neighbourhood Plan and Elmbridge's constraints before work is quoted.",
+    image: loftImg,
+    highlights: [
+      "Rear dormer and hip-to-gable builds",
+      "Neighbourhood Plan and conservation-area checks",
+      "Staircase design and joinery",
+      "En-suite bathrooms and eaves storage",
+      "Insulation and fire-safety compliance",
+      "Scaffold and access planning for village roads",
+    ],
+    faqs: [
+      {
+        q: "How much does a loft conversion cost in Claygate?",
+        a: "Rooflight conversions start from around £25,000–£35,000. A rear dormer on a typical village semi runs £40,000–£55,000 and a hip-to-gable with rear dormer £45,000–£65,000, depending on specification. You receive an itemised written quotation after a free survey.",
+      },
+      {
+        q: "Does Claygate's Neighbourhood Plan affect loft conversions?",
+        a: "It can. The Neighbourhood Plan sets local design policies that apply on some roads, and parts of the village are within a conservation area. We check your address against both before quoting, so there are no surprises once the build starts.",
+      },
+      {
+        q: "Do I need planning permission for a loft conversion in Claygate?",
+        a: "Most fall within permitted development — up to 50m³ of additional roof volume on semis and detached homes, 40m³ on terraces — provided the front roof slope is not extended. Conservation areas, Article 4 directions and listed buildings are the usual exceptions, and we confirm which applies to your address.",
+      },
+      {
+        q: "How long does a loft conversion take in Claygate?",
+        a: "A dormer or hip-to-gable typically takes 8–12 weeks on site, with hip-to-gable builds at the longer end. Your quotation includes the programme for your scope of work.",
+      },
+      {
+        q: "Can scaffolding be erected on a narrow Claygate road?",
+        a: "Yes — we assess access at survey stage and plan scaffold placement, skip position and delivery windows around the road. If a scaffold licence is needed from the council, we arrange it before the start date.",
+      },
+      {
+        q: "Do you cover Hinchley Wood and Chessington as well?",
+        a: "Yes — we work across Claygate, Esher, Hinchley Wood, Chessington, Oxshott, Thames Ditton, Long Ditton, Tolworth, Surbiton and Hook.",
+      },
+    ],
+    relatedSlugs: ["loft-conversions", "bathroom-renovations", "plastering-tiling"],
+    isTown: true,
+    areaServed: ["Claygate", "Hinchley Wood", "Chessington", "Esher", "Elmbridge", "Surrey"],
+  },
+  {
+    slug: "loft-conversion-walton-on-thames",
+    title: "Loft Conversion Walton-on-Thames",
+    metaTitle: "Loft Conversion Walton-on-Thames KT12 | Dormer & Hip-to-Gable",
+    metaDescription:
+      "Loft conversions in Walton-on-Thames KT12 — dormer, hip-to-gable and rooflight builds near the station, Elmbridge planning handled, free itemised quotation.",
+    localParagraphs: [
+      {
+        heading: "KT12 Housing Built for a Loft",
+        text: "Walton-on-Thames has two of the best loft-conversion profiles in Surrey. The Victorian and Edwardian terraces around the station and the High Street take a rear dormer cleanly, while the 1930s semis towards Hersham and Oatlands are ideal for a hip-to-gable that gains full-width headroom. Larger riverside and Oatlands detached homes often support a mansard. We survey the roof structure and head height first, then recommend what actually gains space.",
+      },
+      {
+        heading: "Planning in Walton — Elmbridge Borough Council",
+        text: "Most conversions qualify under permitted development: up to 50m³ of added roof volume on semis and detached homes, 40m³ on terraces, no extension beyond the front roof slope and obscured glazing on side windows. Oatlands and parts of the riverside sit in conservation areas, and some streets carry Article 4 directions that remove those rights. We check your address with Elmbridge before you commit and handle any application needed.",
+      },
+      {
+        heading: "The Commuter Maths",
+        text: "With Waterloo around 25 minutes away, an extra bedroom carries a clear premium in KT12 — buyers pay for space near the station. A loft conversion delivers that bedroom without the cost of moving: no stamp duty, no legal fees and no new mortgage at today's rates. We can walk you through what the finished space is likely to be worth on your road during the survey.",
+      },
+    ],
+    localAreas: ["Walton-on-Thames", "Hersham", "Oatlands", "Molesey", "Esher", "Cobham", "Weybridge", "Thames Ditton", "Sunbury", "Shepperton"],
+    pricing: [
+      { item: "Rooflight-only conversion", range: "£25,000 – £35,000" },
+      { item: "Rear dormer (terrace or semi)", range: "£40,000 – £55,000" },
+      { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
+      { item: "Party wall notices & awards", range: "Managed by ARZ" },
+    ],
+    eyebrow: "Walton-on-Thames & Elmbridge, Surrey",
+    heroHeading: "Loft Conversion Walton-on-Thames",
+    heroSubtitle:
+      "An extra bedroom near the station, without moving. Dormer and hip-to-gable loft conversions across KT12 with Elmbridge planning handled.",
+    intro:
+      "Walton-on-Thames terraces and 1930s semis convert well — and in a commuter town, the extra bedroom pays for itself at resale. ARZ Construction builds dormer, hip-to-gable and rooflight loft conversions across Walton, Hersham and Oatlands, serving the KT12 postcodes from first survey to final certificate.",
+    image: loftImg,
+    highlights: [
+      "Rear dormer and hip-to-gable builds",
+      "Loft conversions for Victorian terraces",
+      "Mansard options for larger detached homes",
+      "Staircase design and en-suite fit-out",
+      "Party wall notices for terraces and semis",
+      "Elmbridge planning and building regs handled",
+    ],
+    faqs: [
+      {
+        q: "How much does a loft conversion cost in Walton-on-Thames?",
+        a: "Rooflight conversions start around £25,000–£35,000. A rear dormer on a terrace or semi runs £40,000–£55,000 and a hip-to-gable with rear dormer £45,000–£65,000, depending on size and specification. Mansards on larger detached homes are quoted individually after a survey.",
+      },
+      {
+        q: "Will a loft conversion add value in Walton-on-Thames?",
+        a: "A well-finished loft typically adds 15–25% to a South London or Surrey property's value, and in KT12 the premium is reinforced by station access. An extra bedroom with en-suite is one of the highest-return improvements you can make.",
+      },
+      {
+        q: "Do terraces near Walton station need a party wall agreement?",
+        a: "Yes — mid-terraces and most semis require a Party Wall Award because the steelwork bears on the shared wall. We serve the notices in the first week and coordinate with the party wall surveyor so the programme holds.",
+      },
+      {
+        q: "How long does a loft conversion take in Walton-on-Thames?",
+        a: "A standard dormer takes 8–12 weeks on site. Hip-to-gable builds usually extend that by two to three weeks, and mansards depend on planning and roof alterations. Your quotation includes an indicative programme.",
+      },
+      {
+        q: "Do I need planning permission for a loft conversion in Walton-on-Thames?",
+        a: "Most fall under permitted development. Oatlands, parts of the riverside and streets with Article 4 directions are the exceptions and need a full application. We check your exact address with Elmbridge Borough Council at the first visit.",
+      },
+      {
+        q: "Do you cover Hersham and Oatlands?",
+        a: "Yes — we work across Walton-on-Thames, Hersham, Oatlands, Molesey, Thames Ditton, Esher, Cobham, Weybridge, Sunbury and Shepperton.",
+      },
+    ],
+    relatedSlugs: ["loft-conversions", "bathroom-renovations", "house-renovations"],
+    isTown: true,
+    areaServed: ["Walton-on-Thames", "Hersham", "Oatlands", "Molesey", "Elmbridge", "Surrey"],
+  },
+  {
+    slug: "loft-conversion-egham",
+    title: "Loft Conversion Egham",
+    metaTitle: "Loft Conversion Egham TW20 | Hip-to-Gable & Dormer Lofts",
+    metaDescription:
+      "Loft conversions in Egham TW20 — dormer and hip-to-gable builds on Victorian terraces and 1930s semis, Runnymede planning handled, free itemised quote.",
+    localParagraphs: [
+      {
+        heading: "Victorian Terraces and 1930s Semis Across TW20",
+        text: "Egham's stock splits neatly into two loft-conversion types. The Victorian terraces around the High Street and Station Road take a rear dormer well, with party wall awards being the main piece of process work. The 1930s semis towards Englefield Green and Thorpe are hip-to-gable territory — full-width headroom and a genuinely usable second bedroom rather than a converted attic.",
+      },
+      {
+        heading: "Planning in Egham — Runnymede Borough Council",
+        text: "Most loft conversions sit within permitted development: 50m³ of added roof volume on semis and detached homes, 40m³ on terraces, no extension beyond the front roof slope and obscured glazing on side-facing windows. Egham's High Street conservation area and any Article 4 directions change that picture, so we check your address with Runnymede before quoting and prepare a full application where needed.",
+      },
+      {
+        heading: "Terraces and Party Walls",
+        text: "Mid-terrace conversions need a Party Wall Award before work starts, which adds a few weeks at the front end if left late. We serve the notices in the first week of instruction, so the award runs alongside drawing and structural work rather than delaying the site start.",
+      },
+    ],
+    localAreas: ["Egham", "Englefield Green", "Thorpe", "Staines-upon-Thames", "Virginia Water", "Chertsey", "Addlestone", "Wraysbury", "Datchet", "Old Windsor"],
+    pricing: [
+      { item: "Rooflight-only conversion", range: "£25,000 – £35,000" },
+      { item: "Rear dormer (terrace or semi)", range: "£40,000 – £55,000" },
+      { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
+      { item: "Party wall notices & awards", range: "Managed by ARZ" },
+    ],
+    eyebrow: "Egham & Runnymede, Surrey",
+    heroHeading: "Loft Conversion Egham",
+    heroSubtitle:
+      "Dormer and hip-to-gable conversions on Egham's terraces and 1930s semis — Runnymede planning and party wall work handled end to end.",
+    intro:
+      "Egham converts beautifully: Victorian terraces near the High Street and 1930s semis out towards Englefield Green both take a loft well. With Royal Holloway and the M25 on the doorstep, an extra bedroom is easy to let or sell on. ARZ Construction builds dormer and hip-to-gable loft conversions across TW20, with Runnymede planning and party wall notices managed for you.",
+    image: loftImg,
+    highlights: [
+      "Rear dormer and hip-to-gable builds",
+      "Loft conversions for mid-terraces",
+      "Rental-standard en-suite bedrooms",
+      "Party wall notices and awards managed",
+      "Runnymede planning and building regs handled",
+      "Insulation and fire-safety compliance",
+    ],
+    faqs: [
+      {
+        q: "How much does a loft conversion cost in Egham?",
+        a: "Rooflight conversions start around £25,000–£35,000. A rear dormer on a terrace or semi runs £40,000–£55,000 and a hip-to-gable with rear dormer £45,000–£65,000, depending on specification. You receive an itemised written quotation after a free survey.",
+      },
+      {
+        q: "Can you convert a mid-terrace loft in Egham?",
+        a: "Yes — mid-terraces are among the most common Egham jobs. The party wall process adds a couple of weeks at the start if left late, so we serve notices in the first week of instruction and keep the site date on track.",
+      },
+      {
+        q: "Do I need planning permission in Egham?",
+        a: "Most loft conversions fall within permitted development. The High Street conservation area, listed buildings and Article 4 directions are the exceptions and need a full application. We check your address with Runnymede Borough Council before quoting.",
+      },
+      {
+        q: "How long does a loft conversion take in Egham?",
+        a: "A dormer or hip-to-gable build typically takes 8–12 weeks on site, depending on specification. Your quotation includes the programme and the inspection sequence for building control.",
+      },
+      {
+        q: "Can the loft be built to a rental standard?",
+        a: "Yes — landlords near the university often ask for a lettable en-suite bedroom. We build to that specification, including the fire separation, ventilation and finishes a rented room needs, and hand over the certificates at completion.",
+      },
+      {
+        q: "Do you cover Englefield Green and Thorpe?",
+        a: "Yes — we work across Egham, Englefield Green, Thorpe, Staines-upon-Thames, Virginia Water, Chertsey, Addlestone, Wraysbury, Datchet and Old Windsor.",
+      },
+    ],
+    relatedSlugs: ["loft-conversions", "bathroom-renovations", "electrical"],
+    isTown: true,
+    areaServed: ["Egham", "Englefield Green", "Thorpe", "Staines-upon-Thames", "Runnymede", "Surrey"],
+  },
+  {
+    slug: "loft-conversion-banstead",
+    title: "Loft Conversion Banstead",
+    metaTitle: "Loft Conversion Banstead SM7 | Dormer Loft Specialists",
+    metaDescription:
+      "Loft conversions in Banstead SM7 — dormer and hip-to-gable builds on 1930s semis, 20 minutes from our Croydon base, free itemised quotation.",
+    localParagraphs: [
+      {
+        heading: "The Same 1930s Semis We Build Across Croydon",
+        text: "Banstead's 1930s semis are the same housing stock we convert every week across Croydon and Purley — which means we already know how they are built, where the steels can go and what the lofts will and won't take. Most SM7 semis support a rear dormer or a hip-to-gable that delivers a full double bedroom with en-suite, without altering the front elevation.",
+      },
+      {
+        heading: "Planning in Banstead — Reigate & Banstead Borough Council",
+        text: "Most loft conversions fall within permitted development: up to 50m³ of additional roof volume on semis and detached homes, 40m³ on terraces, no extension beyond the plane of the front roof slope. Banstead Village is a conservation area, which removes permitted development rights on some streets, and the council applies Article 4 directions elsewhere. We check your address with Reigate & Banstead before work starts.",
+      },
+      {
+        heading: "Twenty Minutes From Our Base",
+        text: "Our base is in Croydon, roughly twenty minutes from Banstead. That matters in practice: the same team is on site every morning rather than a subcontractor travelling from another county, materials can be brought in at short notice, and the project manager can be there the same day if anything needs a decision on site.",
+      },
+    ],
+    localAreas: ["Banstead", "Nork", "Tadworth", "Walton on the Hill", "Belmont", "Cheam", "Sutton", "Epsom Downs", "Coulsdon", "Purley"],
+    pricing: [
+      { item: "Rooflight-only conversion", range: "£25,000 – £35,000" },
+      { item: "Rear dormer (semi-detached)", range: "£40,000 – £55,000" },
+      { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
+      { item: "Building regs drawings & sign-off", range: "Included" },
+    ],
+    eyebrow: "Banstead & Reigate & Banstead, Surrey",
+    heroHeading: "Loft Conversion Banstead",
+    heroSubtitle:
+      "Dormer and hip-to-gable loft conversions in SM7 — by a team based twenty minutes away that already knows Banstead's 1930s semis.",
+    intro:
+      "Banstead's 1930s semis are ideal for a loft conversion, and we are close enough that our own team is on site every morning rather than a subcontractor travelling in. ARZ Construction builds dormer and hip-to-gable conversions across Banstead, Nork and Walton on the Hill, with Reigate & Banstead planning and party wall work handled along the way.",
+    image: loftImg,
+    highlights: [
+      "Rear dormer and hip-to-gable builds",
+      "Banstead Village conservation-area checks",
+      "Staircase design and joinery",
+      "En-suite bathrooms and eaves storage",
+      "Insulation and fire-safety compliance",
+      "Own team on site daily — 20 minutes from base",
+    ],
+    faqs: [
+      {
+        q: "How much does a loft conversion cost in Banstead?",
+        a: "Rooflight conversions start around £25,000–£35,000. A rear dormer on a typical SM7 semi runs £40,000–£55,000 and a hip-to-gable with rear dormer £45,000–£65,000, depending on specification. Your quote is itemised in writing after a free survey.",
+      },
+      {
+        q: "How far is ARZ Construction from Banstead?",
+        a: "About twenty minutes from our Croydon base. Our own team travels in daily, so the job does not stall waiting on subcontracted trades from elsewhere, and the project manager can attend the same day if a decision is needed on site.",
+      },
+      {
+        q: "Do I need planning permission in Banstead?",
+        a: "Most lofts fall under permitted development. Banstead Village is a conservation area, which removes those rights on some streets, and the council applies Article 4 directions elsewhere. We check your exact address with Reigate & Banstead Borough Council before work starts.",
+      },
+      {
+        q: "How long does a loft conversion take in Banstead?",
+        a: "A standard dormer takes 8–12 weeks on site. Hip-to-gable builds usually extend that by two to three weeks. Your quotation includes the programme for your scope of work.",
+      },
+      {
+        q: "Do I need a party wall agreement in Banstead?",
+        a: "For semis and terraces, yes — the steelwork bears on the shared wall. We serve notices on your neighbours in the first week and coordinate with the party wall surveyor as part of the job.",
+      },
+      {
+        q: "Do you cover Nork and Tadworth?",
+        a: "Yes — we work across Banstead, Nork, Tadworth, Walton on the Hill, Belmont, Cheam, Sutton, Epsom Downs, Coulsdon and Purley.",
+      },
+    ],
+    relatedSlugs: ["loft-conversions", "bathroom-renovations", "house-renovations"],
+    isTown: true,
+    areaServed: ["Banstead", "Nork", "Tadworth", "Walton on the Hill", "Reigate & Banstead", "Surrey"],
+  },
 ];
 
 export type Project = {
@@ -1040,6 +1687,11 @@ export const areas = [
     places:
       "Bromley · Beckenham · Orpington · Sutton · Morden · Mitcham · Streatham · Norwood · Lewisham · Lambeth · Southwark · Wimbledon",
   },
+  {
+    name: "Surrey towns",
+    places:
+      "Esher · Cobham · Claygate · Walton-on-Thames · Egham · Banstead (KT10 · KT11 · KT12 · TW20 · SM7)",
+  },
   { name: "Wider London", places: "Other London boroughs by arrangement" },
   { name: "Surrounding counties", places: "Surrey · Kent · Essex and Hertfordshire borders by arrangement" },
 ];
@@ -1091,11 +1743,17 @@ export const navServices = services.map((s) => ({
   isSeoPage: false as const,
 }));
 
-// SEO landing pages appear separately in the mega-menu under "South London Specialists"
-export const navSeoServices = seoLandingPages.map((p) => ({
-  title: p.title,
-  description: p.heroSubtitle.slice(0, 70) + "…",
-  href: `/services/${p.slug}`,
-  slug: p.slug,
-  isSeoPage: true as const,
-}));
+// SEO landing pages appear separately in the mega-menu under "South London Specialists".
+// Town pages are excluded here — they are listed on /areas-we-cover and in the footer.
+export const navSeoServices = seoLandingPages
+  .filter((p) => !p.isTown)
+  .map((p) => ({
+    title: p.title,
+    description: p.heroSubtitle.slice(0, 70) + "…",
+    href: `/services/${p.slug}`,
+    slug: p.slug,
+    isSeoPage: true as const,
+  }));
+
+// Surrey & North Downs town pages, rendered as /services/<slug>.
+export const townLandingPages = seoLandingPages.filter((p) => p.isTown);

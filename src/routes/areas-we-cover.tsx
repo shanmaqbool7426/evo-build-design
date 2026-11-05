@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { MapPin } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, MapPin } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
-import { areas, company } from "@/data/site";
+import { areas, company, townLandingPages } from "@/data/site";
 import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/areas-we-cover")({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/areas-we-cover")({
     meta: buildSeoMeta({
       title: "Areas We Cover — Croydon, Bromley & South London | ARZ",
       description:
-        "Builders covering Croydon, Bromley, Sutton, Beckenham, Orpington and across South London — loft conversions, extensions and renovations by ARZ Construction.",
+        "Builders covering Croydon, Bromley and South London, plus Esher, Cobham, Claygate, Walton-on-Thames, Egham and Banstead. Loft conversions and extensions.",
       path: "/areas-we-cover",
     }),
     links: buildCanonical("/areas-we-cover"),
@@ -54,6 +54,34 @@ function AreasPage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={120}>
+            <div className="mt-14">
+              <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
+                Loft Conversions in Surrey &amp; North Downs Towns
+              </h2>
+              <p className="mt-3 max-w-2xl text-muted-foreground">
+                Dedicated pages for the towns we work in most, with local planning notes for
+                Elmbridge, Runnymede and Reigate &amp; Banstead.
+              </p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {townLandingPages.map((p) => (
+                  <Link
+                    key={p.slug}
+                    to="/services/$slug"
+                    params={{ slug: p.slug }}
+                    className="group flex items-center justify-between rounded-lg border border-border bg-white px-5 py-4 text-sm font-semibold shadow-card transition-all hover:-translate-y-0.5 hover:shadow-lift"
+                  >
+                    <span>{p.title}</span>
+                    <ArrowRight
+                      className="size-4 text-royal transition-transform group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </Reveal>
 
           <Reveal delay={200}>
             <div className="mt-14 rounded-xl border border-border bg-blue-tint p-8 text-center sm:p-12">
