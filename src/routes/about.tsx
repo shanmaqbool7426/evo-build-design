@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about")({
     meta: buildSeoMeta({
       title: "About ARZ Construction Ltd | Builders in Croydon & South London",
       description:
-        "ARZ Construction Ltd is a residential construction company working on extensions, loft conversions and renovations in Croydon and South London. Company No. 12858978.",
+        "ARZ Construction Ltd is a residential construction company working on extensions, loft conversions and renovations in Croydon and South London.",
       path: "/about",
     }),
     links: buildCanonical("/about"),

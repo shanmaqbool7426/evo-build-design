@@ -74,6 +74,7 @@ export type Service = {
   title: string;
   short: string;
   description: string;
+  metaDescription: string;
   image: string;
   highlights: string[];
 };
@@ -86,6 +87,8 @@ export const services: Service[] = [
     short: "Whole-house refurbishment delivered to a considered plan and a fixed schedule.",
     description:
       "From single rooms to complete property transformations, we manage structural work, first and second fix, plastering, decorating and finishing so your home is handed back ready to live in.",
+    metaDescription:
+      "Whole-house renovations in Croydon and South London — structural work, plastering and finishing managed to a fixed plan. Free, itemised quotations.",
     image: renovationImg,
     highlights: [
       "Structural alterations and steel beams",
@@ -101,6 +104,8 @@ export const services: Service[] = [
     short: "Rear, side return and wrap-around extensions that add genuine living space.",
     description:
       "We build rear, side return, wrap-around and two-storey extensions, handling groundworks, brickwork, steels, roofing and glazing with careful attention to how new space meets the existing house.",
+    metaDescription:
+      "Rear, side-return and wrap-around extensions in Croydon and South London, from groundworks to glazing. Free, itemised quotations from ARZ Construction.",
     image: extensionImg,
     highlights: [
       "Groundworks and foundations",
@@ -116,6 +121,8 @@ export const services: Service[] = [
     short: "Unused roof space converted into bright, usable bedrooms and studies.",
     description:
       "Dormer, hip-to-gable and rooflight conversions including staircases, insulation, fire protection and en-suites, built to current building regulations.",
+    metaDescription:
+      "Dormer, hip-to-gable and rooflight loft conversions in Croydon and South London, built to current regulations. Free, itemised quotations.",
     image: loftImg,
     highlights: [
       "Dormer and hip-to-gable builds",
@@ -131,6 +138,8 @@ export const services: Service[] = [
     short: "Kitchens installed with precise joinery, level worktops and clean services.",
     description:
       "We strip out, re-plan and install kitchens of any size, including plumbing, electrics, tiling, worktop templating and appliance fitting.",
+    metaDescription:
+      "Kitchen renovations in Croydon and South London — strip-out, plumbing, electrics, worktops and tiling. Free, itemised quotations.",
     image: kitchenImg,
     highlights: [
       "Layout planning and strip-out",
@@ -146,6 +155,8 @@ export const services: Service[] = [
     short: "Waterproofed, well-detailed bathrooms and en-suites built to last.",
     description:
       "Complete bathroom installations with correct tanking, underfloor heating, considered tiling detail and reliable sanitaryware fitting.",
+    metaDescription:
+      "Bathroom renovations in Croydon and South London with correct tanking, tiling and underfloor heating. Free, itemised quotations.",
     image: bathroomImg,
     highlights: [
       "Tanking and wet-room forming",
@@ -161,6 +172,8 @@ export const services: Service[] = [
     short: "Pipework, heating and bathroom plumbing carried out by experienced trades.",
     description:
       "Heating systems, radiators, boiler relocations, soil and waste alterations and full first-fix plumbing as part of a wider build or as standalone work.",
+    metaDescription:
+      "Heating, radiators, boiler relocations and first-fix plumbing in Croydon and South London, carried out by experienced trades.",
     image: bathroomImg,
     highlights: [
       "Heating and radiator installation",
@@ -176,6 +189,8 @@ export const services: Service[] = [
     short: "Rewires, consumer units and lighting design, carried out by qualified electricians.",
     description:
       "Partial and full rewires, consumer unit upgrades, lighting circuits, data points and EV-ready provisions. Electrical work is carried out by qualified electricians, with test certificates provided for notifiable work.",
+    metaDescription:
+      "Rewires, consumer unit upgrades and lighting circuits in Croydon and South London, by qualified electricians with test certificates provided.",
     image: interiorImg,
     highlights: [
       "Full and partial rewires",
@@ -191,6 +206,8 @@ export const services: Service[] = [
     short: "Roof repairs, full re-roofs, felt flat roofs and guttering replacement.",
     description:
       "We carry out pitched and flat roof repairs, full re-roofs in slate or tile, felt and EPDM flat roofs, fascias, soffits and guttering replacement. Roofing work is carried out by experienced trades and covered by our 12-month workmanship guarantee.",
+    metaDescription:
+      "Pitched and flat roof repairs, re-roofs and guttering replacement in Croydon and South London, covered by a 12-month workmanship guarantee.",
     image: siteImg,
     highlights: [
       "Pitched roof repairs and full re-roofs",
@@ -208,6 +225,8 @@ export const services: Service[] = [
     short: "Smooth plaster finishes, screeds and precision tiling throughout.",
     description:
       "From full room re-skims and dot-and-dab boarding to floor screeds and large-format tile installation, our finishing trades produce surfaces that are flat, true and ready to decorate. We also carry out specialist microcement and decorative plaster finishes.",
+    metaDescription:
+      "Plastering, floor screeds and large-format tiling in Croydon and South London, finished flat, true and ready to decorate.",
     image: interiorImg,
     highlights: [
       "Full room re-skims and new plaster",
@@ -225,6 +244,8 @@ export const services: Service[] = [
     short: "Interior and exterior painting and decorating, done properly.",
     description:
       "Our decorators prepare surfaces correctly before they pick up a brush — filling, sanding and priming as needed. The result is a finish that looks clean on completion and holds up over time. We cover interior painting, wallpapering and exterior masonry and timber.",
+    metaDescription:
+      "Interior and exterior painting and decorating in Croydon and South London, properly prepared for a finish that lasts.",
     image: renovationImg,
     highlights: [
       "Interior painting — walls, ceilings and woodwork",
@@ -478,7 +499,7 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "electrical-services",
     title: "Electrical Services",
-    metaTitle: "Electrician Croydon | Rewires & Consumer Units | ARZ Construction",
+    metaTitle: "Electrician Croydon | Rewires & Consumer Units | ARZ",
     metaDescription:
       "Electrical work in Croydon and South London — rewires, consumer units, lighting and EV-ready provisions. Request a free quotation from ARZ Construction.",
     localParagraphs: [
@@ -801,9 +822,9 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "bathroom-renovations-croydon",
     title: "Bathroom Renovations Croydon",
-    metaTitle: "Bathroom Renovations Croydon | Bathroom Fitters | ARZ Construction",
+    metaTitle: "Bathroom Renovations Croydon | Bathroom Fitters | ARZ",
     metaDescription:
-      "Bathroom renovations in Croydon — tanking, plumbing, tiling, underfloor heating and sanitaryware fitting. Request a free, itemised quotation from ARZ Construction.",
+      "Bathroom renovations in Croydon — tanking, plumbing, tiling, underfloor heating and sanitaryware fitting. Free, itemised quotations from ARZ Construction.",
     localParagraphs: [
       {
         heading: "Waterproofing First, Tiling Second",

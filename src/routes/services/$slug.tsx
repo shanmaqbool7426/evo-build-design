@@ -78,7 +78,7 @@ export const Route = createFileRoute("/services/$slug")({
     return {
       meta: buildSeoMeta({
         title: `${service.title} — ARZ Construction Ltd`,
-        description: service.description,
+        description: service.metaDescription,
         path: `/services/${service.slug}`,
         ogImage: service.image,
       }),
