@@ -79,11 +79,25 @@ const PREFERRED_SOURCE_DEEPLINK =
   "https://www.google.com/preferences/source?q=www.arzconstructionltd.com";
 
 function addPreferredSource() {
-  const api = (window as Window & { __arzPs?: { addPreferredSource?: () => void } }).__arzPs;
-  if (api?.addPreferredSource) {
-    api.addPreferredSource();
-    return;
+  const win = window as Window & {
+    __arzPs?: { addPreferredSource?: () => void };
+    dataLayer?: unknown[];
+  };
+
+  // Tracked so this can be judged on clicks rather than opinion: if nobody
+  // clicks it in a month, it gets deleted.
+  win.dataLayer?.push({ event: "preferred_source_click" });
+
+  try {
+    if (win.__arzPs?.addPreferredSource) {
+      win.__arzPs.addPreferredSource();
+      return;
+    }
+  } catch {
+    // Google rejects domains that aren't in its publisher list — fall through
+    // to the deeplink so the click still goes somewhere instead of dying.
   }
+
   window.open(PREFERRED_SOURCE_DEEPLINK, "_blank", "noopener,noreferrer");
 }
 
