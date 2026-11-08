@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, CalendarDays, Check, Clock, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, Clock, ShieldCheck, Star } from "lucide-react";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { ButtonAnchor, ButtonLink } from "@/components/Button";
@@ -51,11 +51,41 @@ export const Route = createFileRoute("/blog/$slug")({
             })),
           }),
         },
+        // Google's preferred-sources library, loaded in manual mode so it never
+        // rewrites the React tree (the default mode replaces a placeholder div,
+        // which tears nodes out from under React and breaks hydration).
+        // The inline queue runs before the async library, so the API is captured
+        // the moment it lands; the button in the article body drives the flow.
+        {
+          children:
+            "window.__arzPreferredSource=function(ps){try{ps.init({theme:'light'});window.__arzPs=ps;}catch(e){}};(self.PREFERRED_SOURCE=self.PREFERRED_SOURCE||[]).push(window.__arzPreferredSource);",
+        },
+        {
+          src: "https://news.google.com/swg/js/v1/publisher.js",
+          async: true,
+          "preferred-sources-control": "manual",
+        },
       ],
     };
   },
   component: BlogPostPage,
 });
+
+// ─── Google "preferred source" ────────────────────────────────────────────
+
+// Where the reader lands if the publisher library is blocked (ad blockers and
+// strict privacy extensions do block it) — Google's own deeplink flow.
+const PREFERRED_SOURCE_DEEPLINK =
+  "https://www.google.com/preferences/source?q=www.arzconstructionltd.com";
+
+function addPreferredSource() {
+  const api = (window as Window & { __arzPs?: { addPreferredSource?: () => void } }).__arzPs;
+  if (api?.addPreferredSource) {
+    api.addPreferredSource();
+    return;
+  }
+  window.open(PREFERRED_SOURCE_DEEPLINK, "_blank", "noopener,noreferrer");
+}
 
 // ─── Inline [anchor](/path) links → typed router Links ───────────────────────
 
@@ -289,6 +319,31 @@ function BlogPostPage() {
                 </div>
               </Reveal>
             )}
+
+            {/* GOOGLE PREFERRED SOURCE */}
+            {/* Shown at the end of the article, where the reader has finished.
+                Only guides load it — service pages stay free of the extra
+                third-party script, which is where Core Web Vitals matter most. */}
+            <Reveal delay={110}>
+              <div className="mt-10 rounded-xl border border-border bg-blue-tint p-6">
+                <p className="text-base font-extrabold text-navy">
+                  Want our guides to show up first in Google?
+                </p>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  Add ARZ Construction as a preferred source. Once you do, our building guides are
+                  more likely to be highlighted in Google's AI answers for the questions you ask
+                  about extensions, lofts and renovations.
+                </p>
+                <button
+                  type="button"
+                  onClick={addPreferredSource}
+                  className="mt-4 inline-flex items-center gap-2 rounded-md bg-navy px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-navy/90"
+                >
+                  <Star className="size-4" aria-hidden="true" />
+                  Add ARZ as a preferred source
+                </button>
+              </div>
+            </Reveal>
           </article>
 
           {/* SIDEBAR */}
