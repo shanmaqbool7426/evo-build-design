@@ -237,7 +237,7 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
             </Reveal>
 
             {page.localParagraphs?.map((p, i) => (
-              <Reveal key={p.heading} delay={40 + i * 20}>
+              <Reveal key={p.heading} delay={40 + i * 20} className="mt-8">
                 <h2 className="text-xl font-extrabold">{p.heading}</h2>
                 <p className="mt-4 text-base leading-relaxed text-muted-foreground">{p.text}</p>
               </Reveal>

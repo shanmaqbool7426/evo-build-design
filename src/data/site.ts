@@ -504,8 +504,20 @@ export const seoLandingPages: SeoLandingPage[] = [
         text: "Most loft conversions in Croydon fall under permitted development, allowing up to 40m³ of additional roof volume for terraced houses and 50m³ for semi-detached and detached homes. We prepare the drawings, serve Party Wall notices on your neighbours and manage the full building regulations sign-off with Croydon Council building control, so you never have to chase paperwork.",
       },
       {
-        heading: "What Your Build Includes",
+        // Deliberately not titled "What Your Build Includes" — the template
+        // already renders a "What's Included" list further down, and two
+        // near-identical headings made this read as the same list twice.
+        // This block is the trades; that list is the deliverables.
+        heading: "Structural, Electrical and Finishing Work",
         text: "Every ARZ loft conversion covers structural steelwork, the dormer or hip-to-gable build, a purpose-made staircase, insulation to current Part L standards, fire doors and alarms, first and second fix electrics and plumbing, plastering ready for decoration, and a written workmanship guarantee on completion.",
+      },
+      {
+        heading: "L-Shaped Loft Conversions in Croydon",
+        text: "Victorian and Edwardian terraces and semis across Thornton Heath, Norbury and South Croydon often have a rear outrigger, which is what makes an L-shaped conversion possible. The build covers both the main roof and the outrigger, so the new floor area is far larger than a single dormer — usually enough for a bedroom, a dressing area and an en-suite. It needs around 2.2m from finished floor to ridge, and the same permitted development volume limits apply: 40m³ on a terrace and 50m³ on a semi-detached or detached house. On terraces the outrigger wall is normally a party wall, so a Party Wall award is usually required.",
+      },
+      {
+        heading: "L-Shaped Layouts and What the Build Costs",
+        text: "The extra leg of the L is usually where the en-suite or walk-in wardrobe goes, leaving the main roof clear for a full-width bedroom. Popular finishes include joinery built into the eaves, underfloor heating in the bathroom and Velux rooflights to the front slope. Most L-shaped conversions in Croydon run £65,000–£85,000 depending on the size of the outrigger, the structural work involved and the specification — the figure is confirmed after we survey your roof, not before.",
       },
     ],
     localAreas: ["South Croydon", "Purley", "Shirley", "Sanderstead", "Thornton Heath", "Selhurst", "Addiscombe", "Coulsdon", "Kenley", "Norbury"],
@@ -559,6 +571,14 @@ export const seoLandingPages: SeoLandingPage[] = [
       {
         q: "Do you carry out attic conversions in South Croydon and Purley?",
         a: "Yes — we complete attic conversions across South Croydon, Purley, Shirley, Sanderstead and the wider CR postcodes. Most homes we survey are suitable; we confirm the head height (typically 2.2m or more) during your free visit.",
+      },
+      {
+        q: "How much does an L-shaped loft conversion cost in Croydon?",
+        a: "Most L-shaped conversions in Croydon run £65,000–£85,000, depending on the size of the rear outrigger, the structural work involved and the specification. The extra floor area over a standard dormer is what drives the cost up, so the figure is confirmed after a survey rather than quoted blind.",
+      },
+      {
+        q: "What should I do to prepare before a loft conversion starts?",
+        a: "Clear stored items out of the loft so the team has direct access and your belongings are protected, and confirm where materials can be delivered and where the skip will sit. For terraced and semi-detached homes it is worth telling neighbours the start date — we serve Party Wall notices where they are needed. Access, parking and working hours are confirmed in writing before work starts, so nothing is left to guesswork.",
       },
     ],
     relatedSlugs: ["loft-conversions", "house-renovations", "bathroom-renovations"],
