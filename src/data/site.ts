@@ -787,26 +787,52 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "loft-conversion-bromley",
     title: "Loft Conversion Bromley",
-    metaTitle: "Loft Conversion Bromley | Dormer & Hip-to-Gable Builders | ARZ",
+    metaTitle: "Loft Conversion Bromley | Dormer & Hip-to-Gable from £25,000",
     metaDescription:
-      "Dormer and hip-to-gable loft conversions across Bromley, Beckenham and Orpington with typical costs, local planning guidance and a free, itemised quotation.",
+      "Dormer, hip-to-gable and L-shaped loft conversions in Bromley — costs from £25,000, permitted development advice and 8–12 week builds. Free itemised quote.",
     localParagraphs: [
       {
-        heading: "Built for Bromley's Housing Stock",
-        text: "Bromley is one of the best boroughs in London for loft conversions: the 1930s semis of Shortlands, West Wickham and Petts Wood, the Edwardian homes of Beckenham and the detached properties of Chislehurst and Farnborough mostly have the head height and ridge line needed to convert under permitted development — no planning application required in most cases.",
+        heading: "Loft Conversions Built for Bromley's Housing Stock",
+        text: "Bromley is one of the strongest boroughs in London for loft conversions. The 1930s semis of Shortlands, West Wickham, Petts Wood and Bromley Common nearly all have hipped roofs with the ridge height needed for a hip-to-gable or rear dormer. The Edwardian and Victorian terraces around Beckenham and Bromley North suit rear dormers, while the larger detached homes in Chislehurst, Farnborough and Keston often take an L-shaped conversion or a mansard. At the first visit we measure the clear head height from ceiling joist to ridge — 2.2m is the usual minimum — check the roof structure and confirm which conversion type gives you the most usable space within permitted development.",
       },
       {
-        heading: "Managed From Drawings to Sign-Off",
-        text: "We prepare building regulations drawings, serve Party Wall notices on adjoining neighbours and book every inspection with Bromley Council building control. Your project manager coordinates the steelwork, dormer construction, staircase, insulation, fire safety and finishes so the loft is signed off, certificated and ready to use.",
+        heading: "Dormer Loft Conversions in Bromley",
+        text: "A rear dormer is the workhorse of Bromley loft conversions. The box dormer is built out from the rear roof slope, creating full-height vertical walls where there was previously only sloped ceiling — usually enough for a bedroom with a proper window wall and a separate bathroom or en-suite. It suits the straight gable-ended terraces and semis found across Bromley Common, Hayes and Bromley North. Dormers normally sit inside permitted development limits (40m³ of additional roof volume on a terrace, 50m³ on a semi-detached or detached house), provided nothing projects beyond the existing roof slope at the front of the house and materials match the existing roof. Typical Bromley dormer prices run £40,000–£55,000, and a standard build takes 8–12 weeks on site.",
+      },
+      {
+        heading: "Hip-to-Gable Loft Conversions in Bromley",
+        text: "Most Bromley 1930s semis have a hipped roof — the side slopes inwards, which steals usable width. A hip-to-gable conversion squares that slope off into a vertical gable wall, and it is usually combined with a rear dormer to create a full-width room. That combination adds the most usable space on a Bromley semi: the room gains both width and headroom, which is what makes a bedroom plus en-suite viable. Because the new steelwork normally bears on the party wall you share with your neighbour, the Party Wall etc. Act 1996 applies and notices must be served before work starts. Hip-to-gable with a rear dormer in Bromley typically runs £45,000–£65,000.",
+      },
+      {
+        heading: "L-Shaped Loft Conversions in Bromley",
+        text: "Victorian and Edwardian homes in Beckenham, Bromley North and Sundridge Park often have a rear outrigger or a lower roof at the back. An L-shaped conversion covers the main roof and the outrigger together, so the extra leg can hold an en-suite, a dressing area or a walk-in wardrobe while the main roof stays a full bedroom. It needs roughly 2.2m floor-to-ridge, and the permitted development volume limits apply to the combined additional volume. Most L-shaped conversions in Bromley run £65,000–£85,000 depending on the size of the outrigger and the structural work involved.",
+      },
+      {
+        heading: "Rooflight and Velux Loft Conversions in Bromley",
+        text: "If your roof already has good head height, a rooflight conversion may be the most efficient route. Nothing changes externally except the windows, so it normally sits outside planning altogether, the build is quicker and the price is lower — typically £25,000–£35,000 in Bromley, with four to six weeks on site. The trade-off is space: you keep the sloped ceilings and lose the headroom a dormer or hip-to-gable would create. We tell you honestly at the survey whether a rooflight will give you a usable room or whether a dormer is the only sensible option.",
+      },
+      {
+        heading: "Planning Permission and Permitted Development in Bromley",
+        text: "Most loft conversions in Bromley fall under permitted development: up to 40m³ of additional roof space on a terraced house, 50m³ on a semi-detached or detached home, no raising of the existing ridge line, nothing projecting beyond the existing roof slope at the front, and materials matching the house. Three things commonly take a Bromley project outside those rights. Conservation areas are the big one — the borough has dozens, including Chislehurst, Bickley, Sundridge Park, Elmfield and Hayes Village, and in those areas permitted development for roof alterations is restricted, so most visible roofline changes need a full application to Bromley Council. Flats and maisonettes have no permitted development rights at all, and anything exceeding the volume limits needs an application too. We assess the route at the first visit, prepare the drawings and handle the application — house applications are usually determined within about eight weeks. Even where permitted development applies, we recommend a Lawful Development Certificate: it is formal confirmation that the conversion is lawful and a useful document when you sell.",
+      },
+      {
+        heading: "Building Regulations, Party Walls and Sign-Off",
+        text: "Planning and building regulations are separate questions, and building regulations apply to every loft conversion whether or not planning permission is needed. They cover the structural design of the floor and roof alterations, fire safety (including protected escape routes, fire doors and alarms), insulation to current Part L standards, ventilation and the geometry of the new staircase. Structural engineer calculations are coordinated by us and included in the quotation. Where steelwork bears into a shared wall — normal on Bromley's semis and terraces — the Party Wall etc. Act 1996 requires notice to your neighbour, served at least two months before work starts, and either an agreement or a surveyor appointment. We serve the notices, coordinate the surveyor and manage the full building control process through to the completion certificate, which you receive at handover with your workmanship guarantee.",
+      },
+      {
+        heading: "How a Bromley Loft Build Runs, Week by Week",
+        text: "A typical Bromley dormer or hip-to-gable build follows the same order. Before scaffold goes up we finalise drawings, structural calculations and Party Wall notices, and confirm scaffold and skip positioning with you in writing. Weeks 1–2: scaffold erected, roof opened up and structural steelwork installed. Weeks 3–5: dormer or gable shell built, roof weathered and windows fitted, so the loft is watertight and insulated from the weather. Weeks 6–7: first-fix electrics and plumbing, insulation and the staircase installed. Weeks 8–9: plastering and second fix. Weeks 10–12: bathroom tiling, decoration, building control's final inspection and handover with certificates. You stay in the house throughout: the structural work happens from the scaffold and roof, the breakthrough into the landing comes late in the programme, and floors and stairs are protected while we work. Your project manager gives you a weekly update against the written programme.",
       },
     ],
-    localAreas: ["Beckenham", "Shortlands", "Orpington", "Chislehurst", "Petts Wood", "West Wickham", "Hayes", "Bromley Common", "Bickley", "Farnborough"],
+    localAreas: ["Beckenham", "Shortlands", "Orpington", "Chislehurst", "Petts Wood", "West Wickham", "Hayes", "Bromley Common", "Bickley", "Farnborough", "Sundridge Park", "Elmfield", "Keston", "Bromley North"],
     pricing: [
       { item: "Rooflight-only conversion", range: "£25,000 – £35,000" },
       { item: "Rear dormer (semi-detached)", range: "£40,000 – £55,000" },
       { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "L-shaped conversion (with outrigger)", range: "£65,000 – £85,000" },
       { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
-      { item: "Building regs drawings & sign-off", range: "Included" },
+      { item: "Building regs drawings, calcs & sign-off", range: "Included" },
+      { item: "Party Wall notices & surveyor coordination", range: "Included" },
     ],
     eyebrow: "Bromley & South London",
     heroHeading: "Loft Conversion Bromley",
@@ -816,33 +842,63 @@ export const seoLandingPages: SeoLandingPage[] = [
       "Bromley's mix of Edwardian semis, 1930s suburban homes and larger detached properties makes it one of South London's best boroughs for loft conversions — most have the roof pitch and head height to convert without major structural work. ARZ Construction has completed dormer, hip-to-gable and rooflight conversions across Bromley, Shortlands, Beckenham and Orpington, working within permitted development rights wherever possible to keep your project moving fast.",
     image: loftImg,
     highlights: [
-      "Dormer, hip-to-gable and Velux rooflight builds",
+      "Dormer, hip-to-gable, L-shaped and rooflight builds",
+      "Structural steelwork and engineer's calculations",
       "Staircase design and joinery",
       "En-suite bathrooms and storage joinery",
       "Insulation and fire-safety compliance",
       "Building regulations drawings and sign-off",
-      "Structural engineer coordination included",
+      "Party Wall notices and neighbour liaison",
+      "Written workmanship guarantee at handover",
     ],
     faqs: [
       {
         q: "Do I need planning permission for a loft conversion in Bromley?",
-        a: "Most loft conversions fall within permitted development rights and do not need full planning permission. Exceptions include properties in one of Bromley's conservation areas, listed buildings, or builds that exceed the permitted volume allowance. We assess your specific property on the initial visit.",
+        a: "Most loft conversions in Bromley fall within permitted development rights — up to 40m³ of additional roof space on a terrace, 50m³ on a semi-detached or detached house — and do not need a full planning application. Exceptions include properties in one of Bromley's conservation areas, listed buildings, flats and maisonettes, or builds that exceed the permitted volume allowance. We assess your specific property on the initial visit.",
       },
       {
-        q: "How long does a loft conversion take in Bromley?",
-        a: "A standard dormer loft conversion typically takes 8–12 weeks from start on site. The programme depends on the size and complexity of the build — your written quotation will include a clear timeline.",
+        q: "My house is in a Bromley conservation area — can I still convert the loft?",
+        a: "Yes, but expect a full planning application rather than permitted development. In conservation areas such as Chislehurst, Bickley, Sundridge Park and Elmfield, permitted development rights for roof alterations are restricted, so most visible roofline changes need consent from Bromley Council. We prepare the drawings and planning statement, submit the application and manage the process — house applications are usually determined within about eight weeks.",
       },
       {
         q: "How much does a loft conversion cost in Bromley?",
-        a: "Rooflight conversions typically start from around £25,000–£35,000. Dormer conversions range from £40,000–£65,000+ depending on size and specification. We provide an itemised written quotation before any work starts, so you can see exactly what is included.",
+        a: "Rooflight conversions typically start from around £25,000–£35,000. Rear dormer conversions range from £40,000–£55,000, a hip-to-gable with rear dormer £45,000–£65,000, and an L-shaped conversion £65,000–£85,000 depending on size and specification. We provide an itemised written quotation before any work starts, so you can see exactly what is included.",
       },
       {
-        q: "Will my loft conversion add value to my Bromley home?",
-        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London, and Bromley's strong family-home market means an extra bedroom or en-suite is especially sought after by buyers.",
+        q: "How much is a loft conversion per square metre in Bromley?",
+        a: "Budget roughly £2,000–£3,000 per m² of new floor area depending on the conversion type and finish. As a worked example, a £45,000 hip-to-gable dormer creating 20m² of usable space works out around £2,250 per m². The rate drops slightly on larger conversions because the fixed costs — scaffold, steelwork design, building control — spread over more space.",
+      },
+      {
+        q: "How long does a loft conversion take in Bromley?",
+        a: "A standard dormer or hip-to-gable conversion typically takes 8–12 weeks from start on site, and a rooflight conversion four to six weeks. If a full planning application is needed, add around eight weeks before scaffold can go up. Your written quotation includes a clear programme, and your project manager reports progress against it weekly.",
+      },
+      {
+        q: "Will I have to move out during the build?",
+        a: "No. The structural work — opening the roof, steelwork, dormer or gable construction — happens from the scaffold and the roof void, and the breakthrough into the landing is one of the last major steps. Floors and stairs are protected, dust screens are fitted and working hours are agreed in writing before work starts, so most Bromley families stay at home throughout.",
       },
       {
         q: "Can you build a loft conversion on a semi-detached house in Bromley?",
-        a: "Yes. Bromley's many 1930s semi-detached properties are ideal for hip-to-gable or dormer conversions. We handle all Party Wall Agreement notices as part of our service.",
+        a: "Yes — Bromley's 1930s semi-detached homes are ideal for hip-to-gable or dormer conversions. Because the steelwork usually bears into the shared party wall, the Party Wall etc. Act 1996 applies: we serve the notices on your neighbour at least two months before work starts and coordinate the surveyor where an award is needed.",
+      },
+      {
+        q: "Do I need a structural engineer for a loft conversion?",
+        a: "Yes for any dormer, hip-to-gable or L-shaped conversion, because the floor and roof structure are being altered. The engineer's calculations are coordinated by us and included in the quotation. Rooflight-only conversions sometimes still need checked joists depending on the existing ceiling structure, which we confirm at the survey.",
+      },
+      {
+        q: "Do you handle building control?",
+        a: "Yes. We prepare the building regulations drawings, book each inspection with Bromley Council building control, attend on your behalf and hand over the completion certificate at the end of the project. Regulations cover structure, fire safety and escape routes, insulation, ventilation and the staircase.",
+      },
+      {
+        q: "What warranty do you provide?",
+        a: "You receive a written workmanship guarantee at handover together with the building control completion certificate. Structural work is designed and calculated by a structural engineer, and all electrical work is installed and certified by a qualified electrician in line with Part P requirements.",
+      },
+      {
+        q: "Will my loft conversion add value to my Bromley home?",
+        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London, and Bromley's strong family-home market means an extra bedroom or en-suite is especially sought after by buyers. You also avoid stamp duty, agent fees and legal costs on two transactions.",
+      },
+      {
+        q: "What if my loft is too low to convert?",
+        a: "2.2m of clear head height from floor to ridge is the usual minimum for a room you can stand up in. If your loft falls short, options include raising the ridge (which needs planning permission) or, on some homes, no conversion being sensible at all. We measure it at the free survey and tell you honestly whether a viable conversion exists.",
       },
     ],
     relatedSlugs: ["loft-conversions", "house-renovations", "bathroom-renovations"],
@@ -850,26 +906,52 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "house-extension-bromley",
     title: "House Extension Bromley",
-    metaTitle: "House Extension Bromley | Rear & Wrap-Around Builders | ARZ",
+    metaTitle: "House Extensions Bromley | Rear & Wrap-Around Builders | ARZ",
     metaDescription:
-      "Rear, side-return and wrap-around extensions across Bromley, Beckenham and Orpington. One team, one contract, itemised written quotation.",
+      "Rear, side-return, wrap-around and two-storey house extensions across Bromley and Beckenham — typical 2026 costs, planning guidance and fixed written quotes.",
     localParagraphs: [
       {
-        heading: "Extensions Across the Bromley Borough",
-        text: "Bromley's larger plots make it ideal for extensions: wrap-around kitchen-diners in Beckenham, double-storey additions in Orpington and side extensions on the wide roads of Petts Wood and Bickley. We manage every trade under one contract — groundworks through to final decoration — with an itemised quotation agreed in writing before work starts.",
+        heading: "Extensions Built for Bromley's Plots and Homes",
+        text: "Bromley's larger plots make it one of South London's best boroughs for house extensions. The wide roads and generous gardens of Petts Wood, Bickley and West Wickham suit side and wrap-around builds; the Edwardian and Victorian terraces around Beckenham and Bromley North take classic side-return kitchen-diners; and the detached homes of Chislehurst, Farnborough and Keston regularly accommodate two-storey additions. Because the plots are bigger, most Bromley extensions can be planned as one continuous project — groundworks, structure, roof, glazing, services and finishes under a single contract, with one project manager accountable from survey to handover.",
       },
       {
-        heading: "Planning in Bromley",
-        text: "Many single-storey extensions in Bromley qualify for permitted development; two-storey builds and homes near the borough's conservation areas — Chislehurst, Elmstead and parts of Beckenham — usually need a full application to Bromley Council. We assess your property at the first visit, advise the realistic route and handle all drawings, applications and Party Wall notices.",
+        heading: "Rear Extensions",
+        text: "A single-storey rear extension is the most common way to gain a kitchen-diner in Bromley. Under permitted development you can typically extend up to 3m on an attached house and 4m on a detached one without prior approval, or up to 6m and 8m respectively through the neighbour consultation scheme, provided the build stays under 4m high and materials match the existing house. Beyond those limits, or on a boundary with a neighbour's window, you need planning permission. A single-storey rear extension in Bromley typically costs £1,800–£2,500 per m², and a 25m² kitchen-diner usually lands between £45,000 and £65,000 fully finished, including bifold doors and a flat-roof lantern or rooflights.",
+      },
+      {
+        heading: "Side-Return and Side Extensions",
+        text: "On Beckenham and Bromley North terraces, the side return is often the cheapest way to transform a narrow galley kitchen — a slim extension down the side path, usually 1–2m wide, turning two cramped rooms into one usable kitchen-diner. Permitted development allows single-storey side extensions up to 4m high, as long as the extension is no more than half the width of the original house; anything wider, or two-storey, needs planning permission. On Bromley's wide plots, a full side extension is also a common way to add a utility room, downstairs shower room or a garage conversion link — typically £40,000–£60,000 depending on width and services.",
+      },
+      {
+        heading: "Wrap-Around Extensions",
+        text: "A wrap-around extension combines a rear extension with a side return, wrapping around the corner of the house to create one large open-plan kitchen-living space with garden views on two sides. It is the single highest-impact extension available on a Bromley semi or detached home, and on many properties it still falls within permitted development provided the combined footprint stays inside the limits. The extra steelwork, roof junctions and drainage alterations are what push the cost above a simple rear extension — most wrap-arounds in Bromley run £60,000–£90,000. We price the steels accurately at survey stage rather than discovering them mid-build.",
+      },
+      {
+        heading: "Two-Storey Extensions",
+        text: "A two-storey extension adds a bedroom, bathroom or study above the new ground-floor space — the best value route when you need both living space and an extra bedroom without moving. Two-storey extensions normally need full planning permission in Bromley, including a design that respects the street scene and matches the existing brickwork and roof. Costs typically run £70,000–£110,000 depending on the footprint, the number of new openings and the specification. Structurally they are more involved: the upper floor needs its own beams and floor structure, the roof has to tie into the existing house, and the foundation design has to carry two storeys.",
+      },
+      {
+        heading: "Planning Permission and Permitted Development in Bromley",
+        text: "Most single-storey rear and side extensions in Bromley can be built under permitted development, subject to the depth, height, width and materials limits above, and to the house not being a flat or maisonette. Two-storey extensions, extensions that exceed the limits, and anything inside one of the borough's conservation areas — Chislehurst, Bickley, Sundridge Park, Elmfield and parts of Beckenham among them — need a full planning application to Bromley Council. In conservation areas the design has to respect the character of the area, which usually means matching brickwork, window proportions and roof materials. We prepare the drawings, submit the application and manage the process; house applications are usually determined within about eight weeks. As with lofts, we recommend a Lawful Development Certificate where the build relies on permitted development, because it proves the extension is lawful when you come to sell.",
+      },
+      {
+        heading: "Foundations, Building Regulations and Party Walls",
+        text: "Building regulations apply to every extension regardless of planning, and they are where cheap quotes usually hide their gaps. They cover the foundation design and depth, the damp-proof course and membrane, structural steelwork and lintels, roof structure and insulation, drainage alterations, ventilation, and the electrical and plumbing installations. We coordinate the structural engineer and book each inspection with Bromley Council building control through to the completion certificate. Where the new foundations run within 3m of a neighbour's structure — or 6m where they go deeper than the neighbour's foundations — the Party Wall etc. Act 1996 requires notice, served at least two months before work starts. The same applies to work on a shared boundary wall. We serve the notices and coordinate the surveyor where an award is needed.",
+      },
+      {
+        heading: "How the Build Runs: Groundworks to Handover",
+        text: "A single-storey extension in Bromley typically runs 12–16 weeks on site; a two-storey extension 16–22 weeks. Weeks 1–2: site set-up, protection, demolition of the rear wall or existing structures and excavation for foundations. Weeks 3–4: foundations poured, oversite and drainage alterations, building control inspection. Weeks 5–8: brickwork and blockwork, structural steelwork and lintels, roof structure and covering. Weeks 9–10: bifold doors, windows and rooflights fitted, making the extension weather-tight. Weeks 11–13: first fix electrics and plumbing, insulation, plastering. Weeks 14–16: kitchen fit, second fix, tiling, decoration, snagging and handover with certificates. You get a written programme before work starts, a weekly update from your project manager, dust screens and floor protection, and staged payments against completed milestones, so you always know what stage your money is buying.",
       },
     ],
-    localAreas: ["Beckenham", "Shortlands", "Orpington", "Chislehurst", "Petts Wood", "West Wickham", "Hayes", "Bickley", "Bromley Common", "Elmstead"],
+    localAreas: ["Beckenham", "Shortlands", "Orpington", "Chislehurst", "Petts Wood", "West Wickham", "Hayes", "Bickley", "Bromley Common", "Elmstead", "Sundridge Park", "Farnborough", "Keston", "Bromley North"],
     pricing: [
       { item: "Single-storey rear extension", range: "£1,800 – £2,500 per m²" },
       { item: "25m² kitchen-diner extension", range: "£45,000 – £65,000" },
+      { item: "Side-return extension", range: "£40,000 – £60,000" },
       { item: "Wrap-around extension", range: "£60,000 – £90,000" },
       { item: "Double-storey extension", range: "£70,000 – £110,000" },
       { item: "Planning & building regs handling", range: "Included" },
+      { item: "Structural steel design & calculations", range: "Included" },
     ],
     eyebrow: "Bromley & South London",
     heroHeading: "House Extension Bromley",
@@ -882,30 +964,60 @@ export const seoLandingPages: SeoLandingPage[] = [
       "Rear, side-return and wrap-around extensions",
       "Single and double-storey builds",
       "Groundworks and structural steelwork",
-      "Brickwork matched to the original house",
+      "Brickwork and roof materials matched to the original house",
       "Bifold doors and flat roof rooflights",
+      "Building regulations and Building Control sign-off",
+      "Party Wall notices and neighbour liaison",
       "Full project management, start to finish",
     ],
     faqs: [
       {
         q: "Do I need planning permission for a house extension in Bromley?",
-        a: "Many single-storey rear extensions fall under permitted development and do not require a full planning application. Side extensions, two-storey extensions and builds in one of Bromley's conservation areas typically do need permission. We advise you clearly at the first visit.",
+        a: "Many single-storey rear extensions in Bromley fall under permitted development — up to 3m on an attached house and 4m on a detached one without prior approval, or 6m and 8m through the neighbour consultation scheme. Side extensions are limited to half the width of the original house. Two-storey extensions, anything exceeding those limits, and builds in Bromley's conservation areas typically need planning permission. We advise you clearly at the first visit.",
       },
       {
         q: "How much does a house extension cost in Bromley?",
-        a: "A single-storey rear extension in South London typically costs between £1,800 and £2,500 per m², depending on specification. A 25m² kitchen extension might range from £45,000 to £65,000 fully finished. We provide detailed, itemised quotes.",
+        a: "A single-storey rear extension in South London typically costs between £1,800 and £2,500 per m², depending on specification. A 25m² kitchen extension might range from £45,000 to £65,000 fully finished, a wrap-around from £60,000 to £90,000, and a two-storey extension from £70,000 to £110,000. We provide detailed, itemised quotes.",
       },
       {
         q: "How long does a house extension take to build?",
-        a: "A single-storey extension typically takes 12–16 weeks on site. Two-storey extensions are usually 16–22 weeks. Your quotation includes an indicative programme from start to handover.",
+        a: "A single-storey extension typically takes 12–16 weeks on site. Two-storey extensions are usually 16–22 weeks. If planning permission is required, add around eight weeks for the application before work can start. Your quotation includes an indicative programme from start to handover, and your project manager reports against it weekly.",
       },
       {
         q: "Can you match my existing brickwork?",
-        a: "Yes. We source bricks to match your existing house, including reclaimed stock where needed. Matching the original is important for both aesthetics and planning compliance, and we take it seriously.",
+        a: "Yes. We source bricks to match your existing house, including reclaimed stock where needed, and match mortar colour and pointing style. Matching the original is important for both aesthetics and planning compliance — particularly in conservation areas, where planners will expect the extension to read as a later addition that respects the original building.",
       },
       {
         q: "What is a Party Wall Agreement and do I need one?",
-        a: "If your extension is within 3–6 metres of a neighbour's property or on the boundary, the Party Wall Act 1996 requires you to serve notice. We handle all Party Wall notices and can recommend a qualified surveyor where an agreement is needed.",
+        a: "If your extension is within 3m of a neighbour's structure — or 6m if your foundations go deeper than theirs — or works on a shared boundary wall, the Party Wall etc. Act 1996 requires you to serve notice at least two months before work starts. We serve the notices and can recommend a qualified surveyor where an award is needed.",
+      },
+      {
+        q: "What is a wrap-around extension?",
+        a: "A wrap-around extension combines a rear extension with a side return, wrapping around the corner of your home to create one large open-plan kitchen-diner. On many Bromley semis it can be built under permitted development. It costs more than a simple rear extension due to the additional steelwork, roof junctions and drainage alterations — typically £60,000–£90,000.",
+      },
+      {
+        q: "Do I need an architect for my extension?",
+        a: "Not necessarily. We prepare the design and building regulations drawings in-house, and coordinate a structural engineer for the steelwork and foundation design. If your project needs full planning permission and you would like a wider choice of design options, we are happy to work with an architect you appoint — we will give you a clear brief and coordinate with them.",
+      },
+      {
+        q: "Can I stay in my house during an extension build?",
+        a: "Yes — most clients do. A rear or wrap-around kitchen extension means your kitchen may be out of use for part of the programme, so many families set up a temporary kitchen in another room. Dust screens, floor protection and agreed working hours keep disruption contained, and the roof and glazing go on early so the house is weather-tight before the internal work begins.",
+      },
+      {
+        q: "Do you handle building regulations?",
+        a: "Yes. We prepare the building regulations drawings, coordinate structural calculations, book every inspection with Bromley Council building control, attend on your behalf and hand over the completion certificate. Regulations cover foundations, damp-proofing, structure, insulation, drainage, ventilation and electrical work.",
+      },
+      {
+        q: "Can a side extension be two-storey?",
+        a: "Yes, but a two-storey side extension needs planning permission — permitted development only covers single-storey side extensions up to 4m high and no more than half the width of the original house. Two-storey side extensions are also held to a stricter design standard by planners, particularly on corner plots and in conservation areas.",
+      },
+      {
+        q: "What about drainage and manholes?",
+        a: "Drainage is one of the details cheap quotes omit. If a manhole or drain run falls under the new footprint, it may need relocating or building over with a sealed cover, and any new connection has to be inspected by building control. We survey the drainage at the start, include any necessary alterations in the written quote and manage the inspection.",
+      },
+      {
+        q: "Do you build house extensions outside Bromley?",
+        a: "Yes. As well as all of Bromley, we build extensions across Croydon, Purley, Coulsdon, Beckenham, Orpington and South London, plus the Surrey-border towns. If you are within roughly 15 miles of Croydon, we cover your property.",
       },
     ],
     relatedSlugs: ["extensions", "house-renovations", "kitchen-renovations"],
