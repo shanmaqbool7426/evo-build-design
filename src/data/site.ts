@@ -491,41 +491,51 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "loft-conversion-croydon",
     title: "Loft Conversion Croydon",
-    metaTitle: "Loft Conversion Croydon | Dormer & Hip-to-Gable Builders | ARZ",
+    metaTitle: "Loft Conversion Croydon | Dormer & Hip-to-Gable from £25,000",
     metaDescription:
-      "Loft conversions in Croydon — dormer, hip-to-gable and rooflight builds with typical costs, planning guidance and a free, itemised quotation.",
+      "Dormer, hip-to-gable and L-shaped loft conversions in Croydon — costs from £25,000, permitted development advice and 8–12 week builds. Free itemised quote.",
     localParagraphs: [
       {
-        heading: "Covering Every Corner of the Borough",
-        text: "From the 1930s semis of Sanderstead and Shirley to the Victorian terraces of Thornton Heath and South Croydon, we've converted lofts across every CR postcode. Croydon's housing stock is ideal for loft conversions — most semi-detached and detached homes have the roof height and footprint needed for a hip-to-gable (raising the gable end) or a rear dormer without altering the ridge line.",
+        heading: "Loft Conversions Across Every Croydon Postcode",
+        text: "Croydon's housing stock is unusually well suited to loft conversions. The 1930s semis of Sanderstead, Shirley and Selsdon have steep pitched roofs with enough headroom for a rear dormer, while the Victorian and Edwardian terraces of Thornton Heath, Norbury and South Croydon often have a rear outrigger that makes an L-shaped conversion possible. Between them these two house types account for most of the lofts we build in CR0, CR2, CR4, CR5 and CR8 — and each needs a different structural approach, so the survey decides the design rather than the other way round.",
       },
       {
-        heading: "Permitted Development and Croydon Building Control",
-        text: "Most loft conversions in Croydon fall under permitted development, allowing up to 40m³ of additional roof volume for terraced houses and 50m³ for semi-detached and detached homes. We prepare the drawings, serve Party Wall notices on your neighbours and manage the full building regulations sign-off with Croydon Council building control, so you never have to chase paperwork.",
+        heading: "Dormer Loft Conversions in Croydon",
+        text: "A rear dormer is the most common conversion in Croydon and usually the best value per square metre. We build a box structure out of the rear roof slope with a flat or shallow-pitched roof, insulated and finished to match the existing brickwork and tiles. A typical dormer creates roughly 15–20m² of usable floor area — enough for a double bedroom with storage in the eaves — and a single rear dormer normally stays inside permitted development. Expect £40,000–£55,000 on a semi-detached house, including the staircase, insulation, electrics and plastering.",
       },
       {
-        // Deliberately not titled "What Your Build Includes" — the template
-        // already renders a "What's Included" list further down, and two
-        // near-identical headings made this read as the same list twice.
-        // This block is the trades; that list is the deliverables.
-        heading: "Structural, Electrical and Finishing Work",
-        text: "Every ARZ loft conversion covers structural steelwork, the dormer or hip-to-gable build, a purpose-made staircase, insulation to current Part L standards, fire doors and alarms, first and second fix electrics and plumbing, plastering ready for decoration, and a written workmanship guarantee on completion.",
+        heading: "Hip-to-Gable Loft Conversions in Croydon",
+        text: "If you have been searching for a gable loft conversion in Croydon, this is the build you mean. Many semis on the Sanderstead and Shirley estates have a hipped roof, where the slope runs down on three sides and leaves very little usable width at the back. Converting the hipped end into a vertical gable wall squares off that corner and gives a full-width room — and it is almost always paired with a rear dormer so the whole footprint becomes usable. Because the roof shape genuinely changes, it carries more structural work: new steel, a gable wall, and often a Party Wall award where the gable sits on the boundary. Budget £45,000–£65,000 depending on span and finish.",
       },
       {
         heading: "L-Shaped Loft Conversions in Croydon",
-        text: "Victorian and Edwardian terraces and semis across Thornton Heath, Norbury and South Croydon often have a rear outrigger, which is what makes an L-shaped conversion possible. The build covers both the main roof and the outrigger, so the new floor area is far larger than a single dormer — usually enough for a bedroom, a dressing area and an en-suite. It needs around 2.2m from finished floor to ridge, and the same permitted development volume limits apply: 40m³ on a terrace and 50m³ on a semi-detached or detached house. On terraces the outrigger wall is normally a party wall, so a Party Wall award is usually required.",
+        text: "Victorian and Edwardian terraces across Thornton Heath, Norbury and South Croydon usually have a rear outrigger — a narrower two-storey back addition. Wrapping the conversion over both the main roof and the outrigger produces an L-shaped plan, which is by far the largest loft room you can get in these houses: typically a bedroom, a dressing area and an en-suite. It needs roughly 2.2m from finished floor to ridge, and the same permitted development volume limits apply — 40m³ on a terrace, 50m³ on a semi or detached house. On terraces the outrigger wall is normally shared with a neighbour, so expect a Party Wall award as part of the programme.",
       },
       {
-        heading: "L-Shaped Layouts and What the Build Costs",
-        text: "The extra leg of the L is usually where the en-suite or walk-in wardrobe goes, leaving the main roof clear for a full-width bedroom. Popular finishes include joinery built into the eaves, underfloor heating in the bathroom and Velux rooflights to the front slope. Most L-shaped conversions in Croydon run £65,000–£85,000 depending on the size of the outrigger, the structural work involved and the specification — the figure is confirmed after we survey your roof, not before.",
+        heading: "Rooflight and Velux Loft Conversions in Croydon",
+        text: "Where the ridge is lower, or where the look of the house matters more than floor area, a rooflight conversion leaves the roof shape untouched and simply opens the slope with Velux windows. Nothing is added to the outside of the building, so the permitted development volume limits are rarely engaged and neighbours have nothing to object to. The trade-off is usable space: headroom falls away quickly towards the eaves, so this type suits a study, guest room or playroom better than a principal bedroom. It is also the most economical route, starting around £25,000.",
+      },
+      {
+        heading: "Planning Permission and Permitted Development in Croydon",
+        text: "Most loft conversions in Croydon are permitted development: up to 40m³ of additional roof volume on a terraced house and 50m³ on a semi-detached or detached house, no extension beyond the plane of the existing roof slope facing a highway, and materials matching the existing roof. That changes in Croydon's conservation areas — including Addington Village, Beulah Hill, Norwood Grove, South Norwood and parts of Central Croydon — where a householder application is normally required, and where an Article 4 direction can remove some rights altogether. Flats and maisonettes have no permitted development rights at all. If there is any doubt we apply for a Lawful Development Certificate before work starts, so the conversion is documented as lawful when you come to sell.",
+      },
+      {
+        heading: "Building Regulations, Party Walls and Structural Sign-Off",
+        text: "Every loft conversion needs building regulations approval, whatever the planning position. We prepare the drawings, submit full plans or a building notice to Croydon Council building control, and arrange the inspections at excavation, structure, insulation, fire separation and completion. Where a steel beam or new floor bears onto a shared wall, the Party Wall etc. Act 1996 applies: we serve the notices, agree the award and schedule the work around the notice periods. Structural calculations are produced by an engineer we work with, and you receive the completion certificate at the end — the document buyers' solicitors always ask for.",
+      },
+      {
+        heading: "How a Croydon Loft Build Runs, Week by Week",
+        text: "Weeks one and two are scaffold, weatherproofing and strip-out, with the roof opened only as far as the new structure can be closed the same week. Structure, dormer or gable and staircase follow through weeks three to six; first-fix electrics, plumbing and insulation through weeks six to eight; then plastering, second fix, tiling and decoration. A standard dormer finishes in 8–12 weeks on site. Your project manager confirms access, parking, skip position and working hours in writing before the first day, and you get a weekly progress update so you always know which trade is in the house.",
       },
     ],
-    localAreas: ["South Croydon", "Purley", "Shirley", "Sanderstead", "Thornton Heath", "Selhurst", "Addiscombe", "Coulsdon", "Kenley", "Norbury"],
+    localAreas: ["South Croydon", "Purley", "Shirley", "Sanderstead", "Thornton Heath", "Selhurst", "Addiscombe", "Coulsdon", "Kenley", "Norbury", "Waddon", "Woodside", "Selsdon", "New Addington"],
     pricing: [
       { item: "Rooflight-only conversion", range: "£25,000 – £35,000" },
       { item: "Rear dormer (semi-detached)", range: "£40,000 – £55,000" },
       { item: "Hip-to-gable with rear dormer", range: "£45,000 – £65,000" },
+      { item: "L-shaped conversion with outrigger", range: "£65,000 – £85,000" },
       { item: "En-suite or shower room addition", range: "+£6,000 – £12,000" },
+      { item: "Structural engineer & steelwork", range: "Included" },
       { item: "Building regs drawings & sign-off", range: "Included" },
     ],
     eyebrow: "Croydon & South London",
@@ -536,45 +546,67 @@ export const seoLandingPages: SeoLandingPage[] = [
       "A loft conversion — sometimes called an attic conversion or a loft extension — is one of the most cost-effective ways to add space and value to your Croydon home. ARZ Construction builds dormer, hip-to-gable and rooflight conversions for homeowners across Croydon and South London, working within permitted development rights wherever possible to keep your project moving.",
     image: loftImg,
     highlights: [
-      "Dormer, hip-to-gable and Velux rooflight builds",
-      "Staircase design and joinery",
-      "En-suite bathrooms and storage joinery",
-      "Insulation and fire-safety compliance",
-      "Building regulations drawings and sign-off",
-      "Structural engineer coordination included",
+      "Dormer, hip-to-gable, L-shaped and rooflight builds",
+      "Structural steelwork and engineer's calculations",
+      "Purpose-made staircase and joinery",
+      "Insulation, fire doors and mains-linked alarms",
+      "First and second fix electrics and plumbing",
+      "En-suite bathrooms and eaves storage",
+      "Party Wall notices and building regs sign-off",
+      "Written workmanship guarantee on completion",
     ],
     faqs: [
       {
         q: "Do I need planning permission for a loft conversion in Croydon?",
-        a: "Most loft conversions fall within permitted development rights and do not need full planning permission. Exceptions include properties in conservation areas, listed buildings, or builds that exceed the permitted volume allowance. We assess your specific property on the initial visit.",
+        a: "Most loft conversions fall within permitted development rights and do not need full planning permission — up to 40m³ of additional volume on a terrace and 50m³ on a semi-detached or detached house. Exceptions include conservation areas, listed buildings, flats and maisonettes, and builds that exceed the volume allowance. We assess your specific property on the initial visit and confirm the route in writing.",
       },
       {
-        q: "How long does a loft conversion take in Croydon?",
-        a: "A standard dormer loft conversion typically takes 8–12 weeks from start on site. The programme depends on the size and complexity of the build — your written quotation will include a clear timeline.",
+        q: "My house is in a Croydon conservation area — can I still convert the loft?",
+        a: "Usually yes, but you will normally need a householder planning application rather than relying on permitted development, and some areas have Article 4 directions that remove the rights entirely. In conservation areas roof materials, window style and the shape of any dormer are all assessed, so the drawings need to be prepared with that in mind. We handle the application and adjust the design until it is acceptable to the council.",
       },
       {
         q: "How much does a loft conversion cost in Croydon?",
-        a: "Rooflight conversions typically start from around £25,000–£35,000. Dormer conversions range from £40,000–£65,000+ depending on size and specification. We provide an itemised written quotation before any work starts, so you can see exactly what is included.",
+        a: "Rooflight conversions typically start around £25,000–£35,000. Dormer conversions range from £40,000–£55,000, a hip-to-gable with rear dormer £45,000–£65,000, and an L-shaped conversion over an outrigger £65,000–£85,000. Measured another way, most Croydon lofts land between £1,500 and £2,200 per m² of new floor area. You get an itemised written quotation before any work starts, so you can see exactly what is included.",
       },
       {
-        q: "Will my loft conversion add value to my Croydon home?",
-        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London. An extra bedroom with en-suite is one of the highest-return home improvements available.",
+        q: "How long does a loft conversion take in Croydon?",
+        a: "A standard dormer loft conversion typically takes 8–12 weeks from start on site. Hip-to-gable and L-shaped builds often run 12–14 weeks because of the additional structural work, and the planning or Party Wall stages add time before the build starts. Your written quotation includes an indicative programme with the structural and inspections stages marked.",
+      },
+      {
+        q: "Do I need to move out during a loft conversion?",
+        a: "Almost never. The work is contained above the existing first floor, with the staircase opening as the main disruption — typically a few days of noise and dust when the ceiling is opened and the new stairs are formed. We screen the opening, protect floors and stair treads, and agree working hours in advance. Families with very young children sometimes choose to be away for the week the roof is opened.",
       },
       {
         q: "Can you build a loft conversion on a semi-detached house in Croydon?",
-        a: "Yes. Semi-detached properties are ideal for hip-to-gable or dormer conversions. We handle all Party Wall Agreement notices as part of our service.",
+        a: "Yes — semis are ideal for hip-to-gable or dormer conversions. Where the new structure bears onto the shared wall, or foundations are excavated within 3–6 metres of a neighbour's, the Party Wall etc. Act 1996 applies. We serve the notices and agree the award as part of the service; only the surveyor's fee, where a surveyor is appointed, is charged separately.",
+      },
+      {
+        q: "Do I need a structural engineer for a loft conversion?",
+        a: "Building control will require structural calculations for the floor, the steel beams and any gable or dormer opening, so yes. We coordinate an engineer who visits, calculates the loads and specifies the steel, and the same calculations go to Croydon building control. The cost is included in our quotation rather than added later as an extra.",
+      },
+      {
+        q: "Who signs off building regulations for my loft?",
+        a: "Croydon Council building control, or an approved inspector, inspects the work at defined stages: structure, insulation, fire separation, staircase and completion. We submit the application, book the inspections and attend them. At the end you receive a completion certificate, which is the document a buyer's solicitor will ask for when you sell.",
+      },
+      {
+        q: "Do you provide a guarantee on loft conversions?",
+        a: "Yes — you receive a written workmanship guarantee on completion covering the build itself, alongside the manufacturer warranties for the boiler, glazing and any other products installed. Structural calculations and building control sign-off document the work independently, which matters when the property is sold or remortgaged.",
+      },
+      {
+        q: "Will my loft conversion add value to my Croydon home?",
+        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London, and an extra bedroom with en-suite is consistently one of the highest-return home improvements available. The return depends on the street and on the finish — an unregulated or poorly built loft can cost you more at survey than it adds.",
+      },
+      {
+        q: "Is my Croydon loft high enough for a conversion?",
+        a: "The usual benchmark is 2.2m from the top of the ceiling joists to the underside of the ridge, measured at the point where the staircase will land. Victorian terraces with an outrigger often pass; some 1960s and 1970s houses do not. Where the ridge is low, a rooflight conversion or a shallower dormer can still work — we measure it on the free survey rather than guessing.",
       },
       {
         q: "What's the difference between a loft conversion and a loft extension?",
-        a: "The terms are used interchangeably — both mean turning unused roof space into a usable room. A loft extension usually refers to builds that add roof volume, such as a rear dormer or hip-to-gable, while a rooflight conversion works within the existing roof. We build all types and recommend the best fit for your property.",
+        a: "The terms are used interchangeably — both mean turning unused roof space into a usable room. A loft extension usually refers to builds that add roof volume, such as a rear dormer or hip-to-gable, while a rooflight conversion works within the existing roof. We build all three and recommend the type that suits your roof and budget.",
       },
       {
         q: "Do you carry out attic conversions in South Croydon and Purley?",
-        a: "Yes — we complete attic conversions across South Croydon, Purley, Shirley, Sanderstead and the wider CR postcodes. Most homes we survey are suitable; we confirm the head height (typically 2.2m or more) during your free visit.",
-      },
-      {
-        q: "How much does an L-shaped loft conversion cost in Croydon?",
-        a: "Most L-shaped conversions in Croydon run £65,000–£85,000, depending on the size of the rear outrigger, the structural work involved and the specification. The extra floor area over a standard dormer is what drives the cost up, so the figure is confirmed after a survey rather than quoted blind.",
+        a: "Yes — we complete attic conversions across South Croydon, Purley, Shirley, Sanderstead, Coulsdon and Kenley. Most homes we survey are suitable; we confirm head height and access during your free visit and put the findings in the quotation.",
       },
       {
         q: "What should I do to prepare before a loft conversion starts?",
@@ -1092,30 +1124,52 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "kitchen-renovations-croydon",
     title: "Kitchen Renovations Croydon",
-    metaTitle: "Kitchen Renovations Croydon | Kitchen Fitters & Installers | ARZ",
+    metaTitle: "Kitchen Renovations Croydon | Fitters & Installers from £8,000",
     metaDescription:
-      "Kitchen renovations in Croydon — strip-out, layout changes, plumbing, electrics, worktops, tiling and appliance fitting by one team. Request a free quotation.",
+      "Kitchen renovations and fitting in Croydon — strip-out, layout changes, plumbing, electrics, worktops and tiling. Refits from £8,000. Free itemised quote.",
     localParagraphs: [
       {
-        heading: "Kitchens That Suit Croydon Homes",
-        text: "Most Croydon kitchens are constrained by the building rather than the budget: galley layouts in Thornton Heath terraces, a single wall of units in 1930s Shirley semis, or a narrow side return that could open into a dining space. We measure the room properly, agree where the sink, hob and appliances will go, and confirm drainage and cable routes before anything is stripped out — because moving a soil stack or a consumer unit after tiling starts is what turns a refit into a rebuild.",
+        heading: "Kitchen Renovations Across Croydon",
+        text: "Most Croydon kitchens are constrained by the building rather than the budget: galley layouts in the Victorian terraces of Thornton Heath and Norbury, a single run of units in the 1930s semis of Shirley and Sanderstead, or a narrow side return that could be opened into a dining space. We measure the room properly, agree where the sink, hob and appliances will sit, and confirm drainage and cable routes before anything is stripped out — because moving a soil stack or a consumer unit after tiling has started is what turns a refit into a rebuild.",
       },
       {
-        heading: "The Order of Work Matters",
-        text: "Strip-out, then plumbing and electrical first fix, then boarding and plaster, then units and worktops, then tiling and second fix, then decoration and appliance connection. Running those stages in the wrong order is the most common reason kitchen refits overrun. One team carries out the plumbing, electrics, tiling and joinery, so the sequence is controlled rather than negotiated between separate contractors.",
+        heading: "Kitchen Fitting and Installation",
+        text: "Fitting is where most of the visible quality is decided. Carcasses are levelled and scribed to uneven walls rather than packed out with offcuts, units are plumbed and squared so doors sit true months later, end panels and cornices are cut on site to fit the room, and appliances are integrated with the correct clearances and ventilation. Whether the kitchen is a bespoke joinery commission or a flat-pack range from a national retailer, the fit is what makes it look and wear well — and it is the part most homeowners cannot inspect until it is too late.",
       },
       {
-        heading: "Templating, Levels and Finishes",
-        text: "Level worktops, flush upstands and neat cuts around sockets are what separate a good kitchen fit from an average one. Worktops are templated after the units are installed and levelled, extract and ventilation requirements are addressed as part of the works, and the finished room is walked with you before handover.",
+        heading: "Knock-Throughs, Steels and Open-Plan Kitchens",
+        text: "Opening a kitchen into a dining room or rear reception is the single biggest change you can make to a Croydon terrace or semi. It almost always requires a steel beam, and sometimes a post or padstone, sized by a structural engineer — the wall you remove is frequently load-bearing even when it looks thin. We arrange the calculations, submit the building regulations application, and confirm whether the wall is shared with a neighbour, in which case a Party Wall award applies. Where the opening meets an existing extension, we check the lintel and roof structure before cutting.",
+      },
+      {
+        heading: "Plumbing, Drainage and Electrics",
+        text: "Moving a sink across the room is easy on paper and constrained in practice: waste pipes still need a fall of roughly 1 in 40, and the soil stack is where it is. We check what the existing drainage can take before agreeing a layout, advise on boiler relocation and whether the supply can carry an additional shower or utility, and plan circuits for the oven, hob, extractor, dishwasher and any underfloor heating. Gas work is carried out by a Gas Safe registered engineer and electrical work is certified, so you receive the paperwork a future buyer will ask for.",
+      },
+      {
+        heading: "Worktops, Tiling and Finishing",
+        text: "Worktops are templated after the units are installed and levelled, not measured from a drawing, which is why the joints close cleanly and the upstands sit flush. We fit quartz, compact laminate, solid surface and timber, cut sink and hob apertures on site or from a template, and agree splashback heights and socket positions before tiling starts. Floors are levelled and protected through the fit, thresholds are finished, and the completed room is walked with you against a snag list before we hand the keys back.",
+      },
+      {
+        heading: "Kitchens in Croydon's Older Homes",
+        text: "Period properties bring their own set of problems: floors that slope by 30mm across a room, lath-and-plaster walls that will not hold a wall cabinet without extra support, chimney breasts that dictate where the hob can go, and ceilings low enough to rule out a tall larder unit. We survey for these before quoting rather than discovering them during the fit, and where asbestos is suspected in old floor tiles, board or artex, we arrange testing and licensed removal before work starts.",
+      },
+      {
+        heading: "How Long a Croydon Kitchen Renovation Takes",
+        text: "A straightforward refit with no layout, drainage or wiring changes is usually two to three weeks on site. A full renovation with new circuits, moved plumbing and tiling typically runs three to five weeks, and a knock-through with steelwork adds roughly a week for the structural and inspection stages. Units need to be ordered before strip-out begins — the most common cause of a stalled kitchen is a delivery date that arrives after the old one has gone — so we agree the order date and lead times with you at the planning stage and programme the trades around them.",
+      },
+      {
+        heading: "Living in the House While the Kitchen Is Rebuilt",
+        text: "Expect the kitchen to be out of action for most of the programme. We agree a temporary arrangement with you at the planning stage — a kettle, fridge and microwave in another room, and where the washing machine can live for a fortnight — and keep the working area screened with dust sheets and floor protection. Waste is removed as it is generated rather than stockpiled in the garden, working hours are confirmed in writing, and the team leaves the route to the bathroom and front door clear at the end of each day.",
       },
     ],
-    localAreas: ["South Croydon", "Purley", "Shirley", "Sanderstead", "Thornton Heath", "Addiscombe", "Norbury", "Selhurst", "Waddon"],
+    localAreas: ["South Croydon", "Purley", "Shirley", "Sanderstead", "Thornton Heath", "Addiscombe", "Norbury", "Selhurst", "Waddon", "Woodside", "Coulsdon", "Kenley", "Selsdon", "New Addington"],
     pricing: [
       { item: "Kitchen refit (no layout change)", range: "£8,000 – £15,000" },
       { item: "Full kitchen renovation with layout change", range: "£12,000 – £28,000" },
-      { item: "Worktop templating and fitting", range: "Quoted on survey" },
-      { item: "Kitchen/diner knock-through (with steels)", range: "Quoted on survey" },
+      { item: "Kitchen/diner knock-through (with steel)", range: "£2,500 – £6,000" },
+      { item: "Electrics, first and second fix", range: "£1,500 – £3,500" },
+      { item: "Worktop templating and fitting", range: "Included in quotation" },
       { item: "Tiling, splashbacks and second fix", range: "Included in quotation" },
+      { item: "Waste removal and floor protection", range: "Included in quotation" },
     ],
     eyebrow: "Croydon & South London",
     heroHeading: "Kitchen Renovations in Croydon",
@@ -1127,31 +1181,61 @@ export const seoLandingPages: SeoLandingPage[] = [
     highlights: [
       "Strip-out and layout re-planning",
       "Drainage, soil and waste alterations",
+      "Steel beams and structural openings",
       "First and second fix electrics",
       "Worktop templating and fitting",
       "Tiling, splashbacks and flooring",
       "Appliance fitting and commissioning",
+      "Gas Safe and certified electrical work",
     ],
     faqs: [
       {
         q: "How long does a kitchen renovation take in Croydon?",
-        a: "A straightforward refit with no layout or drainage changes is usually 2–3 weeks. A full renovation involving layout changes, new circuits and plumbing alterations typically runs 3–5 weeks, with structural openings adding further time.",
-      },
-      {
-        q: "Can you move the sink, hob or boiler?",
-        a: "Usually yes, but it depends on drainage falls, the position of the soil stack and the capacity of the existing supply. We check those constraints at the survey and tell you before work starts whether a proposed layout is practical or needs adjusting.",
-      },
-      {
-        q: "Do you supply the kitchen units?",
-        a: "You can supply your own kitchen from any retailer and we will install it, or we can work with suppliers we have used before. Either way, we confirm the unit sizes and appliance specifications against the agreed layout before ordering.",
+        a: "A straightforward refit with no layout or drainage changes is usually 2–3 weeks. A full renovation involving layout changes, new circuits and plumbing alterations typically runs 3–5 weeks, and a knock-through with steelwork adds around a week for the structural and inspection stages. Units need to be ordered before strip-out begins, so the lead time is part of the programme rather than an afterthought.",
       },
       {
         q: "How much does a kitchen renovation cost in Croydon?",
-        a: "A refit without layout changes typically costs £8,000–£15,000. A full renovation with new services, layout changes and tiling usually falls between £12,000 and £28,000. Unit and appliance costs vary widely and are itemised separately in the quotation.",
+        a: "A refit without layout changes typically costs £8,000–£15,000. A full renovation with new services, layout changes and tiling usually falls between £12,000 and £28,000. A structural knock-through adds £2,500–£6,000, and units, worktops and appliances are itemised separately so you can see the labour and the materials side by side.",
+      },
+      {
+        q: "Can you move the sink, hob or boiler?",
+        a: "Usually yes, but it depends on drainage falls, the position of the soil stack and the capacity of the existing supply. A sink can move anywhere the waste can still fall towards the stack; a boiler move also depends on flue position and gas supply. We check those constraints at the survey and tell you before work starts whether a proposed layout is practical or needs adjusting.",
+      },
+      {
+        q: "Do you supply the kitchen units?",
+        a: "You can supply your own kitchen from any retailer and we will install it, or we can work with suppliers we have used before. Either way, we confirm unit sizes, appliance specifications and service positions against the agreed layout before ordering, so nothing arrives that will not fit the room or the plumbing.",
+      },
+      {
+        q: "Do I need permission to knock through a kitchen wall?",
+        a: "Removing an internal wall rarely needs planning permission, but it almost always needs building regulations approval because the wall is usually load-bearing and the opening needs a correctly sized steel beam. If the wall is shared with a neighbour, or new foundations come within 3–6 metres of theirs, the Party Wall etc. Act 1996 also applies. We arrange the calculations, the application and the notices.",
+      },
+      {
+        q: "Do you do bespoke kitchen installation?",
+        a: "Yes. We install bespoke joinery kitchens as well as off-the-shelf ranges, and we are happy to work to a designer's drawings or to plan the layout with you directly. Bespoke installations usually need a survey before the joinery is ordered, because chimney breasts, boxing and uneven walls all affect the dimensions, and a millimetre matters once the panels are cut.",
+      },
+      {
+        q: "Are the gas and electrical works certified?",
+        a: "Yes. Gas work is carried out by a Gas Safe registered engineer and you receive the notification and test paperwork; electrical work is completed to the current wiring regulations and certified, with the relevant building regulations notification made where a new circuit is added. Those certificates are what a buyer's solicitor asks for when the house is sold.",
+      },
+      {
+        q: "What worktops do you fit?",
+        a: "Quartz, compact laminate, solid surface, granite and timber, plus laminate where the budget calls for it. Templates are taken after the units are levelled so joints and upstands close cleanly, and sink and hob apertures are cut to the appliance manufacturer's template. We will talk you through the trade-offs — quartz is harder wearing but brittle at an overhang, timber needs maintenance.",
+      },
+      {
+        q: "Can you deal with asbestos in an old kitchen?",
+        a: "If asbestos is suspected in floor tiles, board, pipe lagging or artex, it is tested before strip-out and, where confirmed, removed by a licensed contractor before we start. Older Croydon properties regularly contain it, and cutting into it unknowingly is the risk worth paying to avoid. Testing and removal are quoted separately because the cost depends entirely on what is found.",
       },
       {
         q: "Will the kitchen be usable during the work?",
-        a: "Expect the kitchen to be out of action for most of the programme. We agree a temporary arrangement with you at the planning stage — for example keeping a kettle, fridge and microwave in another room — and keep the working area screened and tidy.",
+        a: "Expect the kitchen to be out of action for most of the programme. We agree a temporary arrangement with you at the planning stage — a kettle, fridge and microwave in another room, and where the washing machine can live for a fortnight — and keep the working area screened and the route to the bathroom clear at the end of each day.",
+      },
+      {
+        q: "Do you provide a guarantee on kitchen renovations?",
+        a: "Yes — you receive a written workmanship guarantee covering the installation, alongside the manufacturer warranties for units, worktops and appliances. Gas and electrical certificates and any building regulations completion notice are handed over together at the end, so the whole job is documented rather than left as a verbal promise.",
+      },
+      {
+        q: "Do you fit kitchens outside Croydon?",
+        a: "Yes. As well as all of Croydon, we fit kitchens in Purley, Coulsdon, Kenley, Sanderstead, Norbury and across South London. If you are within roughly 15 miles of Croydon, we cover your property — the survey visit confirms access, parking and where materials can be delivered.",
       },
     ],
     relatedSlugs: ["kitchen-renovations", "house-renovations", "plumbing"],
