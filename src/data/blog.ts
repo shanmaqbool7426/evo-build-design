@@ -150,7 +150,7 @@ export const blogPosts: BlogPost[] = [
         heading: "What Is a Rear Dormer Conversion?",
         paragraphs: [
           "A rear dormer is a box-shaped extension built onto the rear roof slope, with vertical walls and a flat roof. Because the walls go vertical, you get full-height headroom across most of the floor instead of just a corridor of standing space.",
-          "It's the most popular [loft conversion](/services/loft-conversions) in Croydon for a reason: maximum internal space for the money, and it suits the majority of terraced and semi-detached homes. Externally it reads as a clean box window to the rear — most neighbours barely notice it once finished.",
+          "It's the most popular [loft conversion](/services/loft-conversion-croydon) in Croydon for a reason: maximum internal space for the money, and it suits the majority of terraced and semi-detached homes. Externally it reads as a clean box window to the rear — most neighbours barely notice it once finished.",
         ],
       },
       {

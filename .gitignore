@@ -21,7 +21,6 @@ dist-ssr
 .dev.vars
 
 # Editor directories and files
-.vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -37,3 +36,4 @@ dist-ssr
 # Local npm cache used to work around sandbox restrictions
 .npm-cache/
 
+config.bat

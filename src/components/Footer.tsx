@@ -41,7 +41,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm">
             {navLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="transition-colors hover:text-yellow">
+                <Link to={link.to} className="inline-flex min-h-6 items-center transition-colors hover:text-yellow">
                   {link.label}
                 </Link>
               </li>
@@ -52,17 +52,19 @@ export function Footer() {
         <div>
           <h2 className="text-sm font-bold tracking-[0.14em] text-white uppercase">Services</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
-            {services.map((s) => (
-              <li key={s.slug}>
-                <Link
-                  to="/services/$slug"
-                  params={{ slug: s.slug }}
-                  className="transition-colors hover:text-yellow"
-                >
-                  {s.title}
-                </Link>
-              </li>
-            ))}
+            {services
+              .filter((s) => !s.redirectTo)
+              .map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: s.slug }}
+                    className="inline-flex min-h-6 items-center transition-colors hover:text-yellow"
+                  >
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
           </ul>
           <h3 className="mt-5 text-xs font-bold tracking-[0.14em] text-yellow uppercase">
             South London Specialists
@@ -75,7 +77,7 @@ export function Footer() {
                   <Link
                     to="/services/$slug"
                     params={{ slug: p.slug }}
-                    className="transition-colors hover:text-yellow"
+                    className="inline-flex min-h-6 items-center transition-colors hover:text-yellow"
                   >
                     {p.title}
                   </Link>
@@ -91,7 +93,7 @@ export function Footer() {
                 <Link
                   to="/services/$slug"
                   params={{ slug: p.slug }}
-                  className="transition-colors hover:text-yellow"
+                  className="inline-flex min-h-6 items-center transition-colors hover:text-yellow"
                 >
                   {p.title}
                 </Link>
@@ -104,14 +106,14 @@ export function Footer() {
           <h2 className="text-sm font-bold tracking-[0.14em] text-white uppercase">Contact</h2>
           <ul className="mt-4 space-y-3 text-sm">
             <li>
-              <a href={company.phoneHref} className="flex items-center gap-2 hover:text-yellow">
+              <a href={company.phoneHref} className="flex min-h-6 items-center gap-2 hover:text-yellow">
                 <Phone className="size-4 text-yellow" /> {company.phoneDisplay}
               </a>
             </li>
             <li>
               <a
                 href={`mailto:${company.email}`}
-                className="flex items-center gap-2 hover:text-yellow"
+                className="flex min-h-6 items-center gap-2 hover:text-yellow"
               >
                 <Mail className="size-4 text-yellow" /> {company.email}
               </a>
@@ -121,7 +123,7 @@ export function Footer() {
                 href={company.whatsappHref}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="flex items-center gap-2 hover:text-yellow"
+                className="flex min-h-6 items-center gap-2 hover:text-yellow"
               >
                 <WhatsAppIcon className="size-4 text-yellow" /> WhatsApp us
               </a>
@@ -131,7 +133,7 @@ export function Footer() {
                 href={company.socials.googleBusiness}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="flex items-center gap-2 hover:text-yellow"
+                className="flex min-h-6 items-center gap-2 hover:text-yellow"
               >
                 <MapPin className="size-4 text-yellow" /> Find us on Google
               </a>
@@ -141,7 +143,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2.5 text-sm">
             {legal.map((l) => (
               <li key={l.label}>
-                <Link to={l.to} className="transition-colors hover:text-yellow">
+                <Link to={l.to} className="inline-flex min-h-6 items-center transition-colors hover:text-yellow">
                   {l.label}
                 </Link>
               </li>
@@ -150,7 +152,7 @@ export function Footer() {
               <button
                 type="button"
                 onClick={() => window.dispatchEvent(new Event("arz:cookie-settings"))}
-                className="transition-colors hover:text-yellow"
+                className="inline-flex min-h-6 items-center transition-colors hover:text-yellow"
               >
                 Cookie settings
               </button>

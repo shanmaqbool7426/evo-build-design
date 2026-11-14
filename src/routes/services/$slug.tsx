@@ -439,7 +439,7 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
                       <li key={s.slug}>
                         <Link
                           to="/services/$slug"
-                          params={{ slug: s.slug }}
+                          params={{ slug: s.redirectTo ?? s.slug }}
                           className="flex items-center justify-between text-sm font-semibold text-navy/80 transition-colors hover:text-bright"
                         >
                           {s.title}
@@ -663,7 +663,7 @@ function StandardServiceDetail({ slug }: { slug: string }) {
                     <li key={s.slug}>
                       <Link
                         to="/services/$slug"
-                        params={{ slug: s.slug }}
+                        params={{ slug: s.redirectTo ?? s.slug }}
                         className="flex items-center justify-between text-sm font-semibold text-navy/80 transition-colors hover:text-bright"
                       >
                         {s.title}

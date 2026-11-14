@@ -563,7 +563,7 @@ function ProjectSummaryCard({ project }: { project: (typeof projects)[number] })
         {service && (
           <Link
             to="/services/$slug"
-            params={{ slug: service.slug }}
+            params={{ slug: service.redirectTo ?? service.slug }}
             className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-bold tracking-wide text-bright uppercase transition-colors hover:text-navy"
           >
             {service.title} <ArrowRight className="size-3.5" aria-hidden="true" />

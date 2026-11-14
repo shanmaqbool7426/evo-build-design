@@ -62,6 +62,15 @@ const KNOWN_SERVICE_SLUGS = new Set(
 );
 const KNOWN_BLOG_SLUGS = new Set(blogPosts.map((p) => p.slug));
 
+// ── Consolidated service pages (301) ────────────────────────────────────────
+// Thin general pages duplicated the intent of their richer Croydon
+// equivalents, so each one permanently redirects to the stronger page.
+const SERVICE_REDIRECTS = new Map<string, string>(
+  services
+    .filter((service) => service.redirectTo)
+    .map((service) => [`/services/${service.slug}`, `/services/${service.redirectTo}`]),
+);
+
 /** True when pathname sits under prefix with a slug that is not in `known`. */
 function unknownSlugIn(pathname: string, prefix: string, known: Set<string>): boolean {
   if (!pathname.startsWith(prefix)) return false;
@@ -172,6 +181,14 @@ export default {
       const url = new URL(request.url);
       const redirect = canonicalHostRedirect(request);
       if (redirect) return redirect;
+      const normalisedPath = url.pathname.replace(/\/$/, "") || "/";
+      const serviceTarget = SERVICE_REDIRECTS.get(normalisedPath);
+      if (serviceTarget) {
+        return new Response(null, {
+          status: 301,
+          headers: { location: `${serviceTarget}${url.search}` },
+        });
+      }
       if (GONE_PATHS.has(url.pathname)) return goneResponse();
       if (unknownSlugIn(url.pathname, "/services/", KNOWN_SERVICE_SLUGS))
         return serviceNotFoundResponse();

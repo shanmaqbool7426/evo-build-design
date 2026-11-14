@@ -64,14 +64,20 @@ export const company = {
     // Knowledge-panel link for the verified GBP (kgmid /g/11zynn28sq).
     // Powers `sameAs` in the LocalBusiness schema and the footer link.
     googleBusiness: "https://www.google.com/search?kgmid=/g/11zynn28sq",
+    companiesHouse:
+      "https://find-and-update.company-information.service.gov.uk/company/12858978",
     facebook: "",
     instagram: "",
     checkatrade: "",
+    houzz: "",
   },
 };
 
 export type Service = {
   slug: string;
+  /** When set, every internal link for this service points at the richer
+   *  SEO landing page instead. The old slug is 301'd in src/server.ts. */
+  redirectTo?: string;
   number: string;
   title: string;
   /** Head <title> override. Without it the title falls back to
@@ -91,6 +97,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "house-renovations",
+    redirectTo: "house-renovations-croydon",
     number: "01",
     title: "House Renovations",
     metaTitle: "House Renovations South London | Full Refurbishment Builders",
@@ -127,6 +134,7 @@ export const services: Service[] = [
   },
   {
     slug: "extensions",
+    redirectTo: "house-extension-croydon",
     number: "02",
     title: "Extensions",
     metaTitle: "House Extensions South London | Rear & Side-Return Builders",
@@ -163,9 +171,10 @@ export const services: Service[] = [
   },
   {
     slug: "loft-conversions",
+    redirectTo: "loft-conversion-croydon",
     number: "03",
     title: "Loft Conversions",
-    metaTitle: "Loft Conversions South London | Dormer, Hip-to-Gable & Mansard",
+    metaTitle: "Loft Conversions South London | Dormer & Hip-to-Gable",
     short: "Unused roof space converted into bright, usable bedrooms and studies.",
     description:
       "Dormer, hip-to-gable and rooflight conversions including staircases, insulation, fire protection and en-suites, built to current building regulations.",
@@ -199,6 +208,7 @@ export const services: Service[] = [
   },
   {
     slug: "kitchen-renovations",
+    redirectTo: "kitchen-renovations-croydon",
     number: "04",
     title: "Kitchen Renovations",
     metaTitle: "Kitchen Renovations South London | Design & Installation",
@@ -307,9 +317,10 @@ export const services: Service[] = [
   },
   {
     slug: "electrical",
+    redirectTo: "electrical-services",
     number: "07",
     title: "Electrical",
-    metaTitle: "Electrician Croydon & South London | Rewires & Consumer Units",
+    metaTitle: "Electrician Croydon & South London | Rewires & Testing",
     short: "Rewires, consumer units and lighting design, carried out by qualified electricians.",
     description:
       "Partial and full rewires, consumer unit upgrades, lighting circuits, data points and EV-ready provisions. Electrical work is carried out by qualified electricians, with test certificates provided for notifiable work.",
@@ -1057,7 +1068,7 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "house-renovations-croydon",
     title: "House Renovations Croydon",
-    metaTitle: "House Renovations Croydon | Full Refurbishment Builders | ARZ",
+    metaTitle: "House Renovations Croydon | Full Refurbishment Builders",
     metaDescription:
       "Whole-house renovations in Croydon — structural work, kitchens, bathrooms, plastering, flooring and decoration under one contract. Request a free quotation.",
     localParagraphs: [
@@ -1124,7 +1135,7 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "kitchen-renovations-croydon",
     title: "Kitchen Renovations Croydon",
-    metaTitle: "Kitchen Renovations Croydon | Fitters & Installers from £8,000",
+    metaTitle: "Kitchen Renovations Croydon | Fitters from £8,000",
     metaDescription:
       "Kitchen renovations and fitting in Croydon — strip-out, layout changes, plumbing, electrics, worktops and tiling. Refits from £8,000. Free itemised quote.",
     localParagraphs: [
@@ -1533,7 +1544,7 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "loft-conversion-walton-on-thames",
     title: "Loft Conversion Walton-on-Thames",
-    metaTitle: "Loft Conversion Walton-on-Thames KT12 | Dormer & Hip-to-Gable",
+    metaTitle: "Loft Conversion Walton-on-Thames | Dormer & Hip-to-Gable",
     metaDescription:
       "Loft conversions in Walton-on-Thames KT12 — dormer, hip-to-gable and rooflight builds near the station, Elmbridge planning handled, free itemised quotation.",
     localParagraphs: [
@@ -1951,13 +1962,17 @@ export const navLinks = [
   { label: "Contact", to: "/contact" },
 ] as const;
 
-export const navServices = services.map((s) => ({
-  title: s.title,
-  description: s.short,
-  href: `/services/${s.slug}`,
-  slug: s.slug,
-  isSeoPage: false as const,
-}));
+// Services whose richer Croydon page exists are kept out of the menu — the
+// "South London Specialists" column already links to those pages.
+export const navServices = services
+  .filter((s) => !s.redirectTo)
+  .map((s) => ({
+    title: s.title,
+    description: s.short,
+    href: `/services/${s.slug}`,
+    slug: s.slug,
+    isSeoPage: false as const,
+  }));
 
 // SEO landing pages appear separately in the mega-menu under "South London Specialists".
 // Town pages are excluded here — they are listed on /areas-we-cover and in the footer.

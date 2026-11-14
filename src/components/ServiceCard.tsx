@@ -126,7 +126,7 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
       to="/services/$slug"
-      params={{ slug: service.slug }}
+      params={{ slug: service.redirectTo ?? service.slug }}
       className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
       aria-label={`Learn more about ${service.title}`}
     >

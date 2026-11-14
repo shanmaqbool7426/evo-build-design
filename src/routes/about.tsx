@@ -11,7 +11,7 @@ import { buildSeoMeta, buildCanonical } from "@/lib/seo";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "About ARZ Construction Ltd | Builders in Croydon & South London",
+      title: "About ARZ Construction Ltd | Croydon Builders",
       description:
         "ARZ Construction Ltd is a residential construction company working on extensions, loft conversions and renovations in Croydon and South London.",
       path: "/about",

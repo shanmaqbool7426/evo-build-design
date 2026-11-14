@@ -9,7 +9,7 @@ import { buildSeoMeta, buildCanonical, buildBreadcrumb } from "@/lib/seo";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: buildSeoMeta({
-      title: "Loft Conversion & Extension Guides — Croydon Costs & Rules | ARZ",
+      title: "Loft & Extension Guides | Croydon Costs & Rules",
       description:
         "Free guides from Croydon builders: loft conversion costs in 2026, dormer vs hip-to-gable, party wall agreements and planning rules for South London homes.",
       path: "/blog",

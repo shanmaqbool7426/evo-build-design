@@ -186,16 +186,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             areaServed: "GB",
             availableLanguage: "en-GB",
           },
-          // Registered office on Companies House (company 12858978) — kept
-          // identical to the address on the Google Business Profile.
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "4th Floor, Silverstream House, 45 Fitzroy Street",
-            addressLocality: "London",
-            addressRegion: "Greater London",
-            postalCode: "W1T 6EB",
-            addressCountry: "GB",
-          },
+          // Service-area business: the registered office (W1T 6EB) is shown
+          // in the footer for Companies Act compliance, but it is deliberately
+          // omitted from structured data so the entity is not treated as a
+          // central-London shop competing with Croydon "near me" results.
+          // Coverage is expressed through areaServed below.
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
