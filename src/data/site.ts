@@ -12,6 +12,13 @@ import siteImg from "@/assets/gallery-site.webp";
 import interiorImg from "@/assets/gallery-interior.webp";
 import beforeImg from "@/assets/before.webp";
 import afterImg from "@/assets/after.webp";
+import kitchenGreyGloss1Img from "@/assets/kitchen-grey-gloss-1.webp";
+import kitchenGreyGloss3Img from "@/assets/kitchen-grey-gloss-3.webp";
+import kitchenWhiteBlackImg from "@/assets/kitchen-white-black.webp";
+import kitchenBlackIslandImg from "@/assets/kitchen-black-island.webp";
+import barSlatWallImg from "@/assets/bar-slat-wall.webp";
+import understairsJoineryImg from "@/assets/understairs-joinery.webp";
+import extensionBlockworkImg from "@/assets/extension-blockwork.webp";
 
 export const images = {
   hero: heroImg,
@@ -30,6 +37,13 @@ export const images = {
   interior: interiorImg,
   before: beforeImg,
   after: afterImg,
+  kitchenGreyGloss: kitchenGreyGloss1Img,
+  kitchenGreyGlossThird: kitchenGreyGloss3Img,
+  kitchenWhiteBlack: kitchenWhiteBlackImg,
+  kitchenBlackIsland: kitchenBlackIslandImg,
+  barSlatWall: barSlatWallImg,
+  understairsJoinery: understairsJoineryImg,
+  extensionBlockwork: extensionBlockworkImg,
 };
 
 export const company = {
@@ -1772,6 +1786,9 @@ export type Project = {
   /** Visible scope of works. No duration, size or cost claims are made here. */
   scope: string[];
   image: string;
+  /** Descriptive, keyword-relevant alt text for the cover photo. Falls back
+   *  to "<title> in <location>" when omitted. */
+  imageAlt?: string;
   beforeImage?: string;
   afterImage?: string;
   gallery: string[];
@@ -1789,6 +1806,8 @@ export const projects: Project[] = [
       "Rear extension built to add living space and connect the home to its garden, with brickwork matched to the original house and full-height glazing.",
     scope: ["Groundworks and foundations", "Matched brickwork", "Structural steelwork", "Bifold doors and rooflights"],
     image: extensionImg,
+    imageAlt:
+      "Contemporary rear house extension with matched brickwork, bifold doors and glazing onto the garden",
     gallery: [extensionImg, interiorImg, kitchenImg],
     relatedService: "extensions",
   },
@@ -1801,6 +1820,8 @@ export const projects: Project[] = [
       "Whole-property refurbishment covering structural improvements, new interiors, a kitchen, bathrooms, flooring and decoration through to handover.",
     scope: ["Structural alterations", "Kitchen and bathrooms", "Plastering and flooring", "Full redecoration"],
     image: renovationImg,
+    imageAlt:
+      "Full house renovation with a new kitchen, bathrooms, flooring and redecoration throughout",
     beforeImage: beforeImg,
     afterImage: afterImg,
     gallery: [renovationImg, interiorImg, bathroomImg],
@@ -1815,6 +1836,8 @@ export const projects: Project[] = [
       "Kitchen with island seating, stone worktops and integrated lighting, installed alongside new electrics and plumbing alterations.",
     scope: ["Strip-out and first fix", "Worktop templating", "Integrated lighting", "Appliance fitting"],
     image: kitchenImg,
+    imageAlt:
+      "Kitchen installation with island seating, stone worktops and integrated lighting",
     gallery: [kitchenImg, interiorImg],
     relatedService: "kitchen-renovations",
   },
@@ -1827,6 +1850,8 @@ export const projects: Project[] = [
       "Tanked family bathroom with a walk-in shower, freestanding bath and large-format porcelain tiling.",
     scope: ["Strip-out and making good", "Tanking and wet zones", "Large-format tiling", "Sanitaryware fitting"],
     image: bathroomImg,
+    imageAlt:
+      "Bathroom renovation with a walk-in shower, freestanding bath and large-format porcelain tiling",
     gallery: [bathroomImg],
     relatedService: "bathroom-renovations",
   },
@@ -1839,6 +1864,8 @@ export const projects: Project[] = [
       "Dormer conversion creating a light-filled bedroom with an en-suite and generous eaves storage.",
     scope: ["Dormer construction", "Staircase installation", "Insulation and fire safety", "En-suite and eaves storage"],
     image: loftImg,
+    imageAlt:
+      "Dormer loft conversion creating a light-filled bedroom with an en-suite and eaves storage",
     gallery: [loftImg, bathroomImg],
     relatedService: "loft-conversions",
   },
@@ -1851,7 +1878,100 @@ export const projects: Project[] = [
       "New staircase, engineered oak flooring and full redecoration through a period townhouse.",
     scope: ["Staircase and joinery", "Engineered oak flooring", "Re-skim and preparation", "Full redecoration"],
     image: interiorImg,
+    imageAlt:
+      "Interior refit with a new staircase, engineered oak flooring and full redecoration",
     gallery: [interiorImg, renovationImg],
+    relatedService: "decorating",
+  },
+  {
+    id: "grey-gloss-kitchen",
+    title: "Grey Gloss Kitchen Renovation",
+    category: "Kitchen",
+    location: "South London",
+    description:
+      "Full kitchen renovation with grey gloss handleless units, black granite worktops, a black subway-tiled splashback and blue LED lighting under the base units.",
+    scope: [
+      "Strip-out and first fix",
+      "Grey gloss unit installation",
+      "Granite worktops",
+      "Black subway tiling and LED lighting",
+    ],
+    image: kitchenGreyGloss1Img,
+    imageAlt:
+      "Grey gloss kitchen renovation with black subway tiled splashback and blue LED under-cabinet lighting",
+    gallery: [kitchenGreyGloss1Img, kitchenGreyGloss3Img, kitchenBlackIslandImg],
+    relatedService: "kitchen-renovations",
+  },
+  {
+    id: "white-handleless-kitchen",
+    title: "White Handleless Kitchen Installation",
+    category: "Kitchen",
+    location: "South London",
+    description:
+      "Handleless white kitchen with black worktops, a stainless steel sink and light oak-effect flooring, fitted as part of a wider refurbishment.",
+    scope: [
+      "Unit layout and installation",
+      "Black worktops",
+      "Sink and tap fitting",
+      "Flooring",
+    ],
+    image: kitchenWhiteBlackImg,
+    imageAlt: "White handleless kitchen units with black worktops and a stainless steel sink",
+    gallery: [kitchenWhiteBlackImg],
+    relatedService: "kitchen-renovations",
+  },
+  {
+    id: "understairs-storage",
+    title: "Under-Stairs Storage and Panelling",
+    category: "Joinery",
+    location: "South London",
+    description:
+      "Bespoke under-stairs storage built around the staircase, with panelled doors and decorative moulding to match the period interior.",
+    scope: [
+      "Bespoke carcassing",
+      "Panelled doors",
+      "Decorative moulding",
+      "Preparation for decorating",
+    ],
+    image: understairsJoineryImg,
+    imageAlt: "Under-stairs storage cupboards with panelled doors and decorative moulding",
+    gallery: [understairsJoineryImg],
+    relatedService: "house-renovations",
+  },
+  {
+    id: "extension-structure-stage",
+    title: "Rear Extension — Structure Stage",
+    category: "Extension",
+    location: "South London",
+    description:
+      "Blockwork rear extension photographed at structure stage, with new roof joists in place and openings formed for windows and doors.",
+    scope: [
+      "Foundations and blockwork",
+      "Structural openings",
+      "Timber roof structure",
+      "Weatherproofing",
+    ],
+    image: extensionBlockworkImg,
+    imageAlt: "Rear house extension under construction with blockwork walls and timber roof joists",
+    gallery: [extensionBlockworkImg],
+    relatedService: "extensions",
+  },
+  {
+    id: "restaurant-bar-fitout",
+    title: "Restaurant and Bar Fit-Out",
+    category: "Commercial",
+    location: "London",
+    description:
+      "Commercial fit-out with an oak slat feature wall, metallic ceiling finish, pendant lighting and new heating throughout the dining area.",
+    scope: [
+      "Feature wall joinery",
+      "Ceiling finish",
+      "Pendant lighting",
+      "Heating alterations",
+    ],
+    image: barSlatWallImg,
+    imageAlt: "Restaurant fit-out with an oak slat feature wall, brass ceiling and pendant lighting",
+    gallery: [barSlatWallImg],
     relatedService: "decorating",
   },
 ];

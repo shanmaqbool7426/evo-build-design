@@ -6,7 +6,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="relative aspect-4/3 overflow-hidden">
         <img
           src={project.image}
-          alt={`${project.title} in ${project.location}`}
+          alt={project.imageAlt ?? `${project.title} in ${project.location}`}
           loading="lazy"
           width={1200}
           height={900}

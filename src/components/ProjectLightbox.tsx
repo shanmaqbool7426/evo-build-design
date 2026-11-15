@@ -166,8 +166,10 @@ export function ProjectGalleryCard({ project }: { project: Project }) {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const galleryImages = [project.image, ...project.gallery.filter((g) => g !== project.image)];
-  const galleryAlts = galleryImages.map(
-    (_, i) => `${project.title} in ${project.location} — photo ${i + 1}`,
+  const galleryAlts = galleryImages.map((_, i) =>
+    i === 0 && project.imageAlt
+      ? project.imageAlt
+      : `${project.title} in ${project.location} — photo ${i + 1}`,
   );
 
   const openAt = (i: number) => {
@@ -188,7 +190,7 @@ export function ProjectGalleryCard({ project }: { project: Project }) {
           <div className="relative aspect-4/3 overflow-hidden">
             <img
               src={project.image}
-              alt={`${project.title} in ${project.location}`}
+              alt={project.imageAlt ?? `${project.title} in ${project.location}`}
               loading="lazy"
               width={1200}
               height={900}

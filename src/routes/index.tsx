@@ -535,7 +535,7 @@ function ProjectSummaryCard({ project }: { project: (typeof projects)[number] })
       <div className="relative aspect-4/3 overflow-hidden">
         <img
           src={project.image}
-          alt={`${project.title} — ${project.category.toLowerCase()} in ${project.location}`}
+          alt={project.imageAlt ?? `${project.title} — ${project.category.toLowerCase()} in ${project.location}`}
           loading="lazy"
           width={1200}
           height={900}
