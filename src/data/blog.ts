@@ -87,13 +87,13 @@ export const blogPosts: BlogPost[] = [
         heading: "Permitted Development vs Planning Permission",
         paragraphs: [
           "Most loft conversions in Croydon fall under **permitted development rights**, which means no planning application and no planning fee. The allowance is up to 40m³ of additional roof volume for terraced houses and 50m³ for semi-detached and detached homes — comfortably enough for a standard rear dormer.",
-          "You'll need full planning permission (and the associated fee, currently around £260) if your home is in a conservation area, is listed, or if the design exceeds the volume allowance. We assess this at the first visit and handle any application on your behalf.",
+          "You'll need full planning permission (a householder application fee of £548 in England from April 2026 — check the Planning Portal for the current figure) if your home is in a conservation area, is listed, or if the design exceeds the volume allowance. We assess this at the first visit and handle any application on your behalf.",
         ],
       },
       {
         heading: "Does a Loft Conversion Pay Back?",
         paragraphs: [
-          "In South London, a well-executed loft conversion typically adds **15–25% to property value** — often more than it cost to build. An extra double bedroom with an en-suite is consistently one of the highest-return home improvements, especially in Croydon where family homes with four-plus bedrooms command a premium over three-bed stock.",
+          "In South London, a well-executed loft conversion is commonly estimated by local estate agents to add **15–25% to property value** — often more than it cost to build. An extra double bedroom with an en-suite is consistently one of the highest-return home improvements, especially in Croydon where family homes with four-plus bedrooms command a premium over three-bed stock.",
           "The other return is immediate: you get the space without the stamp duty, legal fees and moving costs of buying a bigger house. For most of our clients, converting beats moving on pure numbers.",
         ],
       },
@@ -110,7 +110,7 @@ export const blogPosts: BlogPost[] = [
       "En-suite addition: +£6,000–£12,000 · Building regs drawings included with ARZ quotes",
       "Staircase position is the most overlooked cost factor — get it surveyed properly",
       "Most Croydon lofts need no planning permission (permitted development)",
-      "A finished conversion typically adds 15–25% to South London property value",
+      "Local estate agents commonly estimate a finished conversion adds 15–25% to South London property values",
     ],
     faqs: [
       {
@@ -246,14 +246,14 @@ export const blogPosts: BlogPost[] = [
         heading: "When Do You Need a Party Wall Agreement?",
         paragraphs: [
           "**For loft conversions**, the Act usually applies because dormer and hip-to-gable builds bear structural steel beams on the party wall, or involve cutting into it for chimneys and flank walls. If your loft build touches the shared wall structurally — most do — notice is required.",
-          "**For extensions**, notice is required if you plan to build within **3 metres** of a neighbour's boundary, or within **6 metres** if you're excavating below their foundations (typical for deeper extension footings). A side-return on a Victorian terrace almost always triggers it.",
+          "**For extensions**, notice is required if you plan to excavate within **3 metres** of a neighbour's building or structure to a depth below the bottom of their foundations, or within **6 metres** where your foundations would cut a 45° line drawn down from the bottom of theirs (typical for deeper extension footings). Building a new wall on the boundary line also needs notice. A side-return on a Victorian terrace almost always triggers it.",
           "Everyday cosmetic work — plastering, fitting shelves, rewiring — doesn't need notice. The Act covers structural work, not decoration.",
         ],
       },
       {
         heading: "How the Process Works",
         paragraphs: [
-          "You (the building owner) serve a **written party wall notice** on each affected neighbour at least two months before work starts (one month for new boundary lines or excavation). Your neighbour then has **14 days to consent** or appoint a surveyor.",
+          "You (the building owner) serve a **written party wall notice** on each affected neighbour at least two months before work on the party wall itself starts (one month for a new wall on the boundary line or for adjacent excavation). Your neighbour then has **14 days to consent** or appoint a surveyor.",
           "If they **consent in writing**, work proceeds as planned — the agreement is the consent itself. If they **ignore the notice or object**, surveyors are appointed: one for you, one for them (or one agreed surveyor acting for both), who settle the terms in a document called the **party wall award**.",
           "The award sets out how the work will proceed, what access is allowed, and records the condition of neighbouring properties (a schedule of condition) so pre-existing cracks aren't blamed on your build later.",
         ],
@@ -269,7 +269,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "How Long Does It Take?",
         paragraphs: [
-          "Plan the Act into your programme: the minimum notice period is **two months** for line of junction and adjacent excavation work, **one month** for work directly on the party wall — and your neighbour's 14-day response window sits inside that.",
+          "Plan the Act into your programme: the minimum notice period is **two months** for work directly on the party wall, and **one month** for a new wall on the line of junction or for adjacent excavation — and your neighbour's 14-day response window sits inside that.",
           "A consenting neighbour means the timeline is just the notice period. Surveyors being appointed typically adds **4–8 weeks** depending on availability. This is why we identify party wall requirements at the very first survey — so notices go out early and the paperwork never delays your build.",
         ],
       },
@@ -284,7 +284,7 @@ export const blogPosts: BlogPost[] = [
     takeaways: [
       "Party Wall Act ≠ planning permission — you often need both processes",
       "Loft conversions: steel on the party wall usually triggers notice",
-      "Extensions: within 3m of a boundary (6m for deep excavations) triggers notice",
+      "Extensions: excavating within 3m of a neighbour's building (6m for deep footings) triggers notice",
       "Notice periods: 1–2 months before work starts — plan it early",
       "Surveyor fees (if appointed) are typically paid by the building owner",
       "ARZ serves and manages party wall notices as part of the build service",

@@ -225,7 +225,10 @@ export function ProjectGalleryCard({ project }: { project: Project }) {
                   key={item}
                   className="flex items-start gap-1.5 text-xs font-semibold text-navy/80"
                 >
-                  <span className="mt-1.5 size-1 shrink-0 rounded-full bg-bright" aria-hidden="true" />
+                  <span
+                    className="mt-1.5 size-1 shrink-0 rounded-full bg-bright"
+                    aria-hidden="true"
+                  />
                   {item}
                 </li>
               ))}
@@ -246,7 +249,15 @@ export function ProjectGalleryCard({ project }: { project: Project }) {
                     i === 3 && galleryImages.length > 4 ? "opacity-70" : "opacity-90",
                   )}
                 >
-                  <img src={src} alt="" className="size-full object-cover" loading="lazy" />
+                  <img
+                    src={src}
+                    alt=""
+                    className="size-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width={48}
+                    height={48}
+                  />
                   {i === 3 && galleryImages.length > 4 && (
                     <span className="absolute inset-0 flex items-center justify-center bg-navy/60 text-xs font-extrabold text-white">
                       +{galleryImages.length - 4}

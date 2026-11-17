@@ -186,22 +186,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             areaServed: "GB",
             availableLanguage: "en-GB",
           },
-          // Service-area business: the registered office (W1T 6EB) is shown
-          // in the footer for Companies Act compliance, but it is deliberately
-          // omitted from structured data so the entity is not treated as a
-          // central-London shop competing with Croydon "near me" results.
-          // Coverage is expressed through areaServed below.
+          // Registered office in Thornton Heath (CR7), matching Companies House
+          // and the footer. Work happens at customers' homes; coverage is
+          // expressed through areaServed below.
+          address: { "@type": "PostalAddress", ...company.address },
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-              ],
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
               opens: "08:00",
               closes: "18:00",
             },
@@ -274,8 +266,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "@type": "Offer",
                 itemOffered: {
                   "@type": "Service",
-                  name: "Kitchen and bathroom renovations",
-                  url: `${SITE_URL}/services/kitchen-bathroom-renovations`,
+                  name: "Kitchen renovations",
+                  url: `${SITE_URL}/services/kitchen-renovations-croydon`,
+                  provider: { "@id": `${SITE_URL}/#organisation` },
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Bathroom renovations",
+                  url: `${SITE_URL}/services/bathroom-renovations-croydon`,
                   provider: { "@id": `${SITE_URL}/#organisation` },
                 },
               },
@@ -291,6 +292,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             ],
           },
           sameAs: Object.values(company.socials).filter((url) => url.length > 0),
+        }),
+      },
+
+      // ── WebSite node: gives Google the site name shown in results ─────────
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": `${SITE_URL}/#website`,
+          name: company.name,
+          alternateName: company.shortName,
+          url: SITE_URL,
+          inLanguage: "en-GB",
+          publisher: { "@id": `${SITE_URL}/#organisation` },
         }),
       },
     ],

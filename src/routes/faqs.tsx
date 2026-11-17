@@ -5,7 +5,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { faqs } from "@/data/site";
-import { buildSeoMeta, buildCanonical } from "@/lib/seo";
+import { buildSeoMeta, buildCanonical, buildBreadcrumb } from "@/lib/seo";
 
 export const Route = createFileRoute("/faqs")({
   head: () => ({
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/faqs")({
     }),
     links: buildCanonical("/faqs"),
     scripts: [
+      ...buildBreadcrumb([{ name: "Home", path: "/" }, { name: "FAQs" }]),
       {
         type: "application/ld+json" as const,
         children: JSON.stringify({

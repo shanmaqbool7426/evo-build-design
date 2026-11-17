@@ -59,16 +59,23 @@ export const company = {
   email: "Arzconstruction23@gmail.com",
   hours: "Mon – Sat: 8:00 – 18:00 · Sun: Closed",
   areasSummary: "Croydon, South London & surrounding areas",
-  // Verified against Companies House (ARZ CONSTRUCTION LTD, 12858978) and the
-  // Google Business Profile location. Keep this NAP block in sync with the
-  // GBP — same name, same address, same phone everywhere.
+  // Registered office as shown on Companies House (ARZ CONSTRUCTION LTD,
+  // 12858978), checked 17 Nov 2026. Keep this NAP block identical on the GBP,
+  // every directory listing, llms.txt and the schema in __root.tsx.
   addressLabel: "Registered office",
   addressLines: [
-    "4th Floor, Silverstream House",
-    "45 Fitzroy Street, Fitzrovia",
-    "London W1T 6EB",
+    "Flat 2, 23 Headcorn Road",
+    "Thornton Heath, Croydon",
+    "CR7 6JR",
     "United Kingdom",
   ],
+  address: {
+    streetAddress: "Flat 2, 23 Headcorn Road",
+    addressLocality: "Thornton Heath",
+    addressRegion: "Greater London",
+    postalCode: "CR7 6JR",
+    addressCountry: "GB",
+  },
   // Where the work actually happens.
   operatingStatement:
     "Projects are carried out at customers' homes across Croydon and South London. Site visits are by appointment.",
@@ -259,6 +266,7 @@ export const services: Service[] = [
   },
   {
     slug: "bathroom-renovations",
+    redirectTo: "bathroom-renovations-croydon",
     number: "05",
     title: "Bathroom Renovations",
     metaTitle: "Bathroom Renovations South London | Full Refits & Wet Rooms",
@@ -619,7 +627,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
       {
         q: "Will my loft conversion add value to my Croydon home?",
-        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London, and an extra bedroom with en-suite is consistently one of the highest-return home improvements available. The return depends on the street and on the finish — an unregulated or poorly built loft can cost you more at survey than it adds.",
+        a: "A well-executed loft conversion is commonly estimated by local estate agents to add 15–25% to a property's value in South London, and an extra bedroom with en-suite is consistently one of the highest-return home improvements available. The return depends on the street and on the finish — an unregulated or poorly built loft can cost you more at survey than it adds.",
       },
       {
         q: "Is my Croydon loft high enough for a conversion?",
@@ -702,7 +710,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
       {
         q: "What is a Party Wall Agreement and do I need one?",
-        a: "If your extension is within 3–6 metres of a neighbour's property or on the boundary, the Party Wall Act 1996 requires you to serve notice. We handle all Party Wall notices and can recommend a qualified surveyor where an agreement is needed.",
+        a: "If your extension's foundations are within 3 metres of a neighbour's building and deeper than theirs (or within 6 metres for deeper footings), or you build on the boundary line, the Party Wall etc. Act 1996 requires you to serve notice — one month ahead for excavation or a new boundary wall, two months for work on a shared wall. We handle all Party Wall notices and can recommend a qualified surveyor where an agreement is needed.",
       },
       {
         q: "What is a wrap-around extension?",
@@ -714,69 +722,6 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
     ],
     relatedSlugs: ["extensions", "house-renovations", "kitchen-renovations"],
-  },
-  {
-    slug: "kitchen-bathroom-renovations",
-    title: "Kitchen & Bathroom Renovations",
-    metaTitle: "Kitchen & Bathroom Renovations Croydon | ARZ Construction",
-    metaDescription:
-      "Kitchen and bathroom renovations in Croydon — strip-out, plumbing, electrics, tiling and fitting by one coordinated team. Request a free quotation.",
-    localParagraphs: [
-      {
-        heading: "One Team for the Whole Refit",
-        text: "The problem with hiring a plumber, electrician and tiler separately is sequencing — one trade waiting on another, and nobody accountable when the schedule slips. Our Croydon renovation teams plan the whole job together: layout and electrics agreed before strip-out, plumbing routed for the new positions, tiling and joinery finished to a snag-free handover.",
-      },
-      {
-        heading: "Kitchens and Bathrooms Built for South London Homes",
-        text: "From compact galley kitchens in Thornton Heath terraces to open-plan kitchen-diners in Sanderstead semis, we work around the realities of Croydon housing — awkward corners, sloping floors in period properties and limited access for deliveries — and we price for them honestly rather than springing extras mid-job.",
-      },
-    ],
-    localAreas: ["South Croydon", "Purley", "Shirley", "Thornton Heath", "Selhurst", "Addiscombe", "Norbury", "Coulsdon"],
-    pricing: [
-      { item: "Full kitchen renovation", range: "£12,000 – £28,000" },
-      { item: "Kitchen refit (no layout move)", range: "£8,000 – £15,000" },
-      { item: "Full bathroom renovation", range: "£6,000 – £15,000" },
-      { item: "En-suite or wet room", range: "£5,000 – £10,000" },
-      { item: "Underfloor heating (per room)", range: "from £1,200" },
-    ],
-    eyebrow: "Croydon & South London",
-    heroHeading: "Kitchen & Bathroom Renovations in Croydon",
-    heroSubtitle:
-      "Beautifully fitted kitchens and bathrooms, installed properly. Plumbing, electrics, tiling and joinery all handled under one roof.",
-    intro:
-      "Kitchen and bathroom renovations are where ARZ Construction's multi-trade capability really matters. Rather than coordinating a plumber, electrician and tiler separately, you get one team that plans the whole job, carries out every element to the right standard and takes full responsibility for the finished result — on time and on budget.",
-    image: kitchenImg,
-    highlights: [
-      "Full strip-out and layout re-planning",
-      "Plumbing and drainage alterations",
-      "First and second fix electrics",
-      "Worktop templating, fitting and splashbacks",
-      "Tanking, tiling and wet-room forming",
-      "Underfloor heating installation",
-    ],
-    faqs: [
-      {
-        q: "How long does a kitchen renovation take in Croydon?",
-        a: "A standard kitchen renovation takes 3–5 weeks depending on whether structural changes or layout moves are involved. A straightforward refit with no drainage moves is typically closer to 2–3 weeks.",
-      },
-      {
-        q: "How long does a bathroom renovation take?",
-        a: "Most bathroom renovations take 2–3 weeks. A larger family bathroom or en-suite with full tiling and bespoke joinery may take 3–4 weeks.",
-      },
-      {
-        q: "Do you supply the kitchen or bathroom, or just fit them?",
-        a: "We can do both. We work with your chosen supplier or can recommend trusted kitchen and bathroom designers. For straightforward installs, supply-and-fit packages are available.",
-      },
-      {
-        q: "How much does a kitchen renovation cost in Croydon?",
-        a: "A mid-range kitchen renovation including units, worktops, tiling and all trades typically costs between £12,000 and £28,000 depending on size and specification. We provide itemised quotes so you know exactly where every pound goes.",
-      },
-      {
-        q: "How much does a bathroom renovation cost in South London?",
-        a: "A full bathroom renovation including all trades, tiling, sanitaryware and fixtures typically ranges from £6,000 to £15,000. En-suites at the lower end, large family bathrooms or wet rooms at the higher.",
-      },
-    ],
-    relatedSlugs: ["kitchen-renovations", "bathroom-renovations", "plumbing"],
   },
   {
     slug: "electrical-services",
@@ -951,7 +896,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
       {
         q: "Will my loft conversion add value to my Bromley home?",
-        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London, and Bromley's strong family-home market means an extra bedroom or en-suite is especially sought after by buyers. You also avoid stamp duty, agent fees and legal costs on two transactions.",
+        a: "A well-executed loft conversion is commonly estimated by local estate agents to add 15–25% to a property's value in South London, and Bromley's strong family-home market means an extra bedroom or en-suite is especially sought after by buyers. You also avoid stamp duty, agent fees and legal costs on two transactions.",
       },
       {
         q: "What if my loft is too low to convert?",
@@ -993,7 +938,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
       {
         heading: "Foundations, Building Regulations and Party Walls",
-        text: "Building regulations apply to every extension regardless of planning, and they are where cheap quotes usually hide their gaps. They cover the foundation design and depth, the damp-proof course and membrane, structural steelwork and lintels, roof structure and insulation, drainage alterations, ventilation, and the electrical and plumbing installations. We coordinate the structural engineer and book each inspection with Bromley Council building control through to the completion certificate. Where the new foundations run within 3m of a neighbour's structure — or 6m where they go deeper than the neighbour's foundations — the Party Wall etc. Act 1996 requires notice, served at least two months before work starts. The same applies to work on a shared boundary wall. We serve the notices and coordinate the surveyor where an award is needed.",
+        text: "Building regulations apply to every extension regardless of planning, and they are where cheap quotes usually hide their gaps. They cover the foundation design and depth, the damp-proof course and membrane, structural steelwork and lintels, roof structure and insulation, drainage alterations, ventilation, and the electrical and plumbing installations. We coordinate the structural engineer and book each inspection with Bromley Council building control through to the completion certificate. Where the new foundations run within 3m of a neighbour's structure and deeper than its foundations — or within 6m where they would cut a 45° line down from the neighbour's foundations — the Party Wall etc. Act 1996 requires notice, served at least one month before excavation starts. Work on a shared party wall needs two months' notice. We serve the notices and coordinate the surveyor where an award is needed.",
       },
       {
         heading: "How the Build Runs: Groundworks to Handover",
@@ -1046,7 +991,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
       {
         q: "What is a Party Wall Agreement and do I need one?",
-        a: "If your extension is within 3m of a neighbour's structure — or 6m if your foundations go deeper than theirs — or works on a shared boundary wall, the Party Wall etc. Act 1996 requires you to serve notice at least two months before work starts. We serve the notices and can recommend a qualified surveyor where an award is needed.",
+        a: "If your extension's foundations are within 3m of a neighbour's structure and deeper than theirs (or within 6m for deeper footings), the Party Wall etc. Act 1996 requires notice at least one month before excavation starts; work on a shared party wall needs two months' notice. We serve the notices and can recommend a qualified surveyor where an award is needed.",
       },
       {
         q: "What is a wrap-around extension?",
@@ -1398,7 +1343,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
       {
         q: "Will a loft conversion add value to my Esher home?",
-        a: "A well-executed loft conversion typically adds 15–25% to a property's value in South London and Surrey. An extra bedroom with en-suite is one of the highest-return home improvements available, and it avoids the cost of moving.",
+        a: "A well-executed loft conversion is commonly estimated by local estate agents to add 15–25% to a property's value in South London and Surrey. An extra bedroom with en-suite is one of the highest-return home improvements available, and it avoids the cost of moving.",
       },
       {
         q: "Do you work in Esher and the surrounding villages?",
@@ -1605,7 +1550,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       },
       {
         q: "Will a loft conversion add value in Walton-on-Thames?",
-        a: "A well-finished loft typically adds 15–25% to a South London or Surrey property's value, and in KT12 the premium is reinforced by station access. An extra bedroom with en-suite is one of the highest-return improvements you can make.",
+        a: "A well-finished loft is commonly estimated by local estate agents to add 15–25% to a South London or Surrey property's value, and in KT12 the premium is reinforced by station access. An extra bedroom with en-suite is one of the highest-return improvements you can make.",
       },
       {
         q: "Do terraces near Walton station need a party wall agreement?",

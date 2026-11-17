@@ -6,7 +6,7 @@ import { Stats } from "@/components/Stats";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { images, process } from "@/data/site";
-import { buildSeoMeta, buildCanonical } from "@/lib/seo";
+import { buildSeoMeta, buildCanonical, buildBreadcrumb } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/about")({
       path: "/about",
     }),
     links: buildCanonical("/about"),
+    scripts: buildBreadcrumb([{ name: "Home", path: "/" }, { name: "About Us" }]),
   }),
   component: About,
 });

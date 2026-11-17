@@ -6,7 +6,7 @@ import { ProjectGalleryCard } from "@/components/ProjectLightbox";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { projects, seoLandingPages } from "@/data/site";
-import { buildSeoMeta, buildCanonical } from "@/lib/seo";
+import { buildSeoMeta, buildCanonical, buildBreadcrumb } from "@/lib/seo";
 
 const projectFaqs = [
   {
@@ -33,6 +33,7 @@ export const Route = createFileRoute("/projects")({
     }),
     links: buildCanonical("/projects"),
     scripts: [
+      ...buildBreadcrumb([{ name: "Home", path: "/" }, { name: "Projects" }]),
       {
         type: "application/ld+json",
         children: JSON.stringify({

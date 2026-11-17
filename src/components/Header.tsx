@@ -185,8 +185,20 @@ export function Header() {
               <Phone className="size-4" aria-hidden="true" />
               {company.phoneDisplay}
             </a>
+            {/* Phones: icon-only call button so the number is one tap away
+                without opening the menu. */}
+            <a
+              href={company.phoneHref}
+              aria-label={`Call ${company.name} on ${company.phoneDisplay}`}
+              className="flex size-12 items-center justify-center rounded-md bg-navy text-white sm:hidden"
+            >
+              <Phone className="size-5" aria-hidden="true" />
+            </a>
             <ButtonLink to="/contact" variant="accent" className="hidden lg:inline-flex">
               Request a Free Quote
+            </ButtonLink>
+            <ButtonLink to="/contact" variant="accent" className="h-12 px-3 text-[11px] lg:hidden">
+              Free Quote
             </ButtonLink>
 
             <button
@@ -195,7 +207,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="flex size-10 items-center justify-center rounded-md border border-border text-navy xl:hidden"
+              className="flex size-12 items-center justify-center rounded-md border border-border text-navy xl:hidden"
             >
               {open ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>

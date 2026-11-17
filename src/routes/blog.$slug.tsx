@@ -47,7 +47,7 @@ export const Route = createFileRoute("/blog/$slug")({
             mainEntity: post.faqs.map((f) => ({
               "@type": "Question",
               name: f.q,
-              acceptedAnswer: { "@type": "Answer", text: f.a },
+              acceptedAnswer: { "@type": "Answer", text: toPlainText(f.a) },
             })),
           }),
         },
@@ -116,13 +116,38 @@ const STATIC_ROUTES = new Set([
   "/terms",
 ]);
 
+/** Removes inline markdown (bold markers, link syntax) for plain-text uses
+ *  such as structured data, where the asterisks would otherwise leak through. */
+function toPlainText(text: string): string {
+  return text.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+}
+
+/** Renders **bold** spans as <strong>; everything else stays plain text. */
+function BoldText({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const bold = part.match(/^\*\*([^*]+)\*\*$/);
+        return bold ? (
+          <strong key={i} className="font-bold text-navy">
+            {bold[1]}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        );
+      })}
+    </>
+  );
+}
+
 function RichText({ text }: { text: string }) {
   const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
   return (
     <>
       {parts.map((part, i) => {
         const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-        if (!m) return <span key={i}>{part}</span>;
+        if (!m) return <BoldText key={i} text={part} />;
         const anchor = m[1] ?? "";
         const href = m[2] ?? "";
         if (href.startsWith("/services/")) {
@@ -153,7 +178,17 @@ function RichText({ text }: { text: string }) {
           return (
             <Link
               key={i}
-              to={href as "/" | "/about" | "/areas-we-cover" | "/blog" | "/contact" | "/faqs" | "/projects" | "/services"}
+              to={
+                href as
+                  | "/"
+                  | "/about"
+                  | "/areas-we-cover"
+                  | "/blog"
+                  | "/contact"
+                  | "/faqs"
+                  | "/projects"
+                  | "/services"
+              }
               className="font-bold text-bright transition-colors hover:text-navy"
             >
               {anchor}
@@ -161,7 +196,11 @@ function RichText({ text }: { text: string }) {
           );
         }
         return (
-          <a key={i} href={href} className="font-bold text-bright transition-colors hover:text-navy">
+          <a
+            key={i}
+            href={href}
+            className="font-bold text-bright transition-colors hover:text-navy"
+          >
             {anchor}
           </a>
         );
@@ -261,9 +300,17 @@ function BlogPostPage() {
                     </h3>
                     <ul className="mt-3 space-y-2">
                       {post.takeaways.map((t) => (
-                        <li key={t} className="flex items-start gap-2.5 text-sm font-semibold text-navy">
-                          <Check className="mt-0.5 size-4 shrink-0 text-bright" aria-hidden="true" />
-                          {t}
+                        <li
+                          key={t}
+                          className="flex items-start gap-2.5 text-sm font-semibold text-navy"
+                        >
+                          <Check
+                            className="mt-0.5 size-4 shrink-0 text-bright"
+                            aria-hidden="true"
+                          />
+                          <span>
+                            <RichText text={t} />
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -317,7 +364,9 @@ function BlogPostPage() {
                       params={{ slug: other.slug }}
                       className="group rounded-xl border border-border bg-white p-5 transition-shadow hover:shadow-card"
                     >
-                      <span className="text-xs font-bold text-bright uppercase">{other.category}</span>
+                      <span className="text-xs font-bold text-bright uppercase">
+                        {other.category}
+                      </span>
                       <h3 className="mt-1.5 text-sm leading-snug font-extrabold text-navy group-hover:text-bright">
                         {other.title}
                       </h3>

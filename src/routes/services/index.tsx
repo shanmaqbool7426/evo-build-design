@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { services, seoLandingPages } from "@/data/site";
-import { buildSeoMeta, buildCanonical } from "@/lib/seo";
+import { buildSeoMeta, buildCanonical, buildBreadcrumb } from "@/lib/seo";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
@@ -16,6 +16,7 @@ export const Route = createFileRoute("/services/")({
       path: "/services",
     }),
     links: buildCanonical("/services"),
+    scripts: buildBreadcrumb([{ name: "Home", path: "/" }, { name: "Services" }]),
   }),
   component: ServicesPage,
 });

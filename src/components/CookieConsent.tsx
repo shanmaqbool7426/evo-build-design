@@ -92,29 +92,36 @@ export function CookieConsent() {
       aria-label="Cookie consent"
       className="fixed inset-x-0 bottom-0 z-[120] border-t border-border bg-white/98 shadow-lift backdrop-blur-md xl:bottom-0"
     >
-      <div className="container-x flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between">
-        <p className="max-w-3xl text-xs leading-relaxed text-muted-foreground">
-          <span className="block font-bold text-navy">Cookies on this site</span>
-          We use essential cookies to make the site work. With your permission we also use
-          analytics cookies (Google Analytics, loaded through Google Tag Manager) to understand
-          which pages are useful. Nothing non-essential loads until you choose.{" "}
+      {/* Compact on phones (it used to cover ~30% of the screen and hide the
+          call/quote buttons); full wording from the sm breakpoint up. */}
+      <div className="container-x flex flex-col gap-2.5 py-2.5 sm:gap-4 sm:py-4 lg:flex-row lg:items-center lg:justify-between">
+        <p className="max-w-3xl text-[11px] leading-snug text-muted-foreground sm:text-xs sm:leading-relaxed">
+          <span className="hidden font-bold text-navy sm:block">Cookies on this site</span>
+          <span className="sm:hidden">
+            We use essential cookies, plus analytics cookies only if you allow them.{" "}
+          </span>
+          <span className="hidden sm:inline">
+            We use essential cookies to make the site work. With your permission we also use
+            analytics cookies (Google Analytics, loaded through Google Tag Manager) to understand
+            which pages are useful. Nothing non-essential loads until you choose.{" "}
+          </span>
           <Link to="/privacy" className="font-semibold text-bright underline hover:text-navy">
-            Read our cookie policy
+            Cookie policy
           </Link>
           .
         </p>
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="flex flex-row gap-2">
           <button
             type="button"
             onClick={() => decide("denied")}
-            className="inline-flex items-center justify-center rounded-md border border-navy/25 bg-white px-5 py-2.5 text-xs font-semibold tracking-wide text-navy uppercase transition-colors hover:bg-blue-tint"
+            className="inline-flex flex-1 items-center justify-center rounded-md border border-navy/25 bg-white px-3 py-2 text-[11px] font-semibold tracking-wide text-navy uppercase transition-colors hover:bg-blue-tint sm:flex-none sm:px-5 sm:py-2.5 sm:text-xs"
           >
             Reject non-essential
           </button>
           <button
             type="button"
             onClick={() => decide("granted")}
-            className="inline-flex items-center justify-center rounded-md bg-navy px-5 py-2.5 text-xs font-semibold tracking-wide text-white uppercase transition-colors hover:bg-royal"
+            className="inline-flex flex-1 items-center justify-center rounded-md bg-navy px-3 py-2 text-[11px] font-semibold tracking-wide text-white uppercase transition-colors hover:bg-royal sm:flex-none sm:px-5 sm:py-2.5 sm:text-xs"
           >
             Accept analytics
           </button>

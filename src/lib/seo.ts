@@ -101,14 +101,22 @@ export function buildArticle(post: {
         dateModified: post.date,
         author: {
           "@type": "Organization",
+          "@id": `${SITE_URL}/#organisation`,
           name: "ARZ Construction Ltd",
           url: SITE_URL,
         },
+        // Google needs a raster publisher logo; the SVG favicon is ignored.
         publisher: {
           "@type": "Organization",
+          "@id": `${SITE_URL}/#organisation`,
           name: "ARZ Construction Ltd",
           url: SITE_URL,
-          logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` },
+          logo: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}/icon-512.png`,
+            width: 512,
+            height: 512,
+          },
         },
         mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(post.path) },
         url: absoluteUrl(post.path),

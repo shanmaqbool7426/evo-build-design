@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
 import { company } from "@/data/site";
-import { buildSeoMeta, buildCanonical } from "@/lib/seo";
+import { buildSeoMeta, buildCanonical, buildBreadcrumb } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -16,6 +16,7 @@ export const Route = createFileRoute("/contact")({
       path: "/contact",
     }),
     links: buildCanonical("/contact"),
+    scripts: buildBreadcrumb([{ name: "Home", path: "/" }, { name: "Contact" }]),
   }),
   component: ContactPage,
 });

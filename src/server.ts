@@ -57,19 +57,61 @@ const APEX_HOST = "arzconstructionltd.com";
 // The catch-all /services/$slug route renders a notFound UI, but SSR still
 // responds with status 200 — a soft-404 that search engines can index as
 // duplicate content. This outer guard returns a real HTTP 404 first.
-const KNOWN_SERVICE_SLUGS = new Set(
-  [...services, ...seoLandingPages].map((entry) => entry.slug),
-);
+const KNOWN_SERVICE_SLUGS = new Set([...services, ...seoLandingPages].map((entry) => entry.slug));
 const KNOWN_BLOG_SLUGS = new Set(blogPosts.map((p) => p.slug));
 
 // ── Consolidated service pages (301) ────────────────────────────────────────
 // Thin general pages duplicated the intent of their richer Croydon
 // equivalents, so each one permanently redirects to the stronger page.
-const SERVICE_REDIRECTS = new Map<string, string>(
-  services
+const SERVICE_REDIRECTS = new Map<string, string>([
+  ...services
     .filter((service) => service.redirectTo)
-    .map((service) => [`/services/${service.slug}`, `/services/${service.redirectTo}`]),
-);
+    .map((service): [string, string] => [
+      `/services/${service.slug}`,
+      `/services/${service.redirectTo}`,
+    ]),
+  // Retired landing page: it split "kitchen" and "bathroom" intent across a
+  // third URL that competed with both Croydon pages.
+  ["/services/kitchen-bathroom-renovations", "/services/kitchen-renovations-croydon"],
+]);
+
+// ── Security headers on every response ───────────────────────────────────────
+const SECURITY_HEADERS: Record<string, string> = {
+  "strict-transport-security": "max-age=63072000; includeSubDomains",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "SAMEORIGIN",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+};
+
+function withSecurityHeaders(response: Response): Response {
+  // Redirect and error responses built here are mutable; responses from the
+  // framework may not be, so copy into a fresh Response when needed.
+  let out = response;
+  try {
+    for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
+  } catch {
+    out = new Response(response.body, response);
+    for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
+  }
+  return out;
+}
+
+/** 301 for URLs that only differ from a real page by case or a trailing slash
+ *  (e.g. /About or /contact/), so each page has exactly one indexable URL. */
+function normalisedPathRedirect(url: URL): Response | undefined {
+  const original = url.pathname;
+  // Page URLs only: leave assets, dev-server internals (/@vite, /src/…),
+  // server functions and the API alone.
+  if (original.includes(".") || /^\/(@|_|api\/|src\/|node_modules\/)/.test(original)) {
+    return undefined;
+  }
+  let path = original;
+  if (path.length > 1 && path.endsWith("/")) path = path.replace(/\/+$/, "") || "/";
+  path = path.toLowerCase();
+  if (path === original) return undefined;
+  return new Response(null, { status: 301, headers: { location: `${path}${url.search}` } });
+}
 
 /** True when pathname sits under prefix with a slug that is not in `known`. */
 function unknownSlugIn(pathname: string, prefix: string, known: Set<string>): boolean {
@@ -177,32 +219,39 @@ function canonicalHostRedirect(request: Request): Response | undefined {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
-    try {
-      const url = new URL(request.url);
-      const redirect = canonicalHostRedirect(request);
-      if (redirect) return redirect;
-      const normalisedPath = url.pathname.replace(/\/$/, "") || "/";
-      const serviceTarget = SERVICE_REDIRECTS.get(normalisedPath);
-      if (serviceTarget) {
-        return new Response(null, {
-          status: 301,
-          headers: { location: `${serviceTarget}${url.search}` },
-        });
-      }
-      if (GONE_PATHS.has(url.pathname)) return goneResponse();
-      if (unknownSlugIn(url.pathname, "/services/", KNOWN_SERVICE_SLUGS))
-        return serviceNotFoundResponse();
-      if (unknownSlugIn(url.pathname, "/blog/", KNOWN_BLOG_SLUGS))
-        return serviceNotFoundResponse();
-      const handler = await getServerEntry();
-      const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
-    } catch (error) {
-      console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
-    }
+    return withSecurityHeaders(await handleRequest(request, env, ctx));
   },
 };
+
+async function handleRequest(request: Request, env: unknown, ctx: unknown): Promise<Response> {
+  try {
+    const url = new URL(request.url);
+    const redirect = canonicalHostRedirect(request);
+    if (redirect) return redirect;
+    // Checked before case/slash normalisation so a retired URL in any
+    // spelling reaches its final destination in a single 301 hop.
+    const normalisedPath = url.pathname.replace(/\/$/, "").toLowerCase() || "/";
+    const serviceTarget = SERVICE_REDIRECTS.get(normalisedPath);
+    if (serviceTarget) {
+      return new Response(null, {
+        status: 301,
+        headers: { location: `${serviceTarget}${url.search}` },
+      });
+    }
+    const pathRedirect = normalisedPathRedirect(url);
+    if (pathRedirect) return pathRedirect;
+    if (GONE_PATHS.has(url.pathname)) return goneResponse();
+    if (unknownSlugIn(url.pathname, "/services/", KNOWN_SERVICE_SLUGS))
+      return serviceNotFoundResponse();
+    if (unknownSlugIn(url.pathname, "/blog/", KNOWN_BLOG_SLUGS)) return serviceNotFoundResponse();
+    const handler = await getServerEntry();
+    const response = await handler.fetch(request, env, ctx);
+    return await normalizeCatastrophicSsrResponse(response);
+  } catch (error) {
+    console.error(error);
+    return new Response(renderErrorPage(), {
+      status: 500,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    });
+  }
+}
