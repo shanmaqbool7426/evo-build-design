@@ -256,10 +256,14 @@ function BlogPostPage() {
           <div className="mt-5 flex flex-wrap items-center gap-4 text-xs font-semibold text-blue-soft">
             <span className="inline-flex items-center gap-1.5">
               <CalendarDays className="size-3.5" aria-hidden="true" />
+              {/* timeZone UTC: post.date is a date-only string (UTC midnight).
+                  Without it, browsers west of UTC (and Googlebot) show the
+                  previous day, which breaks hydration. */}
               {new Date(post.date).toLocaleDateString("en-GB", {
                 day: "numeric",
                 month: "long",
                 year: "numeric",
+                timeZone: "UTC",
               })}
             </span>
             <span className="inline-flex items-center gap-1.5">

@@ -64,6 +64,7 @@ function BlogIndex() {
                           day: "numeric",
                           month: "short",
                           year: "numeric",
+                          timeZone: "UTC", // see blog.$slug.tsx — keeps SSR and browser dates equal
                         })}
                       </span>
                       <span className="inline-flex items-center gap-1.5">
