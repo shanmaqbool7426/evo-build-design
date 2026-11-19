@@ -500,11 +500,40 @@ function SeoLandingPageDetail({ page }: { page: SeoLandingPage }) {
       </section>
 
       <CTASection
-        title={`Ready to Start Your ${page.title}?`}
+        title={ctaHeading(page.title)}
         text="Request a free, no-obligation quotation. We'll visit the property, confirm the scope in writing and set out an indicative programme."
       />
     </>
   );
+}
+
+// ─── CTA heading ──────────────────────────────────────────────────────────────
+
+const PAGE_TOWNS = [
+  "Croydon",
+  "Bromley",
+  "Esher",
+  "Cobham",
+  "Claygate",
+  "Walton-on-Thames",
+  "Egham",
+  "Banstead",
+];
+
+/**
+ * "Kitchen Renovations Croydon" → "Ready to Start Your Kitchen Renovation in
+ * Croydon?". Page titles are keyword-style, so using them verbatim produced
+ * ungrammatical headings like "Ready to Start Your Loft Conversion Bromley?".
+ */
+function ctaHeading(title: string): string {
+  const town = PAGE_TOWNS.find((t) => title.endsWith(` ${t}`));
+  const service = (town ? title.slice(0, -(town.length + 1)) : title)
+    .replace(/Renovations$/, "Renovation")
+    .replace(/Extensions$/, "Extension")
+    .replace(/ Services$/, "");
+  return town
+    ? `Ready to Start Your ${service} in ${town}?`
+    : `Ready to Start Your ${service} Project?`;
 }
 
 // ─── Accordion FAQ item ───────────────────────────────────────────────────────

@@ -217,9 +217,36 @@ function canonicalHostRedirect(request: Request): Response | undefined {
   return undefined;
 }
 
+// ── Edge caching for HTML pages ───────────────────────────────────────────────
+// Every page was rendered on demand (cache MISS, max-age=0), so a cold
+// serverless start cost visitors and Googlebot 5–11 s before the first byte.
+// Pages are the same for every visitor, so the CDN may keep a copy for an
+// hour and serve a stale copy for up to a day while it refreshes in the
+// background. Browsers still revalidate (max-age=0), and Vercel clears the CDN
+// cache on every deploy, so content changes go live immediately.
+const HTML_CACHE_CONTROL = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400";
+
+function withPageCaching(request: Request, response: Response): Response {
+  const isCacheablePage =
+    request.method === "GET" &&
+    response.status === 200 &&
+    (response.headers.get("content-type") ?? "").includes("text/html") &&
+    !response.headers.has("set-cookie");
+  if (!isCacheablePage) return response;
+  try {
+    response.headers.set("cache-control", HTML_CACHE_CONTROL);
+    return response;
+  } catch {
+    const out = new Response(response.body, response);
+    out.headers.set("cache-control", HTML_CACHE_CONTROL);
+    return out;
+  }
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
-    return withSecurityHeaders(await handleRequest(request, env, ctx));
+    const response = await handleRequest(request, env, ctx);
+    return withSecurityHeaders(withPageCaching(request, response));
   },
 };
 

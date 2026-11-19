@@ -59,18 +59,20 @@ export const company = {
   email: "Arzconstruction23@gmail.com",
   hours: "Mon – Sat: 8:00 – 18:00 · Sun: Closed",
   areasSummary: "Croydon, South London & surrounding areas",
-  // Registered office as shown on Companies House (ARZ CONSTRUCTION LTD,
-  // 12858978), checked 17 Nov 2026. Keep this NAP block identical on the GBP,
-  // every directory listing, llms.txt and the schema in __root.tsx.
+  // Business address supplied by the owner on 19 Nov 2026. Companies House
+  // (12858978) lists the same building as "Flat 2, 23 Headcorn Road"; the
+  // owner chose the shorter form for public use. Keep this NAP block
+  // identical on the GBP, every directory listing, llms.txt and the schema in
+  // __root.tsx.
   addressLabel: "Registered office",
   addressLines: [
-    "Flat 2, 23 Headcorn Road",
+    "23 Headcorn Road",
     "Thornton Heath, Croydon",
     "CR7 6JR",
     "United Kingdom",
   ],
   address: {
-    streetAddress: "Flat 2, 23 Headcorn Road",
+    streetAddress: "23 Headcorn Road",
     addressLocality: "Thornton Heath",
     addressRegion: "Greater London",
     postalCode: "CR7 6JR",
@@ -1094,7 +1096,7 @@ export const seoLandingPages: SeoLandingPage[] = [
   {
     slug: "kitchen-renovations-croydon",
     title: "Kitchen Renovations Croydon",
-    metaTitle: "Kitchen Renovations Croydon | Fitters from £8,000",
+    metaTitle: "Kitchen Renovations Croydon | Fitters & Contractors from £8k",
     metaDescription:
       "Kitchen renovations and fitting in Croydon — strip-out, layout changes, plumbing, electrics, worktops and tiling. Refits from £8,000. Free itemised quote.",
     localParagraphs: [
